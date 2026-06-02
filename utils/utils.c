@@ -199,70 +199,60 @@ void apagar_janela(WINDOW* win)
 
 void gerar_loot(Player* player)
 {
-    int opcao='1';
-
+    fprintf(stderr, "entro ao menos\n");
+    int arma_atual=0;
+    int tecla;
     Arma arma1 = gerar_arma_aleatoria(player->NumeroAndar);
 
     Arma arma2;
-    do
-    {
+    do {
         arma2 = gerar_arma_aleatoria(player->NumeroAndar);
-    }
-    while(strcmp(arma1.nome, arma2.nome) == 0);
+    } while(strcmp(arma1.nome, arma2.nome) == 0);
 
     Arma arma3;
-    do
-    {
+    do {
         arma3 = gerar_arma_aleatoria(player->NumeroAndar);
-    }
-    while(strcmp(arma3.nome, arma1.nome) == 0 || strcmp(arma3.nome, arma2.nome) == 0);
+    } while(strcmp(arma3.nome, arma1.nome) == 0 || strcmp(arma3.nome, arma2.nome) == 0);
 
-
+    fprintf(stderr, "Aqui\n");
     Arma arma_selecionada;
-    WINDOW* tela_loot = newwin(getmaxx(stdscr), getmaxy(stdscr), 0, 0);
-    
+    WINDOW* tela_loot = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
+    keypad(tela_loot, TRUE);
+    wtimeout(tela_loot, 33);
+    fprintf(stderr, "Aqui2\n");
+
+    Arma armas[3] = {arma1, arma2, arma3};
     while(true)
     {
         werase(tela_loot);
+        box(tela_loot, 0, 0);
+        desenhar_sprite(tela_loot, "assets/sprites/loot/chest.txt", 5,1);
 
-        desenhar_sprite(tela_loot, "assets/sprites/loot/chest", 5,0);
+        wrefresh(tela_loot);
 
-        if(opcao=='1')
+
+        for(int i=0;i<3;i++)
         {
-            wattron(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-            arma_selecionada=arma1;
+            if(arma_atual==i)
+                wattron(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
+
+            desenhar_sprite(tela_loot, armas[i].sprite,5,18+31*i);
+            wattroff(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
+            wrefresh(tela_loot);
         }
-        desenhar_sprite(tela_loot, arma1.sprite, 5, 17);
-        wattroff(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
 
-        if(opcao=='2')
-        {
-            wattron(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-            arma_selecionada=arma2;
-        }
-        desenhar_sprite(tela_loot, arma2.sprite, 5, 48);
-        wattroff(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-
-        if(opcao=='3')
-        {
-            wattron(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-            arma_selecionada=arma3;
-        }
-        desenhar_sprite(tela_loot, arma3.sprite, 5, 79);
-
-        wattroff(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-
-        if(opcao==KEY_ENTER || opcao == '\n' || opcao==10)
+        tecla = wgetch(tela_loot);
+        if(tecla==KEY_ENTER || tecla == '\n' || tecla==10)
         {
             player->inventario.arma=arma_selecionada;
             break;
         }
 
 
-        opcao = wgetch(tela_loot);
+        if(tecla=='1') arma_atual=0;
+        else if(tecla=='2')arma_atual=1;
+        else if(tecla=='3')arma_atual=2;
 
     }
-    werase(tela_loot);
-    delwin(tela_loot);
-    tela_loot=NULL;
+    apagar_janela(tela_loot);
 }

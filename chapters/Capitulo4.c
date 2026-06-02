@@ -26,11 +26,11 @@ bool Capitulo4(Player *player)
     werase(tela_capitulo3);
     box(tela_capitulo3, 0, 0);
 
-    // Renderiza o sprite do Centauro (Aphanos)
+    // Renderiza o sprite do Dragão
     desenhar_sprite(tela_capitulo3, "assets/sprites/bosses/dragon_sleeping.txt", 1, 5);
 
-    slow_mvwprintw(tela_capitulo3, "Conforme você dá seu próximo passo parece que o ar se torna mais tenso e pesado e o chão treme levemente.", 28, 6, 20);
-    slow_mvwprintw(tela_capitulo3, "e ele desperta.", 29, 6, 20);
+    slow_mvwprintw(tela_capitulo3, "Conforme você dá seu próximo passo parece que o ar se torna mais tenso e pesado e o chão treme levemente.", 31, 6, 20);
+    slow_mvwprintw(tela_capitulo3, "e ele desperta.", 32, 6, 20);
 
     napms(2000);
 
@@ -103,11 +103,17 @@ bool Capitulo4(Player *player)
                 }
                 else if (opcao == 1)
                 {
-                    
+                    slow_mvwprintw(tela_capitulo3, "Outrora contemplei a possibilidade de atravessar outros reinos e horizontes.", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Entretanto, com o passar dos milênios, encontrei contentamento neste lugar.", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "e o repouso torna-se um conforto raro.", 33, 6, 30);
                 }
                 else if (opcao == 2)
                 {
-                    
+                    slow_mvwprintw(tela_capitulo3, "Então prossiga em tua ascensão. Contudo, não te concederei passagem sem provação", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Estas chamas não se curvam aos fracos; apenas aqueles dotados da força necessária podem atravessá-las.", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "E, se tu não fores capaz de superar este obstáculo, tampouco resistirás ao desafio que te aguarda adiante.", 33, 6, 30);                    
                     napms(1500);
                     break; // Sai do loop para iniciar a luta
                 }
@@ -125,8 +131,7 @@ bool Capitulo4(Player *player)
         desenhar_sprite(tela_capitulo3, "assets/sprites/bosses/centaur.txt", 1, 5);
 
         mvwprintw(tela_capitulo3, 28, 6, "[Iowa]");
-        slow_mvwprintw(tela_capitulo3, "Você repete o mesmo erro novamente…", 29, 6, 20);
-        slow_mvwprintw(tela_capitulo3, "Por algum acaso você realmente acha que suas escolhas fazem diferença?", 30, 6, 20);
+        slow_mvwprintw(tela_capitulo3, "Vejo que retornaste… curioso. Poucos escolhem desafiar o fogo uma segunda vez.", 29, 6, 20);
 
         wrefresh(tela_capitulo3);
         napms(2500);
@@ -149,8 +154,6 @@ bool Capitulo4(Player *player)
 
     Inimigo *iowa = criar_inimigo(185, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
 
-    // Falas de Re-encontro e Mecânicas de Luta
-    iowa->dialogo_reever_player = "Vejo que retornaste… curioso. Poucos escolhem desafiar o fogo uma segunda vez.";
 
     // Diálogos de Ataque recebido
     iowa->dialogos_ataque[0] = "Teu golpe carrega força… mas ainda não suficiente.";

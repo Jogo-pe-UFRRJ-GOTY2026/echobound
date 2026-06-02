@@ -176,12 +176,13 @@ static const ArmaBase catalogo[] =
 
 Arma gerar_arma_aleatoria(int capitulo)
 {
-    int indice = rand() % (sizeof(catalogo) / sizeof(catalogo[0]));
+    int indice = rand() % 15;
 
     ArmaBase base = catalogo[indice];
 
-    Arma arma =
-        criar_arma(
+    Arma arma={0}; 
+    arma = criar_arma(
+            arma, 
             capitulo,
             base.nome,
             base.descricao,
@@ -190,7 +191,7 @@ Arma gerar_arma_aleatoria(int capitulo)
             base.tipo
         );
 
-    strcpy(arma.sprite, base.sprite);
+    strncpy(arma.sprite, base.sprite, 128);
 
     return arma;
 }
@@ -202,15 +203,16 @@ Arma gerar_arma_aleatoria(int capitulo)
 
 
 
-Arma criar_arma(int capitulo, char nome[], char descricao[], int danoBase, int vidaBase, TipoDano tipo)
+Arma criar_arma(Arma arma, int capitulo, char nome[], char descricao[], int danoBase, int vidaBase, TipoDano tipo)
 {
 
-    Arma arma = gerar_arma_aleatoria(capitulo);
     
     int bonusDano = 0;
     int bonusForca = 0;
     int bonusDefesa = 0;
     int bonusSorte = 0;
+    strncpy(arma.descricao, descricao, 256);  
+    strncpy(arma.nome, nome, 64);  
 
     // DIFERENÇA ENTRE OS TIPOS DE DANO
     switch(tipo)

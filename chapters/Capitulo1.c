@@ -193,7 +193,6 @@ bool Capitulo1(Player* player)
 
     Inimigo *cruciator = criar_inimigo(5, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
 
-    cruciator->dialogo_reever_player = "Olha só, olha só…Acho que alguém gostou da diversão de antes! Hahaha";
 
     cruciator->dialogos_mercy[0] = "Misericórdia? HAHAHAHAHA! Muitas almas já imploraram por isso… de onde eu vim.";
     cruciator->dialogos_mercy[1] = "In quolibet proelio, misericordes pereunt, dum immisericordes supervivent propter ironiam misericordiae.";

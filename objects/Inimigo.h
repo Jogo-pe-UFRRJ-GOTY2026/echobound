@@ -74,7 +74,6 @@ typedef struct Inimigo
     char *dialogos_ataque[5];
     char *dialogos_mercy[3];
     Lembrancas id;
-    char *dialogo_reever_player;
     AtaqueInimigo ataques[10];
     char nome[40];
 } Inimigo;

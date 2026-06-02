@@ -37,8 +37,8 @@ typedef struct ArmaBase{
 
 typedef struct Arma
 {
-    char descricao[50];
-    char nome[30];
+    char descricao[256];
+    char nome[64];
     int vida; // VIDA A MAIS QUE A ARMA PODE DAR PARA O PLAYER;
     int dano;
     char sprite[128];
@@ -79,7 +79,7 @@ typedef enum TipoArmadura
 } TipoArmadura;
 
 Inventario init_inventario();
-Arma criar_arma(int capitulo, char nome[], char descricao[], int danoBase, int vidaBase, TipoDano tipo);
+Arma criar_arma(Arma arma, int capitulo, char nome[], char descricao[], int danoBase, int vidaBase, TipoDano tipo);
 Arma gerar_arma_aleatoria(int capitulo);
 ParteArmadura criar_armadura(int capitulo, TipoArmadura tipo, char nome[], char descricao[], int vidaBase);
 

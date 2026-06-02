@@ -84,7 +84,11 @@ int main()
         // se não avançou, o capitulo faz save automatico e mostra a tela de morte
         // o loop continua no mesmo capitulo
         if(player->NumeroAndar > andar_anterior && player->NumeroAndar != Epilogo) 
+        {
+            gerar_loot(player);
             ponto_save(player);
+        }
+
     }
 
     endwin();

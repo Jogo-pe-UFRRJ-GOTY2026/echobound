@@ -205,8 +205,6 @@ void Prologo_pt2(Player *player)
     Inimigo *hollow_knight = criar_inimigo(5, "Hollow Knight",
                                            "assets/sprites/bosses/hollow.txt", size, 40, 20, Hollow_Knight);
 
-    hollow_knight->dialogo_reever_player = "Você é estranhamente insistente, estranho…";
-
     hollow_knight->dialogos_mercy[0] = "Por que está hesitando?";
     hollow_knight->dialogos_mercy[1] = "Misericórdia não vai te levar longe nesta torre…";
     hollow_knight->dialogos_mercy[2] = "Não me olhe desse jeito… eu já fui como você.";
@@ -246,7 +244,10 @@ void Prologo_pt2(Player *player)
         napms(2000);
         slow_mvwprintw(tela_prologopt2,"… talvez você chegue mais longe do que eu.",24, 6, 25);
         player->NumeroAndar=Andar1;
-        gerar_loot(player);
+
+        werase(tela_prologopt2);
+        wrefresh(tela_prologopt2);
+
     }
     else if (resultado_combate == VITORIA && hollow_knight->vida >= 0)
     {
@@ -260,7 +261,9 @@ void Prologo_pt2(Player *player)
         slow_mvwprintw(tela_prologopt2,"Vá em frente, viajante… não deixe a torre apagar quem você é.",25, 6, 20);
         player->karma += 1;
         player->NumeroAndar=Andar1;
-        gerar_loot(player);
+
+        werase(tela_prologopt2);
+        wrefresh(tela_prologopt2);
         // salvar_jogo(player);
     }
     else
@@ -270,6 +273,9 @@ void Prologo_pt2(Player *player)
         slow_mvwprintw(tela_prologopt2, "Eu avisei… você ainda não é forte o bastante.", 23, 6, 20);
         player->vida = vida_max_total(player);
         salvar_jogo(player);
+        napms(500);
+        werase(tela_prologopt2);
+        wrefresh(tela_prologopt2);
 
         mostrar_tela_morte(player);
     }

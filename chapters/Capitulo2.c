@@ -143,9 +143,6 @@ bool Capitulo2(Player* player)
 
     Inimigo *aphanos = criar_inimigo(160, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 35, 23, Aphanos);
 
-    // Falas de Re-encontro e Mecânicas de Luta
-    aphanos->dialogo_reever_player = "Você repete o mesmo erro novamente… Por algum acaso você realmente acha que suas escolhas fazem diferença?";
-
     // Diálogos de Ataque recebido
     aphanos->dialogos_ataque[0] = "Finalmente um oponente digno… Nossa batalha será lendária!";
     aphanos->dialogos_ataque[1] = "Esse ataque fraco me fez lembrar da minha batalha contra Geras";
