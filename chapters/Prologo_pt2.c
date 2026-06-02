@@ -139,6 +139,7 @@ void Prologo_pt2(Player *player)
                     slow_mvwprintw(tela_prologopt2,
                                    "Não me lembro mais de quem eu era. A torre me mantém vivo.",
                                    35, 6, 20);
+                    napms(2000);
                 }
                 else if (opcao == 1)
                 {
@@ -148,6 +149,7 @@ void Prologo_pt2(Player *player)
                     slow_mvwprintw(tela_prologopt2, "Incontáveis vezes.", 34, 6, 30);
                     napms(2000);
                     slow_mvwprintw(tela_prologopt2, "E em todas eu fui derrotado.", 35, 6, 25);
+                    napms(2000);
                 }
                 else if (opcao == 2)
                 {
@@ -243,6 +245,7 @@ void Prologo_pt2(Player *player)
         wrefresh(tela_prologopt2);
         napms(2000);
         slow_mvwprintw(tela_prologopt2,"… talvez você chegue mais longe do que eu.",24, 6, 25);
+        napms(1500);
         player->NumeroAndar=Andar1;
 
         werase(tela_prologopt2);
@@ -259,6 +262,7 @@ void Prologo_pt2(Player *player)
         slow_mvwprintw(tela_prologopt2, "Talvez você realmente seja diferente dos outros.", 24, 6, 20);
         napms(2000);
         slow_mvwprintw(tela_prologopt2,"Vá em frente, viajante… não deixe a torre apagar quem você é.",25, 6, 20);
+        napms(2000);
         player->karma += 1;
         player->NumeroAndar=Andar1;
 
@@ -273,7 +277,7 @@ void Prologo_pt2(Player *player)
         slow_mvwprintw(tela_prologopt2, "Eu avisei… você ainda não é forte o bastante.", 23, 6, 20);
         player->vida = vida_max_total(player);
         salvar_jogo(player);
-        napms(500);
+        napms(1500);
         werase(tela_prologopt2);
         wrefresh(tela_prologopt2);
 

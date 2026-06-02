@@ -94,17 +94,19 @@ bool Capitulo2(Player* player)
                 if (opcao == 0)
                 {
                     slow_mvwprintw(tela_capitulo2, "Meu nome é Aphanos, eu fui apagado pelas Moiras e condenado ao Intervalo…", 30, 6, 20);
+                    napms(1000);
                 }
                 else if (opcao == 1)
                 {
                     slow_mvwprintw(tela_capitulo2, "Ser lembrado? Eu lutei por isso! Eu perdi tudo por isso!", 30, 6, 20);
+                    napms(1000);
                     slow_mvwprintw(tela_capitulo2, "E o mundo ainda me arrancou do tempo como se eu nunca tivesse existido!", 31, 6, 20);
                 }
                 else if (opcao == 2)
                 {
                     slow_mvwprintw(tela_capitulo2, "Então vem! Sobe se quiser! Mas não pense que destino vai te deixar passar ileso só porque você quer!", 30, 6, 20);
                     wrefresh(tela_capitulo2);
-                    napms(1500);
+                    napms(1000);
                     break; // Sai do loop para iniciar a luta
                 }
 
@@ -178,14 +180,15 @@ bool Capitulo2(Player* player)
         mvwprintw(tela_capitulo2, 24, 6, "[Aphanos]");
 
         slow_mvwprintw(tela_capitulo2, "Vejo que…", 25, 6, 35);
-        napms(1500);
+        napms(1000);
         slow_mvwprintw(tela_capitulo2, "talvez você realmente tenha um destino à sua frente…", 26, 6, 35);
-        napms(1500);
+        napms(1000);
         slow_mvwprintw(tela_capitulo2, "um daqueles que eu nunca consegui alcançar…", 27, 6, 35);
-        napms(1500);
+        napms(1000);
         slow_mvwprintw(tela_capitulo2, "que pena… não poder…", 28, 6, 35);
-        napms(1500);
+        napms(1000);
         slow_mvwprintw(tela_capitulo2, "presenciá-lo", 29, 6, 45);
+        napms(1500);
 
         player->NumeroAndar = Andar3;
         player->vida = vida_max_total(player);
@@ -197,6 +200,7 @@ bool Capitulo2(Player* player)
         mvwprintw(tela_capitulo2, 24, 6, "[Aphanos]");
 
         slow_mvwprintw(tela_capitulo2, "Você tem um destino grandioso pela frente, vá, você merece ser lembrado!", 25, 6, 20);
+        napms(1500);
 
         player->karma += 1;
         player->NumeroAndar = Andar3;
@@ -209,6 +213,7 @@ bool Capitulo2(Player* player)
         mvwprintw(tela_capitulo2, 24, 6, "[Aphanos]");
         
         slow_mvwprintw(tela_capitulo2, "O seu destino já estava traçado desde o início…", 25, 6, 20);
+        napms(1500);
 
         player->vida = vida_max_total(player);
         salvar_jogo(player);
