@@ -18,12 +18,12 @@ typedef struct CombateUI{
 
 typedef enum OpcoesMenuCombate
 {
-    ATACAR=1,
-    ITENS,
+    ATACAR = 1,
+    CURAR,
     MERCY,
     DESISTIR,
     INVALIDA
-} OpcoesMenuCombate ;
+} OpcoesMenuCombate;
 
 typedef enum EstadoRodada_
 {

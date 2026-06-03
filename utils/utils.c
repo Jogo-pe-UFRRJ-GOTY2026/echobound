@@ -51,11 +51,9 @@ void exit_with_error(Exceptions ex)
 void iniciar_cores()
 {
     const int STANDARD_BACKGROUND = -1;
-    short COLOR_CRIMSON=16;
     short COLOR_GREY = 17;
-    init_color(COLOR_CRIMSON, 710, 192, 251);
     init_color(COLOR_GREY, 500, 500, 500);
-    init_pair(COR_TEXTO_MORTE, COLOR_CRIMSON, STANDARD_BACKGROUND);
+    init_pair(COR_TEXTO_MORTE, COLOR_RED, STANDARD_BACKGROUND);
     init_pair(COR_OPCAO_SELECIONADA, COLOR_YELLOW, STANDARD_BACKGROUND);
     init_pair(COR_VIDA, COLOR_RED, STANDARD_BACKGROUND);
     init_pair(COR_NOME_BOSS, COLOR_WHITE, STANDARD_BACKGROUND);
@@ -104,14 +102,14 @@ void mostrar_tela_morte(Player* player)
 {
     WINDOW* tela_morte = newwin(getmaxy(stdscr), getmaxx(stdscr),0,0);
 
-    wattron(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE) | A_BOLD);
+    wattron(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE));
     mvwprintw(tela_morte, 16, 70, "██    ██  ██████  ██    ██     ██████  ██ ███████ ██████  ");
     mvwprintw(tela_morte, 17, 70, " ██  ██  ██    ██ ██    ██     ██   ██ ██ ██      ██   ██");
     mvwprintw(tela_morte, 18, 70, "  ████   ██    ██ ██    ██     ██   ██ ██ █████   ██   ██");
     mvwprintw(tela_morte, 19, 70, "   ██    ██    ██ ██    ██     ██   ██ ██ ██      ██   ██ ");
     mvwprintw(tela_morte, 20, 70, "   ██     ██████   ██████      ██████  ██ ███████ ██████ ");
 
-    wattroff(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE) | A_BOLD);
+    wattroff(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE));
     wrefresh(tela_morte);
     napms(2000);
 
@@ -214,12 +212,9 @@ void gerar_loot(Player* player)
         arma3 = gerar_arma_aleatoria(player->NumeroAndar);
     } while(strcmp(arma3.nome, arma1.nome) == 0 || strcmp(arma3.nome, arma2.nome) == 0);
 
-    fprintf(stderr, "Aqui\n");
-    Arma arma_selecionada;
     WINDOW* tela_loot = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
     keypad(tela_loot, TRUE);
     wtimeout(tela_loot, 33);
-    fprintf(stderr, "Aqui2\n");
 
     Arma armas[3] = {arma1, arma2, arma3};
     while(true)
@@ -228,31 +223,40 @@ void gerar_loot(Player* player)
         box(tela_loot, 0, 0);
         desenhar_sprite(tela_loot, "assets/sprites/loot/chest.txt", 5,1);
 
-        wrefresh(tela_loot);
-
 
         for(int i=0;i<3;i++)
         {
             if(arma_atual==i)
                 wattron(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
 
-            desenhar_sprite(tela_loot, armas[i].sprite,5,18+31*i);
+            desenhar_sprite(tela_loot, armas[i].sprite,5,22+31*i);
             wattroff(tela_loot, COLOR_PAIR(COR_OPCAO_SELECIONADA));
-            wrefresh(tela_loot);
+
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 8, 22 + 35 * i, "Dano: %d", armas[i].dano);
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 7, 22 + 35 * i, "Defesa: %d", armas[i].atributosarma.defesa);
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 6, 22 + 35 * i, "Força: %d", armas[i].atributosarma.forca);
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 5, 22 + 35 * i, "Sorte: %d", armas[i].atributosarma.sorte);
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 4, 22 + 35 * i, "Vida: %d", armas[i].vida);
+            wattron(tela_loot, COLOR_PAIR(COR_DESTAQUE));
+
+            mvwprintw(tela_loot, getmaxy(tela_loot) - 3, 6, "Aperte BACKSPACE para manter a arma atual");
+            wattroff(tela_loot, COLOR_PAIR(COR_DESTAQUE));
         }
+        wrefresh(tela_loot);
 
         tecla = wgetch(tela_loot);
         if(tecla==KEY_ENTER || tecla == '\n' || tecla==10)
         {
-            player->inventario.arma=arma_selecionada;
+
+            player->inventario.arma=armas[arma_atual];
             break;
         }
-
+        else if(tecla==KEY_BACKSPACE)
+            break;
 
         if(tecla=='1') arma_atual=0;
         else if(tecla=='2')arma_atual=1;
         else if(tecla=='3')arma_atual=2;
-
     }
     apagar_janela(tela_loot);
 }

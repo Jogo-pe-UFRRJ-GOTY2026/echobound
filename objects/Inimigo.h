@@ -28,12 +28,12 @@ typedef enum SentidoAtaque
 
 typedef enum lembrancas_
 {
-    Hollow_Knight,
+    Cavaleiro_Vazio,
     Aphanos,
     Cruciator,
     Cerberus,
     Iowa,
-    Fallen_King,
+    Rei_Caido,
     Vigia,
     Reaper
 } Lembrancas;

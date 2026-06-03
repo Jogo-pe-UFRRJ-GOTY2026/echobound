@@ -32,16 +32,43 @@ bool ataque_colidiu(Player *player, AtaqueInimigo *Ataque)
         //          XXXX
         //   XXXX
         case LINHA:
+            bool sprite_unitario = strlen(Ataque->ataque_sprite) <= 4;
+            // O calculo da hitbox da linha foi feito pelo claude
             if (Ataque->direcao == HORIZONTAL)
-                return  pl_y == atq_y &&
-                        pl_x >= atq_x &&
-                        pl_x <= atq_x + Ataque->hit_box;
+            {
+                if (pl_y != atq_y)
+                    return false;
+
+                if (sprite_unitario)
+                {
+                    if (Ataque->sentido == ESQUERDA_DIREITA)
+                        return pl_x >= atq_x && pl_x <= atq_x + Ataque->hit_box - 1; //se estiver dentro da linha
+                    if (Ataque->sentido == DIREITA_ESQUERDA)
+                        return pl_x <= atq_x && pl_x >= atq_x - Ataque->hit_box + 1; // se estiver dentro da linha
+                }
+                else
+                {
+                    // sprite ASCII completo: sempre de atq_x até atq_x + len - 1
+                    int sprite_len = strlen(Ataque->ataque_sprite);
+                    return pl_x >= atq_x && pl_x <= atq_x + sprite_len - 1;
+                }
+            }
             if (Ataque->direcao == VERTICAL)
-            
-                return  pl_x == atq_x &&
-                        pl_y >= atq_y &&
-                        pl_y <= atq_y + Ataque->hit_box;
-                break;
+            {
+                if (pl_x != atq_x)
+                    return false;
+
+                if (sprite_unitario)
+                {
+                    if (Ataque->sentido == CIMA_BAIXO)
+                        return pl_y >= atq_y && pl_y <= atq_y + Ataque->hit_box - 1; // se estiver dentro da linha
+                    if (Ataque->sentido == BAIXO_CIMA)
+                        return pl_y <= atq_y && pl_y >= atq_y - Ataque->hit_box + 1; // se estiver dentro da linha
+                }
+                // vertical não-unitario: o mvwprintw renderiza horizontal mesmo assim,
+                // talvez valha uma revisão na renderização futura
+            }
+            break;
 
         //    fase de aviso: tick_vida < velocidade
         //   XXXXXXXXX  =>  |||||||||
@@ -163,8 +190,8 @@ void spawnar_ataque(AtaqueInimigo *atq, WINDOW *area_esquiva)
             {
                 atq->vel_horizontal = 1;
                 atq->vel_vertical = 0;
-                atq->x = 2;
-                atq->y = rand() % (max_y - 2);
+                atq->x = 3;
+                atq->y = rand() % (max_y - 2)+1;
                 break;
             }
             if (atq->sentido == DIREITA_ESQUERDA)
@@ -172,7 +199,7 @@ void spawnar_ataque(AtaqueInimigo *atq, WINDOW *area_esquiva)
                 atq->vel_horizontal = -1;
                 atq->vel_vertical = 0;
                 atq->x = max_x - 2;
-                atq->y = rand() % (max_y - 2);
+                atq->y = rand() % (max_y - 2)+1;
                 break;
             }
             break;

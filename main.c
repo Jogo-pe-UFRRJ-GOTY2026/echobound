@@ -86,6 +86,7 @@ int main()
         if(player->NumeroAndar > andar_anterior && player->NumeroAndar != Epilogo) 
         {
             gerar_loot(player);
+            player->vida = vida_max_total(player);
             ponto_save(player);
         }
 

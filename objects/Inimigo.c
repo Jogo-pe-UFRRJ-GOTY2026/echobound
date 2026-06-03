@@ -91,17 +91,17 @@ void renderizar_nome_estilizado(WINDOW *area_nome_boss, const char *nome)
     int meio = (getmaxx(area_nome_boss) / 2) - 10 - strlen(nome);
     wattron(area_nome_boss, COLOR_PAIR(COR_NOME_BOSS) | A_BOLD);
 
-    if (equals("Fallen King", nome))
+    if (equals("Rei Caido", nome))
     {
-        mvwprintw(area_nome_boss, 0, meio, "██████ ▄▄▄  ▄▄    ▄▄    ▄▄▄▄▄ ▄▄  ▄▄   ██ ▄█▀ ▄▄ ▄▄  ▄▄  ▄▄▄▄", nome);
-        mvwprintw(area_nome_boss, 1, meio, "██▄▄  ██▀██ ██    ██    ██▄▄  ███▄██   ████   ██ ███▄██ ██ ▄▄", nome);
-        mvwprintw(area_nome_boss, 2, meio, "██    ██▀██ ██▄▄▄ ██▄▄▄ ██▄▄▄ ██ ▀██   ██ ▀█▄ ██ ██ ▀██ ▀███▀", nome);
+        mvwprintw(area_nome_boss, 0, meio, "█████▄  ▄▄▄▄▄ ▄▄   ▄█████  ▄▄▄  ▄▄ ▄▄▄▄   ▄▄▄ ", nome);
+        mvwprintw(area_nome_boss, 1, meio, "██▄▄██▄ ██▄▄  ██   ██     ██▀██ ██ ██▀██ ██▀██", nome);
+        mvwprintw(area_nome_boss, 2, meio, "██   ██ ██▄▄▄ ██   ▀█████ ██▀██ ██ ████▀ ▀███▀", nome);
     }
-    if (equals("Hollow Knight", nome))
+    if (equals("Cavaleiro Vazio", nome))
     {
-        mvwprintw(area_nome_boss, 0, meio, "██  ██  ▄▄▄  ▄▄    ▄▄     ▄▄▄  ▄▄   ▄▄   ██ ▄█▀ ▄▄  ▄▄ ▄▄  ▄▄▄▄ ▄▄ ▄▄ ▄▄▄▄▄▄", nome);
-        mvwprintw(area_nome_boss, 1, meio, "██████ ██▀██ ██    ██    ██▀██ ██ ▄ ██   ████   ███▄██ ██ ██ ▄▄ ██▄██   ██   ", nome);
-        mvwprintw(area_nome_boss, 2, meio, "██  ██ ▀███▀ ██▄▄▄ ██▄▄▄ ▀███▀  ▀█▀█▀    ██ ▀█▄ ██ ▀██ ██ ▀███▀ ██ ██   ██   ", nome);
+        mvwprintw(area_nome_boss, 0, meio, "▄█████  ▄▄▄  ▄▄ ▄▄  ▄▄▄  ▄▄    ▄▄▄▄▄ ▄▄ ▄▄▄▄   ▄▄▄    ██  ██  ▄▄▄  ▄▄▄▄▄ ▄▄  ▄▄▄", nome);
+        mvwprintw(area_nome_boss, 1, meio, "██     ██▀██ ██▄██ ██▀██ ██    ██▄▄  ██ ██▄█▄ ██▀██   ██▄▄██ ██▀██   ▄█▀ ██ ██▀██", nome);
+        mvwprintw(area_nome_boss, 2, meio, "▀█████ ██▀██  ▀█▀  ██▀██ ██▄▄▄ ██▄▄▄ ██ ██ ██ ▀███▀    ▀██▀  ██▀██ ▄██▄▄ ██ ▀███▀", nome);
     }
     if (equals("Cerberus", nome))
     {

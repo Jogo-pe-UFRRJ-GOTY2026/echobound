@@ -58,121 +58,91 @@ Inventario init_inventario()
 
     inventario.arma = arma;
 
+    memset(inventario.consumiveis, 0, sizeof(inventario.consumiveis));
     return inventario;
 }
 
-static const ArmaBase catalogo[] =
+void remover_consumivel(Player* player,int indice_consumivel)
 {
-    // CORTE
+    memset(&player->inventario.consumiveis[indice_consumivel], 0, sizeof(player->inventario.consumiveis[indice_consumivel]));
+}
+static const ArmaBase catalogo[] =
     {
-        "Espada Longa",
-        "Uma espada equilibrada usada por aventureiros.", 
-        CORTE, 6, 2, 
-        "assets/sprites/loot/sword2.txt"
-    },
-    {
-        "Espada Bastarda",
-        "Uma lâmina robusta para combate prolongado.",
-        CORTE, 7, 2,
-        "assets/sprites/loot/sword1.txt"
-    },
+        // CORTE
+        {
+            "Espada Longa",
+            "Uma espada equilibrada usada por aventureiros.",
+            CORTE, 6, 2,
+            "assets/sprites/loot/sword2.txt"},
+        {"Espada Bastarda",
+         "Uma lâmina robusta para combate prolongado.",
+         CORTE, 7, 2,
+         "assets/sprites/loot/sword1.txt"},
 
-    {
-        "Sabre Curvo",
-        "Leve e rápido, ideal para ataques sucessivos.",
-        CORTE, 5, 1,
-        "assets/sprites/loot/sabre.txt"
-    },
-    {
-        "Machado Real",
-        "Um machado pesado semelhante ao usado pelo Hollow Knight.",
-        CORTE, 8, 1,
-        "assets/sprites/loot/axe.txt"
-    },
+        {"Sabre Curvo",
+         "Leve e rápido, ideal para ataques sucessivos.",
+         CORTE, 5, 1,
+         "assets/sprites/loot/sabre.txt"},
+        {"Machado Real",
+         "Um machado pesado semelhante ao usado pelo Cavaleiro Vazio.",
+         CORTE, 8, 1,
+         "assets/sprites/loot/axe.txt"},
 
+        // PERFURAÇÃO
+        {
+            "Lança de Ferro",
+            "Uma arma simples mas eficiente.",
+            PERFURACAO, 7, 2,
+            "assets/sprites/loot/spear.txt"},
+        {"Tridente Infernal",
+         "Três pontas capazes de atravessar armaduras.",
+         PERFURACAO, 8, 2,
+         "assets/sprites/loot/trident.txt"},
+        {"Arco Longo",
+         "Permite eliminar inimigos à distância.",
+         PERFURACAO, 6, 1,
+         "assets/sprites/loot/bow.txt"},
 
+        {"Besta de Caça",
+         "Dispara virotes com grande precisão.",
+         PERFURACAO, 7, 1,
+         "assets/sprites/loot/crossbow.txt"},
 
-    // PERFURAÇÃO
-    {
-        "Lança de Ferro",
-        "Uma arma simples mas eficiente.",
-        PERFURACAO, 7, 2,
-        "assets/sprites/loot/spear.txt"
-    },
-    {
-        "Tridente Infernal",
-        "Três pontas capazes de atravessar armaduras.",
-        PERFURACAO, 8, 2,
-        "assets/sprites/loot/trident.txt"
-    },
-    {
-        "Arco Longo",
-        "Permite eliminar inimigos à distância.",
-        PERFURACAO, 6, 1,
-        "assets/sprites/loot/bow.txt"
-    },
+        // CONTUSÃO
+        {
+            "Martelo de Guerra",
+            "Capaz de esmagar armaduras pesadas.",
+            CONTUSAO,
+            9,
+            3,
+            "assets/sprites/loot/hammer.txt"},
+        {"Maça de Ferro",
+         "Um bloco de metal preso a um cabo.",
+         CONTUSAO, 10, 2,
+         "assets/sprites/loot/mace.txt"},
+        {"Escudo Torre",
+         "Mais pesado que uma arma comum, mas confiável. Ofere proteção e permite golpear inimigos.",
+         CONTUSAO, 5, 10, "assets/sprites/loot/shield1.txt"},
+        {"Escudo Real",
+         "Um grande escudo de aço semelhante ao usado pelo Cavaleiro Vazio. Ofere grande resistência ",
+         CONTUSAO, 4, 12,
+         "assets/sprites/loot/shield3.txt"},
 
-    {
-        "Besta de Caça",
-        "Dispara virotes com grande precisão.",
-        PERFURACAO, 7, 1,
-        "assets/sprites/loot/crossbow.txt"
-    },
+        // MÁGICO
+        {
+            "Varinha Arcana",
+            "Canaliza pequenas quantidades de energia mágica.",
+            MAGICO, 6, 2,
+            "assets/sprites/loot/magic_wand.txt"},
+        {"Varinha Rúnica",
+         "Runas antigas brilham em sua superfície.",
+         MAGICO, 7, 3,
+         "assets/sprites/loot/magic_wand2.txt"},
 
-
-
-    // CONTUSÃO
-    {
-        "Martelo de Guerra",
-        "Capaz de esmagar armaduras pesadas.",
-        CONTUSAO,
-        9,
-        3,
-        "assets/sprites/loot/hammer.txt"
-    },
-    {
-        "Maça de Ferro",
-        "Um bloco de metal preso a um cabo.",
-        CONTUSAO, 10, 2,
-        "assets/sprites/loot/mace.txt"
-    },
-    {
-        "Escudo Torre",
-        "Mais pesado que uma arma comum, mas confiável. Ofere proteção e permite golpear inimigos.",
-        CONTUSAO, 5, 10, "assets/sprites/loot/shield1.txt"
-    },
-    {
-        "Escudo Real",
-        "Um grande escudo de aço semelhante ao usado pelo Hollow Knight. Ofere grande resistência ",
-        CONTUSAO, 4, 12,
-        "assets/sprites/loot/shield3.txt"
-    },
-
-
-
-    // MÁGICO
-    {
-        "Varinha Arcana",
-        "Canaliza pequenas quantidades de energia mágica.",
-        MAGICO, 6, 2,
-        "assets/sprites/loot/magic_wand.txt"
-    },
-    {
-        "Varinha Rúnica",
-        "Runas antigas brilham em sua superfície.",
-        MAGICO, 7, 3,
-        "assets/sprites/loot/magic_wand2.txt"
-    },
-
-    {
-        "Cajado Mítico",
-        "Um cajado com estrutura de aço engravado em runas máginas.",
-        MAGICO, 7, 3,
-        "assets/sprites/loot/magic_staff2.txt"
-    }
-};
-
-
+        {"Cajado Mítico",
+         "Um cajado com estrutura de aço engravado em runas máginas.",
+         MAGICO, 7, 3,
+         "assets/sprites/loot/magic_staff2.txt"}};
 
 Arma gerar_arma_aleatoria(int capitulo)
 {
@@ -271,7 +241,14 @@ Arma criar_arma(Arma arma, int capitulo, char nome[], char descricao[], int dano
             arma.atributosarma.forca = 8 + bonusForca + (rand() % 6);
             arma.atributosarma.sorte = 3 + bonusSorte + (rand() % 5);
             break;
-    }
+        case 5:
+            arma.dano = danoBase + 25 + bonusDano + (rand() % 8);
+            arma.vida = vidaBase + 26 + (rand() % 12);
+            arma.atributosarma.defesa = 7 + bonusDefesa + (rand() % 5);
+            arma.atributosarma.forca = 11 + bonusForca + (rand() % 6);
+            arma.atributosarma.sorte = 7 + bonusSorte + (rand() % 5);
+            break;
+        }
 
     return arma;
 }
@@ -350,3 +327,7 @@ ParteArmadura criar_armadura(int capitulo, TipoArmadura tipo, char nome[],char d
 }
 
 
+void adicionar_pot_cura(Player* player)
+{
+
+}

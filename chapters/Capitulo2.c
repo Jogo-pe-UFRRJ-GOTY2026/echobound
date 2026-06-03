@@ -130,10 +130,10 @@ bool Capitulo2(Player* player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(LINHA, 6, "}--)>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
+        //criar_ataque(LINHA, 6, "}--)>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
         criar_ataque(LINHA, 6, "<(--{", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 25),
         criar_ataque(PAREDE, 5, ">", 1, VERTICAL, ESQUERDA_DIREITA, 8, 120),
-        criar_ataque_area(5, "➴", 1, 0, 0, 80, 50),
+        criar_ataque_area(5, "➴", 1, 0, 0, 80, 30),
         criar_ataque(BULLET, 8,"🍃",1, VERTICAL, CIMA_BAIXO, 3, 30)
     };
 
@@ -141,7 +141,7 @@ bool Capitulo2(Player* player)
     size.x = 34; 
     size.y = 20;
 
-    Inimigo *aphanos = criar_inimigo(160, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 35, 23, Aphanos);
+    Inimigo *aphanos = criar_inimigo(5, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 35, 23, Aphanos);
 
     // Diálogos de Ataque recebido
     aphanos->dialogos_ataque[0] = "Finalmente um oponente digno… Nossa batalha será lendária!";
@@ -188,7 +188,6 @@ bool Capitulo2(Player* player)
         slow_mvwprintw(tela_capitulo2, "presenciá-lo", 29, 6, 45);
 
         player->NumeroAndar = Andar3;
-        player->vida = vida_max_total(player);
     }
     else if (resultado_combate == VITORIA && aphanos->vida >= 0)
     {
@@ -200,7 +199,6 @@ bool Capitulo2(Player* player)
 
         player->karma += 1;
         player->NumeroAndar = Andar3;
-        player->vida = vida_max_total(player);
     }
     else
     {

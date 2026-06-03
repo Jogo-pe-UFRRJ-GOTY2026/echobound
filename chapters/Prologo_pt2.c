@@ -39,7 +39,7 @@ void Prologo_pt2(Player *player)
     napms(2000);
 
     // --- Dialogo condicional ---
-    if (player->medidor_lembranca[Hollow_Knight] < 1)
+    if (player->medidor_lembranca[Cavaleiro_Vazio] < 1)
     {
         werase(tela_prologopt2);
         box(tela_prologopt2, 0, 0);
@@ -202,8 +202,8 @@ void Prologo_pt2(Player *player)
     size.x = 33;
     size.y = 20;
 
-    Inimigo *hollow_knight = criar_inimigo(5, "Hollow Knight",
-                                           "assets/sprites/bosses/hollow.txt", size, 40, 20, Hollow_Knight);
+    Inimigo *hollow_knight = criar_inimigo(5, "Cavaleiro Vazio",
+                                           "assets/sprites/bosses/hollow.txt", size, 40, 20, Cavaleiro_Vazio);
 
     hollow_knight->dialogos_mercy[0] = "Por que está hesitando?";
     hollow_knight->dialogos_mercy[1] = "Misericórdia não vai te levar longe nesta torre…";
@@ -223,7 +223,7 @@ void Prologo_pt2(Player *player)
     wrefresh(tela_prologopt2);
 
     EstadoRodada resultado_combate = iniciar_combate(player, hollow_knight);
-    player->medidor_lembranca[Hollow_Knight] += 1;
+    player->medidor_lembranca[Cavaleiro_Vazio] += 1;
 
     // --- Pos combate ---
     werase(tela_prologopt2);

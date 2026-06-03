@@ -2,19 +2,11 @@
 #define INVENTARIO_H
 #include "Atributos.h"
 
-typedef enum TipoConsumivel
-{
-    POCAO,
-    ALIMENTO
-} TipoConsumivel;
 
 typedef struct Consumivel
 {
-    char descricao[50];
     char nome[30];
     int curaVida;
-    int bonus;
-    TipoConsumivel tipo;
 } Consumivel;
 
 typedef enum TipoDano
@@ -66,7 +58,7 @@ typedef struct Armadura
 typedef struct Inventario{
     Armadura armadura;
     Arma arma;
-    Consumivel consumiveis[4];
+    Consumivel consumiveis[8];
 } Inventario;
 
 typedef enum TipoArmadura

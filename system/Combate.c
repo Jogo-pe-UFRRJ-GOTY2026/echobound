@@ -15,9 +15,8 @@ EstadoRodada iniciar_combate(Player *player, Inimigo *inimigo)
     CombateUI ui;
     int esquiva_max_y, esquiva_max_x;
 
-
     // NOME BOSS
-    ui.area_nome_boss = newwin(3, strlen(inimigo->nome) + 60 + inimigo->sprite_size.x, 0, 15);
+    ui.area_nome_boss = newwin(3, strlen(inimigo->nome) + 65 + inimigo->sprite_size.x, 0, 15);
     renderizar_nome_estilizado(ui.area_nome_boss,inimigo->nome);
 
     
@@ -97,7 +96,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player,Inimigo* inimigo, Comba
                 opcao_atual=ATACAR;
                 break;
             case '2':
-                opcao_atual = ITENS;
+                opcao_atual = CURAR;
                 break;
             case '3':
                 opcao_atual = MERCY;
@@ -129,8 +128,8 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player,Inimigo* inimigo, Comba
             renderizar_vida_boss(ui->area_vida_boss, inimigo);
             wrefresh(ui->area_dialogos);
             break;
-            
-        case ITENS:
+
+        case CURAR:
             break;
 
         case MERCY:
@@ -141,6 +140,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player,Inimigo* inimigo, Comba
             wrefresh(ui->area_vida_boss);
             mercy_inimigo(player, inimigo);
             werase(ui->area_dialogos);
+            wrefresh(ui->area_dialogos);
 
             if(inimigo->mercy>=100)
             {
@@ -261,11 +261,11 @@ void renderizar_menu_combate(WINDOW *area_menu, Player* player, OpcoesMenuCombat
     wattroff(area_menu, COLOR_PAIR(COR_VIDA));
     mvwprintw(area_menu, 1, 21, "]");
 
-    mvwprintw(area_menu,1, 35, "Lv.%d", player->level);
+    mvwprintw(area_menu,1, 30, "Defesa: %d", defesa_total(player));
 
 
     desenhar_botao(area_menu, " 1.ATACAR", 3, 0, opcao_hovered == ATACAR);
-    desenhar_botao(area_menu, " 2.ITENS", 3, 24, opcao_hovered == ITENS);
+    desenhar_botao(area_menu, " 2.CURAR", 3, 24, opcao_hovered == CURAR);
     desenhar_botao(area_menu, " 3.MERCY", 6, 0, opcao_hovered == MERCY);
     desenhar_botao(area_menu, " 4.DESISTIR", 6, 24, opcao_hovered == DESISTIR);
     wrefresh(area_menu);

@@ -183,9 +183,8 @@ bool Capitulo1(Player* player)
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 5, "-------<⇶", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 30),
         criar_ataque(LINHA, 5, "⬱>-------", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 30),
-        criar_ataque(PAREDE, 4, "V", 1, HORIZONTAL, CIMA_BAIXO, 10, 180), //o emoji de fogo quebra no linux
-        criar_ataque_area(4, "◮", 1, 0, 0, 90, 60)
-    };
+        criar_ataque(PAREDE, 4, "Λ", 1, HORIZONTAL, CIMA_BAIXO, 10, 180), // o emoji de fogo quebra no linux
+        criar_ataque_area(4, "◮", 1, 0, 0, 90, 60)};
 
     Sprite_size size;
     size.x = 19;
@@ -238,7 +237,6 @@ bool Capitulo1(Player* player)
         slow_mvwprintw(tela_capitulo1, "apagar assim…", 26, 6, 20);
 
         player->NumeroAndar = Andar2;
-        player->vida = vida_max_total(player);
     }
     else if (resultado_combate == VITORIA && cruciator->vida >= 0)
     {
