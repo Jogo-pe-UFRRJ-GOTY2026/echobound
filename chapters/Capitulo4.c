@@ -103,18 +103,19 @@ bool Capitulo4(Player *player)
                 }
                 else if (opcao == 1)
                 {
-                    slow_mvwprintw(tela_capitulo4, "Outrora contemplei a possibilidade de atravessar outros reinos e horizontes.", 30, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "Entretanto, com o passar dos milênios, encontrei contentamento neste lugar.", 31, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "e o repouso torna-se um conforto raro.", 33, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Outrora contemplei a possibilidade de atravessar outros reinos e horizontes.", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Entretanto, com o passar dos milênios, encontrei contentamento neste lugar.", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "e o repouso torna-se um conforto raro.", 33, 6, 30);
+                    napms(2000);
                 }
                 else if (opcao == 2)
                 {
-                    slow_mvwprintw(tela_capitulo4, "Então prossiga em tua ascensão. Contudo, não te concederei passagem sem provação", 30, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "Estas chamas não se curvam aos fracos; apenas aqueles dotados da força necessária podem atravessá-las.", 31, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
-                    slow_mvwprintw(tela_capitulo4, "E, se tu não fores capaz de superar este obstáculo, tampouco resistirás ao desafio que te aguarda adiante.", 33, 6, 30);                    
-                    napms(1500);
+                    slow_mvwprintw(tela_capitulo3, "Então prossiga em tua ascensão. Contudo, não te concederei passagem sem provação", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Estas chamas não se curvam aos fracos; apenas aqueles dotados da força necessária podem atravessá-las.", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "Quando se testemunha o transcurso de incontáveis eras, aprende-se que a solitude nem sempre é uma maldição,", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo3, "E, se tu não fores capaz de superar este obstáculo, tampouco resistirás ao desafio que te aguarda adiante.", 33, 6, 30);                    
+                    napms(2000);
                     break; // Sai do loop para iniciar a luta
                 }
 
@@ -188,10 +189,10 @@ bool Capitulo4(Player *player)
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
 
-        slow_mvwprintw(tela_capitulo4, "Então… até mesmo minhas chamas chegaram ao fim…", 25, 6, 35);
-        napms(1500);
-        slow_mvwprintw(tela_capitulo4, "Vá… sobe enquanto ainda és lembrado.", 26, 6, 35);
-        napms(1500);
+        slow_mvwprintw(tela_capitulo3, "Então… até mesmo minhas chamas chegaram ao fim…", 25, 6, 35);
+        napms(1000);
+        slow_mvwprintw(tela_capitulo3, "Vá… sobe enquanto ainda és lembrado.", 26, 6, 35);
+        napms(1000);
 
         player->NumeroAndar = Andar5;
     }
@@ -201,8 +202,10 @@ bool Capitulo4(Player *player)
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
 
-        slow_mvwprintw(tela_capitulo4, "Tu venceste… e ainda assim escolheste poupar-me.", 25, 6, 20);
-        slow_mvwprintw(tela_capitulo4, "Passe. O caminho ao topo está aberto… minhas chamas não mais te impedirão.", 26, 6, 20);
+
+        slow_mvwprintw(tela_capitulo3, "Tu venceste… e ainda assim escolheste poupar-me.", 25, 6, 20);
+        slow_mvwprintw(tela_capitulo3, "Passe. O caminho ao topo está aberto… minhas chamas não mais te impedirão.", 26, 6, 20);
+        napms(2000);
 
         player->karma += 1;
         player->NumeroAndar = Andar5;
@@ -213,8 +216,9 @@ bool Capitulo4(Player *player)
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
 
-        slow_mvwprintw(tela_capitulo4, "Se seu espírito deseja completar a Torre, então se prepare, e tente novamente! Você só passará quando merecer.", 25, 6, 20);
 
+        slow_mvwprintw(tela_capitulo3, "Se seu espírito deseja completar a Torre, então se prepare, e tente novamente! Você só passará quando merecer.", 25, 6, 20);
+        napms(2000);
         player->vida = vida_max_total(player);
         salvar_jogo(player);
         mostrar_tela_morte(player);

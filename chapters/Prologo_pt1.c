@@ -193,13 +193,13 @@ Player *Prologo_pt1()
                 mvwprintw(tela_encontro_vigia, 18, inicio_texto_x, "[Vigia]");
                 wrefresh(tela_encontro_vigia);
                 slow_mvwprintw(tela_encontro_vigia, "Depende de quem pergunta.", 19, inicio_texto_x, 20);
-                napms(2000);
+                napms(1000);
                 slow_mvwprintw(tela_encontro_vigia, "Alguns me chamavam de sentinela.", 20, inicio_texto_x, 20);
-                napms(2000);
+                napms(1000);
                 slow_mvwprintw(tela_encontro_vigia, "Outros de observador.", 21, inicio_texto_x, 20);
-                napms(2000);
+                napms(1000);
                 slow_mvwprintw(tela_encontro_vigia, "Mas nomes não permanecem por muito tempo no Intervalo. E você, qual seu nome?", 22, inicio_texto_x, 20);
-                napms(2000);
+                napms(1000);
                 werase(tela_encontro_vigia);
                 desenhar_sprite(tela_encontro_vigia, "assets/sprites/others/vigia.txt", 1, 1);
                 box(tela_encontro_vigia, 0, 0);
@@ -223,8 +223,9 @@ Player *Prologo_pt1()
                 mvwprintw(tela_encontro_vigia, 18, inicio_texto_x, "[Vigia]");
                 wrefresh(tela_encontro_vigia);
                 slow_mvwprintw(tela_encontro_vigia, "…talvez.", 19, inicio_texto_x, 20);
-                napms(2000);
+                napms(1000);
                 slow_mvwprintw(tela_encontro_vigia, "Depois de tantas almas, rostos começam a se misturar.", 20, inicio_texto_x, 20);
+                napms(1000);
             }
             else if (opcao == 2) //            "3. Eu mal consigo lembrar quem sou… como as outras almas continuam existindo?"
             {

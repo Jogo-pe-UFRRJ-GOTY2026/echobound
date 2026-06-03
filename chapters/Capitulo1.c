@@ -46,15 +46,16 @@ bool Capitulo1(Player* player)
         mvwprintw(tela_capitulo1, 28, 6, "[???]");
 
         slow_mvwprintw(tela_capitulo1, "HAHAHA! Mais um!", 29, 6, 20);
-        napms(2000);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "Desejando chegar ao topo, certo?", 30, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "A parte boa dessa função é que meu desejo é sempre realizado.", 31, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "CRUCIATOR!", 32, 6, 15);
+        napms(1500);
 
         const char *opcoes_dialogo[3] = {
             "1. E você é?",
@@ -115,38 +116,37 @@ bool Capitulo1(Player* player)
                 if (opcao == 0)
                 {
                     slow_mvwprintw(tela_capitulo1, "Um nobre demônio, meu caro.", 29, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Pode me chamar de Cruciator.", 30, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Estou aqui esperando a presença de viajantes como você.", 31, 6, 20);
                 }
                 else if (opcao == 1)
                 {
                     slow_mvwprintw(tela_capitulo1, "Porque eu sairia?", 29, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Esse é um lugar esplendoroso!", 30, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Sabe quantas almas tentam passar por aqui?", 31, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "E uma fonte de diversão eterna!", 32, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Usque ad finem erit dierum.", 33, 6, 25);
-                    napms(1000);
 
                 }
                 else if (opcao == 2)
                 {
                     slow_mvwprintw(tela_capitulo1, "Não tão fácil assim, jovem!", 29, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "Vamos lá, divirta-me!", 30, 6, 20);
-                    napms(2000);
+                    napms(1000);
 
                     slow_mvwprintw(tela_capitulo1, "(Ele aponta o tridente para você.)", 31, 6, 25);
 
@@ -226,15 +226,16 @@ bool Capitulo1(Player* player)
         mvwprintw(tela_capitulo1, 22, 6, "[Cruciator]");
 
         slow_mvwprintw(tela_capitulo1, "Desgraçado… eu… depois de tanto tempo…", 23, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "Não… não pode ser…", 24, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "Eu não posso simplesmente…", 25, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "apagar assim…", 26, 6, 20);
+        napms(1500);
 
         player->NumeroAndar = Andar2;
     }
@@ -245,22 +246,22 @@ bool Capitulo1(Player* player)
         mvwprintw(tela_capitulo1, 22, 6, "[Cruciator]");
 
         slow_mvwprintw(tela_capitulo1, "Misericórdia…? HAHAHAHAHA!", 23, 6, 20);
-        napms(2000);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "Que ironia deliciosa…", 24, 6, 20);
-        napms(2000);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "Depois de tudo que vi e fiz…", 25, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "você ainda tenta me poupar?", 26, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "SAIA DAQUI!", 27, 6, 20);
-        napms(1500);
+        napms(1000);
 
         slow_mvwprintw(tela_capitulo1, "E não ouse voltar a me entreter de novo!", 28, 6, 20);
-        napms(1500);
+        napms(1000);
 
         player->karma += 1;
         player->NumeroAndar = Andar2;
@@ -272,6 +273,7 @@ bool Capitulo1(Player* player)
         mvwprintw(tela_capitulo1, 22, 6, "[Cruciator]");
 
         slow_mvwprintw(tela_capitulo1, "HAHAHAHA! Já acabou? Tão pouco… eu queria mais!", 23, 6, 20);
+        napms(1000);
 
         player->vida = vida_max_total(player);
 
