@@ -204,7 +204,7 @@ void Prologo_pt2(Player *player)
     size.x = 33;
     size.y = 20;
 
-    Inimigo *hollow_knight = criar_inimigo(5, "Cavaleiro Vazio",
+    Inimigo *hollow_knight = criar_inimigo(100, "Cavaleiro Vazio",
                                            "assets/sprites/bosses/hollow.txt", size, 40, 20, Cavaleiro_Vazio);
 
     hollow_knight->dialogos_mercy[0] = "Por que está hesitando?";

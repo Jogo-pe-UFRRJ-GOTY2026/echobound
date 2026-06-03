@@ -8,6 +8,12 @@
 #include "../objects/Inimigo.h"
 #include "../objects/Player.h"
 #include "../utils/utils.h"
+
+#include <signal.h>
+#include <unistd.h>
+#include <sys/types.h>
+static pid_t music_pid = -1;
+
 #define ataques_na_tela 32
 
 EstadoRodada iniciar_combate(Player *player, Inimigo *inimigo)
@@ -47,14 +53,14 @@ EstadoRodada iniciar_combate(Player *player, Inimigo *inimigo)
     wtimeout(ui.area_esquiva, 16);
 
     EstadoRodada resultado_combate;
-
+    tocar_musica(inimigo->id);
     while (inimigo->vida > 0 && player->vida > 0)
     {
         resultado_combate = rodada(inimigo->ataques[rand() % inimigo->numero_ataques], player, inimigo, &ui);
         if (resultado_combate == VITORIA || resultado_combate == DERROTA)
             break;
     }
-
+    parar_musica();
     return resultado_combate; //Tratar das falas especificas com base no retorno e do hp do jogador
 }
 
@@ -67,7 +73,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player,Inimigo* inimigo, Comba
 
 
     
-
+//(while true; do aplay assets/music/hollow.wav > /dev/null 2>&1; done &) > /dev/null 2>&1
     atual = FASE_ESQUIVA;
     EstadoRodada resultado_esquiva = loop_esquiva(ataque, player, ui, inimigo->tempo_por_rodada);
     if(resultado_esquiva==DERROTA)
@@ -309,4 +315,43 @@ void desenhar_jogador(WINDOW *area_esquiva, Player *player)
     mvwprintw(area_esquiva, player->posicao.y, player->posicao.x, "🤍");
 }
 
-void limpar_combate(CombateUI *ui, Inimigo *inimigo);
+void tocar_musica(Lembrancas id)
+{
+    if (system("which aplay > /dev/null 2>&1") != 0)
+        return;
+    const char *file = NULL;
+
+    switch (id)
+    {
+        case Cavaleiro_Vazio: file = "assets/music/hollow.wav"; break;
+        case Cruciator: file = "assets/music/cruciator.wav"; break;
+        case Aphanos: file = "assets/music/aphanos.wav"; break;
+        case Cerberus: file = "assets/music/cruciator.wav"; break;
+        case Iowa: file = "assets/music/iowa.wav"; break;
+        case Rei_Caido: file = "assets/music/fallen_king.wav"; break;
+    }
+
+    if (!file) return;
+
+    music_pid = fork();
+
+    if (music_pid == 0)
+    {
+        freopen("/dev/null", "w", stdout);
+        freopen("/dev/null", "w", stderr);
+        while(true)
+        {
+            execlp("aplay", "aplay", "-q", "assets/music/hollow.wav", NULL);
+            _exit(1); // só se der erro
+        }
+    }
+}
+
+void parar_musica()
+{
+    if (music_pid > 0)
+    {
+        kill(music_pid, SIGTERM);
+        music_pid = -1;
+    }
+}

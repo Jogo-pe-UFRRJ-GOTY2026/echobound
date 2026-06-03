@@ -1,3 +1,5 @@
+# Esse projeto é para fins educacionais
+
 ## A hitbox ser igual a do Radahn Consort of Miquella é proposital, feature, confia
 ## Comandos uteis
 1. git clone https://github.com/Jogo-pe-UFRRJ-GOTY2026/GOTY.git : *copia o codigo do jogo para uma pasta*

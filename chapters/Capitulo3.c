@@ -142,7 +142,7 @@ bool Capitulo3(Player *player)
     size.x = 26;
     size.y = 12;
 
-    Inimigo *cerberus = criar_inimigo(30, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 23, Cerberus);
+    Inimigo *cerberus = criar_inimigo(200, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 23, Cerberus);
 
     // Diálogos de Ataque recebido
     cerberus->dialogos_ataque[0] = "GRAAAAUF!";

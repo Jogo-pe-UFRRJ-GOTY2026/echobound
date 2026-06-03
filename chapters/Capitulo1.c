@@ -190,7 +190,7 @@ bool Capitulo1(Player* player)
     size.x = 19;
     size.y = 21;
 
-    Inimigo *cruciator = criar_inimigo(5, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
+    Inimigo *cruciator = criar_inimigo(125, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
 
 
     cruciator->dialogos_mercy[0] = "Misericórdia? HAHAHAHAHA! Muitas almas já imploraram por isso… de onde eu vim.";

@@ -163,7 +163,7 @@ bool Capitulo5(Player *player)
     size.x = 42;
     size.y = 28;
 
-    Inimigo *fallen_king = criar_inimigo(300, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
+    Inimigo *fallen_king = criar_inimigo(375, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
 
     // Diálogos apos Ataque recebido
     fallen_king->dialogos_ataque[0] = "Ora… Vejo que chegar até aqui não foi resultado de sorte.";

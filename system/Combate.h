@@ -39,6 +39,8 @@ typedef enum EstadoRodada_
 EstadoRodada iniciar_combate(Player *player, Inimigo *inimigo);
 EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, CombateUI *ui);
 EstadoRodada loop_esquiva(AtaqueInimigo ataque_atual, Player *player, CombateUI *ui, int tempo_rodada);
+void tocar_musica(Lembrancas id);
+void parar_musica();
 
 
 bool ataque_colidiu(Player *player, AtaqueInimigo *Ataque);
