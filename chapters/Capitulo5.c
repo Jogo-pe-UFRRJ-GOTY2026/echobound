@@ -18,8 +18,8 @@ bool Capitulo5(Player *player)
     // -------------------------- Descrição do Cenário
     slow_mvwprintw(tela_capitulo5, "O topo assemelha se a uma catedral, há partes das paredes e do teto danificados que permitem a vista do resto Intervalo.", 10, 6, 20);
     slow_mvwprintw(tela_capitulo5, "O vento deste espaço flui pelas frestas e permitem uma brisa agradável, olhando por meio de um pequeno buraco na parede encontra-se uma figura esquelética,", 11, 6, 20);
-    slow_mvwprintw(tela_capitulo5, "Suas roupas conferem um ar majestoso, mas ainda assim, suavemente sujas", 13, 6, 20);
-    slow_mvwprintw(tela_capitulo5, "Ele olha com um olhar nostálgico e reflexivo para paisagem e exclama com certo conforto e calmaria na voz mesmo sem se virar em sua direção", 14, 6, 20);
+    slow_mvwprintw(tela_capitulo5, "Suas roupas conferem um ar majestoso, mas ainda assim, suavemente sujas", 12, 6, 20);
+    slow_mvwprintw(tela_capitulo5, "Ele olha com um olhar nostálgico e reflexivo para paisagem e exclama com certo conforto e calmaria na voz mesmo sem se virar em sua direção", 13, 6, 20);
 
     napms(2500);
 
@@ -31,7 +31,7 @@ bool Capitulo5(Player *player)
     mvwprintw(tela_capitulo5, 30, 6, "[Rei Caido]");
     slow_mvwprintw(tela_capitulo5, "Hmm… Acho que você é o primeiro que eu vejo a chegar aqui tão alto, seja bem-vindo", 31, 6, 20);
     slow_mvwprintw(tela_capitulo5, "Você já sabe o que fará daqui pra frente?", 32, 6, 20);
-    mvwprintw(tela_capitulo5, 33,6, "[%s]", player->nome);
+    mvwprintw(tela_capitulo5, 33, 6, "[%s]", player->nome);
     slow_mvwprintw(tela_capitulo5, "Ainda não sei… só continuei subindo. Eu subi até aqui porque achei que no topo haveria uma saída.", 34, 6, 20);
 
     napms(2000);
@@ -60,7 +60,7 @@ bool Capitulo5(Player *player)
                 if (ja_realizou_pergunta[i])
                     wattron(tela_capitulo5, COLOR_PAIR(COR_OPCAO_INVALIDA));
 
-                mvwprintw(tela_capitulo5, 31 + i, 6, "%d. %s",i+1, opcoes_dialogo[i]);
+                mvwprintw(tela_capitulo5, 31 + i, 6, "%d. %s", i + 1, opcoes_dialogo[i]);
 
                 wattrset(tela_capitulo5, A_NORMAL);
             }
@@ -84,6 +84,9 @@ bool Capitulo5(Player *player)
 
             if (tecla == KEY_ENTER || tecla == '\n' || tecla == 10)
             {
+                for (int i = 0; i < 6; i++)
+                    mvwhline(tela_capitulo5, 29 + i, 1, ' ', getmaxx(tela_capitulo5) - 2);
+
                 mvwprintw(tela_capitulo5, 29, 6, "[Rei Caido]");
                 slow_mvwprintw(tela_capitulo5, "Percebo que está eufórico para continuar, responderei a tua espada com a minha", 30, 6, 20);
                 napms(800);
@@ -119,7 +122,7 @@ bool Capitulo5(Player *player)
                     slow_mvwprintw(tela_capitulo5, "Restou apenas este lugar… e a vista. Então permaneço aqui.", 32, 6, 30);
                     slow_mvwprintw(tela_capitulo5, "Assistindo o Intervalo seguir em frente… mesmo quando eu já não pude.", 33, 6, 30);
                 }
-                else if(opcao == 3)
+                else if (opcao == 3)
                 {
                     slow_mvwprintw(tela_capitulo5, "Não sei responder essa indagação… Porque não testamos? (ele levanta sua espada)", 30, 6, 30);
                     napms(1500);
@@ -148,12 +151,12 @@ bool Capitulo5(Player *player)
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 8, "<::::::::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 25),
-        //criar_ataque(LINHA, 8, "()=={::::::::::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
+        // criar_ataque(LINHA, 8, "()=={::::::::::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 2, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 2, 25),
         criar_ataque(LASER, 12, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
         criar_ataque(LASER, 12, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
-        //criar_ataque(PAREDE, 8, "🦴", 1, HORIZONTAL, BAIXO_CIMA, 7, 110), // 🞪
+        // criar_ataque(PAREDE, 8, "🦴", 1, HORIZONTAL, BAIXO_CIMA, 7, 110), // 🞪
         criar_ataque_area(5, "𝄽", 1, 0, 0, 80, 5),
         criar_ataque_area(7, "𝄽", 1, 6, 6, 90, 90),
         criar_ataque(PAREDE, 8, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 7, 110), // 🞪
@@ -196,7 +199,7 @@ bool Capitulo5(Player *player)
     if (resultado_combate == VITORIA && fallen_king->vida <= 0)
     {
         // Roteiro: Derrotado por Ataque
-        //desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
+        // desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
         mvwprintw(tela_capitulo5, 24, 6, "[Rei Caido]");
 
         slow_mvwprintw(tela_capitulo5, "Parabenizo-o", 25, 6, 75);
