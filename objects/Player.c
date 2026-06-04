@@ -168,7 +168,7 @@ Player *criar_player(const char *nome, Genero genero)
 
     // ATRIBUTOS BASE
 
-    player->vida_max = 80; // para testes mais faceis
+    player->vida_max = 20; // para testes mais faceis
     player->atributos.defesa = 5;
     player->atributos.forca = 5;
     player->atributos.sorte = 5;
@@ -194,7 +194,7 @@ void free_player(Player *player)
 
 void descansar(Player* player)
 {
-    player->vida = player->vida_max;
+    player->vida = vida_max_total(player);
     player->consumiveis = player->consumiveis_max;
 }
 

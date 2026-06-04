@@ -134,7 +134,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
 
         if (usar_consumivel(player))
         {
-            int cura = (int)(player->vida_max * 0.4f);
+            int cura = (int)(vida_max_total(player) * 0.4f);
 
             mvwprintw(ui->area_dialogos, 1, 2, "Você usou um Estus Flask e recuperou %d de vida!", cura);
         }
