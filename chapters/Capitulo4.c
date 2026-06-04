@@ -193,9 +193,10 @@ bool Capitulo4(Player *player)
         napms(1000);
         slow_mvwprintw(tela_capitulo4, "Vá… sobe enquanto ainda és lembrado.", 26, 6, 35);
         napms(1000);
-        mvwprintw(tela_capitulo4, 26, 7, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
-        napms(1500);
         adicionar_consumivel(player);
+        mvwprintw(tela_capitulo4, 27, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        wrefresh(tela_capitulo4);
+        napms(1000);
         player->NumeroAndar = Andar5;
     }
     else if (resultado_combate == VITORIA && iowa->vida >= 0)
@@ -208,9 +209,10 @@ bool Capitulo4(Player *player)
         napms(1000);
         slow_mvwprintw(tela_capitulo4, "Passe. O caminho ao topo está aberto… minhas chamas não mais te impedirão.", 26, 6, 20);
         napms(1000);
-        mvwprintw(tela_capitulo4, 26, 7, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
-        napms(1500);
         adicionar_consumivel(player);
+        mvwprintw(tela_capitulo4, 27, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        wrefresh(tela_capitulo4);
+        napms(1000);
         
         player->karma += 1;
         player->NumeroAndar = Andar5;
