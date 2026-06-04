@@ -58,14 +58,9 @@ Inventario init_inventario()
 
     inventario.arma = arma;
 
-    memset(inventario.consumiveis, 0, sizeof(inventario.consumiveis));
     return inventario;
 }
 
-void remover_consumivel(Player* player,int indice_consumivel)
-{
-    memset(&player->inventario.consumiveis[indice_consumivel], 0, sizeof(player->inventario.consumiveis[indice_consumivel]));
-}
 static const ArmaBase catalogo[] =
     {
         // CORTE
@@ -324,10 +319,4 @@ ParteArmadura criar_armadura(int capitulo, TipoArmadura tipo, char nome[],char d
     }
 
     return armadura;
-}
-
-
-void adicionar_pot_cura(Player* player)
-{
-
 }

@@ -3,12 +3,6 @@
 #include "Atributos.h"
 
 
-typedef struct Consumivel
-{
-    char nome[30];
-    int curaVida;
-} Consumivel;
-
 typedef enum TipoDano
 {
     MAGICO,
@@ -58,7 +52,6 @@ typedef struct Armadura
 typedef struct Inventario{
     Armadura armadura;
     Arma arma;
-    Consumivel consumiveis[8];
 } Inventario;
 
 typedef enum TipoArmadura
@@ -74,6 +67,5 @@ Inventario init_inventario();
 Arma criar_arma(Arma arma, int capitulo, char nome[], char descricao[], int danoBase, int vidaBase, TipoDano tipo);
 Arma gerar_arma_aleatoria(int capitulo);
 ParteArmadura criar_armadura(int capitulo, TipoArmadura tipo, char nome[], char descricao[], int vidaBase);
-
 
 #endif

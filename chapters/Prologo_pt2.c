@@ -246,6 +246,7 @@ void Prologo_pt2(Player *player)
         napms(2000);
         slow_mvwprintw(tela_prologopt2,"… talvez você chegue mais longe do que eu.",24, 6, 25);
         napms(1500);
+        adicionar_consumivel(player);
         player->NumeroAndar=Andar1;
 
         werase(tela_prologopt2);
@@ -263,6 +264,8 @@ void Prologo_pt2(Player *player)
         napms(2000);
         slow_mvwprintw(tela_prologopt2,"Vá em frente, viajante… não deixe a torre apagar quem você é.",25, 6, 20);
         napms(2000);
+        mvwprintw(tela_prologopt2, 26, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        adicionar_consumivel(player);
         player->karma += 1;
         player->NumeroAndar=Andar1;
 

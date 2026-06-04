@@ -182,7 +182,9 @@ bool Capitulo3(Player *player)
         napms(1500);
         slow_mvwprintw(tela_capitulo3, "O Cerberus cai no chão", 26, 6, 35);
         napms(1500);
-
+        mvwprintw(tela_capitulo3, 27, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        napms(1500);
+        adicionar_consumivel(player);
         player->NumeroAndar = Andar4;
     }
     else if (resultado_combate == VITORIA && cerberus->vida >= 0)
@@ -192,7 +194,9 @@ bool Capitulo3(Player *player)
         mvwprintw(tela_capitulo3, 24, 6, "[Cerberus]");
 
         slow_mvwprintw(tela_capitulo3, "GRRRR…", 25, 6, 20);
-
+        mvwprintw(tela_capitulo3, 26, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        napms(1500);
+        adicionar_consumivel(player);
         player->karma += 1;
         player->NumeroAndar = Andar4;
     }

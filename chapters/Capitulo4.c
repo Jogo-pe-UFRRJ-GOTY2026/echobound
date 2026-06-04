@@ -188,12 +188,14 @@ bool Capitulo4(Player *player)
         // Roteiro: Derrotado por Ataque
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
-
+        napms(500);
         slow_mvwprintw(tela_capitulo4, "Então… até mesmo minhas chamas chegaram ao fim…", 25, 6, 35);
         napms(1000);
         slow_mvwprintw(tela_capitulo4, "Vá… sobe enquanto ainda és lembrado.", 26, 6, 35);
         napms(1000);
-
+        mvwprintw(tela_capitulo4, 26, 7, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        napms(1500);
+        adicionar_consumivel(player);
         player->NumeroAndar = Andar5;
     }
     else if (resultado_combate == VITORIA && iowa->vida >= 0)
@@ -201,12 +203,15 @@ bool Capitulo4(Player *player)
         // Roteiro: Derrotado por Mercy
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
-
-
+        napms(500);
         slow_mvwprintw(tela_capitulo4, "Tu venceste… e ainda assim escolheste poupar-me.", 25, 6, 20);
+        napms(1000);
         slow_mvwprintw(tela_capitulo4, "Passe. O caminho ao topo está aberto… minhas chamas não mais te impedirão.", 26, 6, 20);
-        napms(2000);
-
+        napms(1000);
+        mvwprintw(tela_capitulo4, 26, 7, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        napms(1500);
+        adicionar_consumivel(player);
+        
         player->karma += 1;
         player->NumeroAndar = Andar5;
     }
@@ -215,8 +220,7 @@ bool Capitulo4(Player *player)
         // Derrota do Player
         desenhar_sprite(tela_capitulo4, "assets/sprites/bosses/dragon.txt", 1, 5);
         mvwprintw(tela_capitulo4, 24, 6, "[Iowa]");
-
-
+        napms(500);
         slow_mvwprintw(tela_capitulo4, "Se seu espírito deseja completar a Torre, então se prepare, e tente novamente! Você só passará quando merecer.", 25, 6, 20);
         napms(2000);
         player->vida = vida_max_total(player);
