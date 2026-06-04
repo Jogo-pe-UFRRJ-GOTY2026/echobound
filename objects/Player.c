@@ -147,6 +147,7 @@ int sorte_total(Player *player)
 }
 
 Player *criar_player(const char *nome, Genero genero)
+
 {
     Player *player = malloc(sizeof(Player));
     if (player == NULL)

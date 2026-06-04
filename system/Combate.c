@@ -275,7 +275,7 @@ void renderizar_menu_combate(WINDOW *area_menu, Player *player, OpcoesMenuCombat
     werase(area_menu);
 
     mvwprintw(area_menu, 1, 0, "HP:%d/%d", player->vida, vida_max_total(player));
-    mvwprintw(area_menu, 2, 0, "Estus: %d/%d", player->consumiveis, player->consumiveis_max);
+    mvwprintw(area_menu, 2, 0, "Estus Flask: %d/%d", player->consumiveis, player->consumiveis_max);
 
     // Desenha a barra de vida
     mvwprintw(area_menu, 1, 10, "[");

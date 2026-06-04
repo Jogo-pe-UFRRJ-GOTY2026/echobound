@@ -84,7 +84,6 @@ void ponto_save(Player *player)
             salvar_jogo(player);
 
             mvwprintw(ponto_save_window, getmaxy(ponto_save_window) - 5, 4, "Você descansou e recuperou suas forças.");
-            break;
             wattron(ponto_save_window, COLOR_PAIR(COR_DESTAQUE) | A_BOLD);
             mvwprintw(ponto_save_window, getmaxy(ponto_save_window) - 5, 5, "Progresso salvo com sucesso");
             wattroff(ponto_save_window, COLOR_PAIR(COR_DESTAQUE) | A_BOLD);
