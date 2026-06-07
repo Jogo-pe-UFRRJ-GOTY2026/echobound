@@ -33,6 +33,8 @@ typedef struct Player{
     int vida;
     int karma; 
     int medidor_lembranca[8]; // respectivamente pro Hollow Knight, Centauro, Demonio, Cerberus, Dragao, Rei Caido, Vigia, Reaper
+    int consumiveis;
+    int consumiveis_max;
     Genero genero;
     Inventario inventario;
     Position posicao;
@@ -51,5 +53,8 @@ int defesa_total(Player *player);
 int forca_total(Player *player);
 int sorte_total(Player *player);
 DeltaDirecao get_delta_direcao(WINDOW *win);
+void descansar(Player* player);
+void adicionar_consumivel(Player* player);
+bool usar_consumivel(Player* player);
 
 #endif

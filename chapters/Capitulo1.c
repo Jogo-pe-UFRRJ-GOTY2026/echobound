@@ -227,16 +227,16 @@ bool Capitulo1(Player* player)
 
         slow_mvwprintw(tela_capitulo1, "Desgraçado… eu… depois de tanto tempo…", 23, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "Não… não pode ser…", 24, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "Eu não posso simplesmente…", 25, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "apagar assim…", 26, 6, 20);
-        napms(1500);
-
+        napms(1000);
+        adicionar_consumivel(player);
+        mvwprintw(tela_capitulo1, 27, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        wrefresh(tela_capitulo1);
+        napms(1000);
         player->NumeroAndar = Andar2;
     }
     else if (resultado_combate == VITORIA && cruciator->vida >= 0)
@@ -247,22 +247,20 @@ bool Capitulo1(Player* player)
 
         slow_mvwprintw(tela_capitulo1, "Misericórdia…? HAHAHAHAHA!", 23, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "Que ironia deliciosa…", 24, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "Depois de tudo que vi e fiz…", 25, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "você ainda tenta me poupar?", 26, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "SAIA DAQUI!", 27, 6, 20);
         napms(1000);
-
         slow_mvwprintw(tela_capitulo1, "E não ouse voltar a me entreter de novo!", 28, 6, 20);
         napms(1000);
-
+        adicionar_consumivel(player);
+        mvwprintw(tela_capitulo1, 29, 6, "Você ganhou mais um Estus Flask! (%d/%d)", player->consumiveis_max, 5);
+        wrefresh(tela_capitulo1);
+        napms(1000);
         player->karma += 1;
         player->NumeroAndar = Andar2;
     }

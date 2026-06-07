@@ -7,35 +7,45 @@
 #include "../utils/utils.h"
 #include "Atributos.h"
 
-#define between(val, start, end) (start<=val && val<=end)
+#define between(val, start, end) (start <= val && val <= end)
+
 void mover_player(Player *player, DeltaDirecao delta_direcao, int lim_esquerda, int lim_direita, int lim_cima, int lim_baixo)
 {
     int novo_x = player->posicao.x + delta_direcao.dx;
     int novo_y = player->posicao.y + delta_direcao.dy;
 
-    if(between(novo_x,lim_esquerda,lim_direita)) player->posicao.x = novo_x;
-    if(between(novo_y,lim_cima,lim_baixo)) player->posicao.y = novo_y;
-
+    if (between(novo_x, lim_esquerda, lim_direita))
+        player->posicao.x = novo_x;
+    if (between(novo_y, lim_cima, lim_baixo))
+        player->posicao.y = novo_y;
 }
 
-DeltaDirecao get_delta_direcao(WINDOW* win)
+DeltaDirecao get_delta_direcao(WINDOW *win)
 {
     DeltaDirecao delta = {0, 0};
     int tecla;
 
-    while((tecla=wgetch(win))!=ERR)
+    while ((tecla = wgetch(win)) != ERR)
     {
         // y aumenta pra baixo, x para direita
-        if(tecla == KEY_UP || tecla== 'w') delta.dy--;
-        if(tecla == KEY_DOWN || tecla== 's') delta.dy++;
-        if(tecla == KEY_LEFT || tecla== 'a') delta.dx--;
-        if(tecla == KEY_RIGHT || tecla== 'd') delta.dx++;
+        if (tecla == KEY_UP || tecla == 'w')
+            delta.dy--;
+        if (tecla == KEY_DOWN || tecla == 's')
+            delta.dy++;
+        if (tecla == KEY_LEFT || tecla == 'a')
+            delta.dx--;
+        if (tecla == KEY_RIGHT || tecla == 'd')
+            delta.dx++;
     }
     // Evite acumulo excessivo no vetor de direção
-    if (delta.dx >  1) delta.dx =  1;
-    if (delta.dx < -1) delta.dx = -1;
-    if (delta.dy >  1) delta.dy =  1;
-    if (delta.dy < -1) delta.dy = -1;
+    if (delta.dx > 1)
+        delta.dx = 1;
+    if (delta.dx < -1)
+        delta.dx = -1;
+    if (delta.dy > 1)
+        delta.dy = 1;
+    if (delta.dy < -1)
+        delta.dy = -1;
 
     return delta;
 }
@@ -45,7 +55,6 @@ bool atacar_inimigo(Player *player, Inimigo *inimigo)
     if (gerar_chance_de_evasao_do_inimigo() > 95)
         return false;
     int dano = gerar_rolagem_dano() + player->inventario.arma.dano;
-
 
     inimigo_tomar_dano(inimigo, dano);
 
@@ -67,17 +76,17 @@ void tomar_dano(Player *player, AtaqueInimigo *attack)
 
     float reducao = defesaTotal / 100.0f;
 
-    if(reducao > 0.80f)
+    if (reducao > 0.80f)
         reducao = 0.80f;
 
     int danoFinal = attack->dano * (1.0f - reducao);
 
-    if(danoFinal < 1)
+    if (danoFinal < 1)
         danoFinal = 1;
 
     player->vida -= danoFinal;
 
-    if(player->vida < 0)
+    if (player->vida < 0)
         player->vida = 0;
 }
 
@@ -137,10 +146,11 @@ int sorte_total(Player *player)
     return sorte;
 }
 
-Player* criar_player(const char* nome, Genero genero)
+Player *criar_player(const char *nome, Genero genero)
+
 {
-    Player* player = malloc(sizeof(Player));
-    if(player == NULL)
+    Player *player = malloc(sizeof(Player));
+    if (player == NULL)
     {
         exit_with_error(Exception_AllocationError);
     }
@@ -151,12 +161,14 @@ Player* criar_player(const char* nome, Genero genero)
     player->genero = genero;
     player->inventario = init_inventario();
     player->karma = 0;
-    player->NumeroAndar = 0; 
+    player->NumeroAndar = 0;
     player->level = 1;
+    player->consumiveis = 0;
+    player->consumiveis_max = 0;
 
     // ATRIBUTOS BASE
 
-    player->vida_max = 80;//para testes mais faceis
+    player->vida_max = 20; // para testes mais faceis
     player->atributos.defesa = 5;
     player->atributos.forca = 5;
     player->atributos.sorte = 5;
@@ -167,7 +179,7 @@ Player* criar_player(const char* nome, Genero genero)
 
     // ZERA O MEDIDOR DE LEMBRANÇAS
 
-    for(int i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++)
     {
         player->medidor_lembranca[i] = 0;
     }
@@ -178,5 +190,36 @@ Player* criar_player(const char* nome, Genero genero)
 void free_player(Player *player)
 {
     free(player);
+}
 
+void descansar(Player* player)
+{
+    player->vida = vida_max_total(player);
+    player->consumiveis = player->consumiveis_max;
+}
+
+void adicionar_consumivel(Player* player)
+{
+    if(player->consumiveis_max < 5)
+        player->consumiveis_max++;
+
+    player->consumiveis = player->consumiveis_max;
+}
+
+
+bool usar_consumivel(Player *player)
+{
+    if (player->consumiveis <= 0)
+        return false;
+
+    int cura = vida_max_total(player) * 0.4f;
+
+    player->vida += cura;
+
+    if (player->vida > player->vida_max)
+        player->vida = player->vida_max;
+
+    player->consumiveis--;
+
+    return true;
 }

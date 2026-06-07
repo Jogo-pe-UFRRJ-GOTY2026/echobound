@@ -79,7 +79,11 @@ void ponto_save(Player *player)
         switch (tecla)
         {
         case '1':
+
+            descansar(player);
             salvar_jogo(player);
+
+            mvwprintw(ponto_save_window, getmaxy(ponto_save_window) - 5, 3, "Você descansou e recuperou suas forças.");
             wattron(ponto_save_window, COLOR_PAIR(COR_DESTAQUE) | A_BOLD);
             mvwprintw(ponto_save_window, getmaxy(ponto_save_window) - 5, 5, "Progresso salvo com sucesso");
             wattroff(ponto_save_window, COLOR_PAIR(COR_DESTAQUE) | A_BOLD);
@@ -89,6 +93,8 @@ void ponto_save(Player *player)
             break;
 
         case '2':
+            
+            descansar(player);;
             salvar_jogo(player);
             wattron(ponto_save_window, COLOR_PAIR(COR_DESTAQUE) | A_BOLD);
             mvwprintw(ponto_save_window, getmaxy(ponto_save_window) - 3, 5, "Progresso salvo com sucesso. Fechando jogo…");
@@ -100,7 +106,7 @@ void ponto_save(Player *player)
             free(player);
             exit(EXIT_SUCCESS);
 
-        // Fala com vigia
+            // Fala com vigia
 
         case '3':
             werase(ponto_save_window);
@@ -112,92 +118,92 @@ void ponto_save(Player *player)
 
             switch (player->NumeroAndar)
             {
-                case Andar1: // depois do hollow knight
-                    num_perguntas = 5;
+            case Andar1: // depois do hollow knight
+                num_perguntas = 5;
 
-                    opcoes_dialogo[0] = "O que é este lugar?";
-                    opcoes_dialogo[1] = "Quem é você?";
-                    opcoes_dialogo[2] = "O que é a Torre dos Ecos?";
-                    opcoes_dialogo[3] = "Quem era aquele guerreiro?";
-                    opcoes_dialogo[4] = "Aquele cavaleiro… ele parecia tão… indignado";
+                opcoes_dialogo[0] = "O que é este lugar?";
+                opcoes_dialogo[1] = "Quem é você?";
+                opcoes_dialogo[2] = "O que é a Torre dos Ecos?";
+                opcoes_dialogo[3] = "Quem era aquele guerreiro?";
+                opcoes_dialogo[4] = "Aquele cavaleiro… ele parecia tão… indignado";
 
-                    respostas[0] = "Chamamos este lugar de Intervalo. Nem vida, nem morte. Apenas aquilo que restou depois que ambos passaram.";
-                    respostas[1] = "Sou apenas o Vigia. Observo os que chegam… e os que desaparecem.";
-                    respostas[2] = "A Torre não foi construída. Ela nasceu. Ela não é do inferno, nem do paraíso, nem do purgatório…";
-                    respostas[3] = "Mais uma alma que tentou vencer a Torre. O que restou dele ainda empunha a espada.";
-                    respostas[4] = "Ele tentou centenas de vezes chegar ao topo, sem sucesso. Acredito que ele não quer que sofram o mesmo destino dele, e por isso guarda a entrada";
+                respostas[0] = "Chamamos este lugar de Intervalo. Nem vida, nem morte. Apenas aquilo que restou depois que ambos passaram.";
+                respostas[1] = "Sou apenas o Vigia. Observo os que chegam… e os que desaparecem.";
+                respostas[2] = "A Torre não foi construída. Ela nasceu. Ela não é do inferno, nem do paraíso, nem do purgatório…";
+                respostas[3] = "Mais uma alma que tentou vencer a Torre. O que restou dele ainda empunha a espada.";
+                respostas[4] = "Ele tentou centenas de vezes chegar ao topo, sem sucesso. Acredito que ele não quer que sofram o mesmo destino dele, e por isso guarda a entrada";
 
-                    break;
+                break;
 
-                case Andar2: // depois do cruciator
-                    num_perguntas = 4;
+            case Andar2: // depois do cruciator
+                num_perguntas = 4;
 
-                    opcoes_dialogo[0] = "Existe algo ou alguém que nunca será esquecido?";
-                    opcoes_dialogo[1] = "O que são Ecos?";
-                    opcoes_dialogo[2] = "Por que sinto como se alguem estivesse me observando?";
-                    opcoes_dialogo[3] = "Quem era Cruciator?";
+                opcoes_dialogo[0] = "Existe algo ou alguém que nunca será esquecido?";
+                opcoes_dialogo[1] = "O que são Ecos?";
+                opcoes_dialogo[2] = "Por que sinto como se alguem estivesse me observando?";
+                opcoes_dialogo[3] = "Quem era Cruciator?";
 
-                    respostas[0] = "Dentre os que não se esqueceram de tudo ainda, falam acerca do strogonoff do IM da UFRRJ.";
-                    respostas[1] = "Ecos são memórias que ecoam por todo o Intervalo, fazendo com que você seja lembrado por um longo tempo por aqui, mas não 'Ad Eternum'.";
-                    respostas[2] = "Porque está. Há olhos no Intervalo que permanecem abertos mesmo quando tudo ao redor adormece.";
-                    respostas[3] = "Seu nome completo é Cruciator ad Eternum. Ele foi considerado o Funcionário do Século por Lucifer e \n recebeu como prêmio a oportunidade de se 'entreter' com o sofrimento das almas do Intervalo que chegam até ele — e não o contrário.";
-                    break;
-                    
-                case Andar3: // depois do Aphanos
-                    num_perguntas = 6;
+                respostas[0] = "Dentre os que não se esqueceram de tudo ainda, falam acerca do strogonoff do IM da UFRRJ.";
+                respostas[1] = "Ecos são memórias que ecoam por todo o Intervalo, fazendo com que você seja lembrado por um longo tempo por aqui, mas não 'Ad Eternum'.";
+                respostas[2] = "Porque está. Há olhos no Intervalo que permanecem abertos mesmo quando tudo ao redor adormece.";
+                respostas[3] = "Seu nome completo é Cruciator ad Eternum. Ele foi considerado o Funcionário do Século por Lucifer e \n recebeu como prêmio a oportunidade de se 'entreter' com o sofrimento das almas do Intervalo que chegam até ele — e não o contrário.";
+                break;
 
-                    opcoes_dialogo[0] = "Por que eu continuo retornando? Porque não desapareço ao morrer?";
-                    opcoes_dialogo[1] = "Já houve alguém como eu aqui?";
-                    opcoes_dialogo[2] = "Por que Aphanos tinha uma visão tão melancólica do destino?";
-                    opcoes_dialogo[3] = "Por que Aphanos se envolveu com as Moiras?";
-                    opcoes_dialogo[4] = "O quanto você acredita no destino, que as cosias estão pré-determinadas? ";
-                    opcoes_dialogo[5] = "Por que o nome dele é Aphanos?";
+            case Andar3: // depois do Aphanos
+                num_perguntas = 6;
 
-                    respostas[0] = "Porque seu medidor de memórias ainda não esvaziou… Você não tem mais pra onde ir, então volta pra cá.";
-                    respostas[1] = "Mais do que você imagina. Menos do que a Torre gostaria.";
-                    respostas[2] = "Aphanos fez um acordo com as Moiras, propositalmente impossível de ser realizado.";
-                    respostas[3] = "Sua esposa adquiriu uma doença terminal, então ele, sem ouvir todo o acordo, curou a esposa em troca de Aphanos assassinar o próprio pai.";
-                    respostas[4] = "Não o bastante, ou talvez não o necessário. Gosto de pensar que possuo livre-arbítrio.";
-                    respostas[5] = "Aphanos significa invisível, desde o nascimento ele era condenado a invisibilidade, a ver sua esposa e família esquecendo dele…";
+                opcoes_dialogo[0] = "Por que eu continuo retornando? Porque não desapareço ao morrer?";
+                opcoes_dialogo[1] = "Já houve alguém como eu aqui?";
+                opcoes_dialogo[2] = "Por que Aphanos tinha uma visão tão melancólica do destino?";
+                opcoes_dialogo[3] = "Por que Aphanos se envolveu com as Moiras?";
+                opcoes_dialogo[4] = "O quanto você acredita no destino, que as cosias estão pré-determinadas? ";
+                opcoes_dialogo[5] = "Por que o nome dele é Aphanos?";
 
-                    break;
+                respostas[0] = "Porque seu medidor de memórias ainda não esvaziou… Você não tem mais pra onde ir, então volta pra cá.";
+                respostas[1] = "Mais do que você imagina. Menos do que a Torre gostaria.";
+                respostas[2] = "Aphanos fez um acordo com as Moiras, propositalmente impossível de ser realizado.";
+                respostas[3] = "Sua esposa adquiriu uma doença terminal, então ele, sem ouvir todo o acordo, curou a esposa em troca de Aphanos assassinar o próprio pai.";
+                respostas[4] = "Não o bastante, ou talvez não o necessário. Gosto de pensar que possuo livre-arbítrio.";
+                respostas[5] = "Aphanos significa invisível, desde o nascimento ele era condenado a invisibilidade, a ver sua esposa e família esquecendo dele…";
 
-                case Andar4: // depois do Cerberus, bixo de estimação do rei caido
-                    num_perguntas = 5;
+                break;
 
-                    opcoes_dialogo[0] = "Por que sinto minhas memórias voltando?";
-                    opcoes_dialogo[1] = "Quem eu fui antes de chegar aqui?";
-                    opcoes_dialogo[2] = "Como um Cerberus foi parar aqui?";
-                    opcoes_dialogo[3] = "Os seres que estão morando na torre já viveram na Terra?"; 
-                    opcoes_dialogo[4] = "Você sabe como isso termina?";
+            case Andar4: // depois do Cerberus, bixo de estimação do rei caido
+                num_perguntas = 5;
 
-                    respostas[0] = "Porque algumas lembranças despertam apenas quando encontram aquilo que as feriu.";
-                    respostas[1] = "Seus ecos ainda perduram. Mas eles continuam distantes… como um eco atrás de uma porta fechada."; //valida aqui PMI
-                    respostas[2] = "Uma indagação válida… Não tenho conhecimento o bastante para soluciona-la, mas é engraçado, não eres o primeiro a fazer tal";
-                    respostas[3] = "Bom… Existem exceções, afinal, você viu um demônio nessa torre, mas, teoricamente, sim.";
-                    respostas[4] = "Em tese sei, mas apenas em tese, nunca lutei contra o Intervalo, eu faço parte dele.";
+                opcoes_dialogo[0] = "Por que sinto minhas memórias voltando?";
+                opcoes_dialogo[1] = "Quem eu fui antes de chegar aqui?";
+                opcoes_dialogo[2] = "Como um Cerberus foi parar aqui?";
+                opcoes_dialogo[3] = "Os seres que estão morando na torre já viveram na Terra?";
+                opcoes_dialogo[4] = "Você sabe como isso termina?";
 
-                    break;
+                respostas[0] = "Porque algumas lembranças despertam apenas quando encontram aquilo que as feriu.";
+                respostas[1] = "Seus ecos ainda perduram. Mas eles continuam distantes… como um eco atrás de uma porta fechada."; // valida aqui PMI
+                respostas[2] = "Uma indagação válida… Não tenho conhecimento o bastante para soluciona-la, mas é engraçado, não eres o primeiro a fazer tal";
+                respostas[3] = "Bom… Existem exceções, afinal, você viu um demônio nessa torre, mas, teoricamente, sim.";
+                respostas[4] = "Em tese sei, mas apenas em tese, nunca lutei contra o Intervalo, eu faço parte dele.";
 
-                case Andar5: // depois do Iowa
-                    num_perguntas = 6;
+                break;
 
-                    opcoes_dialogo[0] = "O que existe no topo?";
-                    opcoes_dialogo[1] = "Você já chegou perto do topo?";
-                    opcoes_dialogo[2] = "O que acontece quando alguém sai daqui?";
-                    opcoes_dialogo[3] = "Por que você me ajuda?";
-                    opcoes_dialogo[4] = "Ainda existe algo me esperando fora daqui?";
-                    opcoes_dialogo[5] = "E se eu não gostar do que encontrar?";
+            case Andar5: // depois do Iowa
+                num_perguntas = 6;
 
-                    respostas[0] = "O que você mais sonha, teoricamente.";
-                    respostas[1] = "Perto o bastante para ouvir o chamado. Longe o bastante para nunca alcançá-lo.";
-                    respostas[2] = "Em tese, seria o retorno ao mundo… Em tese";
-                    respostas[3] = "Eu ajudo todos que passam por aqui, vejo que o potencial das almas aumenta quando recebe apoio.";
-                    respostas[4] = "Talvez. Um lugar. Uma voz. Ou alguém que ainda se recuse a esquecer você.";
-                    respostas[5] = "Então finalmente verá a verdade sem desejar tê-la encontrado.";
+                opcoes_dialogo[0] = "O que existe no topo?";
+                opcoes_dialogo[1] = "Você já chegou perto do topo?";
+                opcoes_dialogo[2] = "O que acontece quando alguém sai daqui?";
+                opcoes_dialogo[3] = "Por que você me ajuda?";
+                opcoes_dialogo[4] = "Ainda existe algo me esperando fora daqui?";
+                opcoes_dialogo[5] = "E se eu não gostar do que encontrar?";
 
-                    break;
-            }        
+                respostas[0] = "O que você mais sonha, teoricamente.";
+                respostas[1] = "Perto o bastante para ouvir o chamado. Longe o bastante para nunca alcançá-lo.";
+                respostas[2] = "Em tese, seria o retorno ao mundo… Em tese";
+                respostas[3] = "Eu ajudo todos que passam por aqui, vejo que o potencial das almas aumenta quando recebe apoio.";
+                respostas[4] = "Talvez. Um lugar. Uma voz. Ou alguém que ainda se recuse a esquecer você.";
+                respostas[5] = "Então finalmente verá a verdade sem desejar tê-la encontrado.";
+
+                break;
+            }
             bool conversando = true;
             int ja_realizou_pergunta[8] = {0};
 
@@ -212,7 +218,7 @@ void ponto_save(Player *player)
                 {
                     if (ja_realizou_pergunta[i])
                         wattron(ponto_save_window, COLOR_PAIR(COR_OPCAO_INVALIDA));
-                    mvwprintw(ponto_save_window, 30 + i, 6, "%d. %s",i+1, opcoes_dialogo[i]);
+                    mvwprintw(ponto_save_window, 30 + i, 6, "%d. %s", i + 1, opcoes_dialogo[i]);
                     wattrset(ponto_save_window, A_NORMAL);
                 }
                 wattron(ponto_save_window, COLOR_PAIR(COR_DESTAQUE));
@@ -234,7 +240,7 @@ void ponto_save(Player *player)
                 if (ja_realizou_pergunta[opcao_selecionada])
                     continue;
 
-                ja_realizou_pergunta[opcao_selecionada] =1;
+                ja_realizou_pergunta[opcao_selecionada] = 1;
                 werase(ponto_save_window);
                 box(ponto_save_window, 0, 0);
                 desenhar_sprite(ponto_save_window, "assets/sprites/others/vigia.txt", 5, 5);
@@ -256,7 +262,7 @@ void ponto_save(Player *player)
                     break;
                 }
             }
-               
+
             werase(ponto_save_window);
             box(ponto_save_window, 0, 0);
             desenhar_sprite(ponto_save_window, "assets/sprites/others/vigia.txt", 5, 5);
@@ -266,16 +272,13 @@ void ponto_save(Player *player)
             slow_mvwprintw(ponto_save_window, "Bem, vou voltar a Torre… Até", 29, 6, 40);
             napms(1000);
             break;
-        
-        //Fala com vigia
+
+            // Fala com vigia
 
         case '4':
             slow_mvwprintw(ponto_save_window, "Você levanta e volta a Torre", getmaxy(ponto_save_window) - 3, 5, 30);
             descansando = false;
             break;
-        }   
-        
-        
+        }
     }
-    
 }

@@ -105,7 +105,7 @@ Player* menu_inicial()
 
     WINDOW *menu_win = newwin(altura_tela, largura_tela, 0, 0); // As duas ultimas coordenadas sao as de inicio, ou seja, o inicio da matriz[0][0]
     keypad(menu_win, TRUE);                                     // habilita as setinhas na tela do menu
-    char *opcoes[TOTAL_OPCOES] = {"Iniciar Novo Jogo", "Continuar Jogo Salvo", "Abrir Configurações", "Fechar Jogo"};
+    char *opcoes[TOTAL_OPCOES] = {"Iniciar Novo Jogo", "Continuar Jogo Salvo", "Créditos", "Fechar Jogo"};
 
     opcao_selecionada selecionada = INICIAR_JOGO_NOVO;
 
@@ -199,8 +199,8 @@ Player* menu_inicial()
                 }
                 else
                     return player;
-            case ABRIR_CONFIGURACOES:
-                char aviso_configuracoes[] = "《 Menu de configurações não implementado 》";
+            case CREDITOS:
+                char aviso_configuracoes[] = "《 Feito por: Pablo Torres, Gustavo Procopio e Pedro Lucas 》";
                 wattron(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
 
                 mvwprintw(menu_win, altura_tela - 10, (largura_tela - strlen(aviso_configuracoes)) / 2, "%s", aviso_configuracoes);
@@ -208,7 +208,7 @@ Player* menu_inicial()
                 wattroff(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
                 wrefresh(menu_win);
 
-                napms(500); // espera meio segundo
+                napms(2000); // espera meio segundo
                 selecionada = INICIAR_JOGO_NOVO;
 
                 break;

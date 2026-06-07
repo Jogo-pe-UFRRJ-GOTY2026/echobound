@@ -298,6 +298,7 @@ Player *Prologo_pt1()
 //                              Criação de personagem                                //
 // ================================================================================= //
 Player *Tela_criacao()
+
 {
     int altura_tela, largura_tela;
     getmaxyx(stdscr, altura_tela, largura_tela);
