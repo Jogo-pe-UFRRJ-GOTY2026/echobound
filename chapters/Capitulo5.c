@@ -190,6 +190,7 @@ bool Capitulo5(Player *player)
     // Execução da luta
     EstadoRodada resultado_combate = iniciar_combate(player, fallen_king);
     player->medidor_lembranca[Rei_Caido] += 1;
+    free_inimigo(fallen_king);
 
     // -------------------------- Pós-Combate
     werase(tela_capitulo5);

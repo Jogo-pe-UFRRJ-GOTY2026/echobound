@@ -129,3 +129,8 @@ void renderizar_nome_estilizado(WINDOW *area_nome_boss, const char *nome)
     }
     wattroff(area_nome_boss, COLOR_PAIR(COR_NOME_BOSS) | A_BOLD);
 }
+
+void free_inimigo(Inimigo* enemy)
+{
+    free(enemy);
+}

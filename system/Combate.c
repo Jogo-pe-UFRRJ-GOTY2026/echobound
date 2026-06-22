@@ -371,7 +371,7 @@ void tocar_musica(Lembrancas id)
         freopen("/dev/null", "w", stderr);
         while (true)
         {
-            execlp("aplay", "aplay", "-q", "assets/music/hollow.wav", NULL);
+            execlp("aplay", "aplay", "-q", file, NULL);
             _exit(1); // só se der erro
         }
     }

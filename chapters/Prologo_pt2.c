@@ -226,6 +226,7 @@ void Prologo_pt2(Player *player)
 
     EstadoRodada resultado_combate = iniciar_combate(player, hollow_knight);
     player->medidor_lembranca[Cavaleiro_Vazio] += 1;
+    free_inimigo(hollow_knight);
 
     // --- Pos combate ---
     werase(tela_prologopt2);

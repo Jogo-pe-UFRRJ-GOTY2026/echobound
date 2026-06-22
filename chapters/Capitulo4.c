@@ -17,9 +17,10 @@ bool Capitulo4(Player *player)
 
     // -------------------------- Descrição do Cenário
     slow_mvwprintw(tela_capitulo4, "Você abre a penúltima porta antes da chegada ao topo, um cheiro forte penetra suas narinas, e uma nuvem de cinzas levanta no ar.", 10, 6, 20);
-    slow_mvwprintw(tela_capitulo4, "A parede desse andar está danificada, e queimando com chamas incessantes\nque parecem que não se extinguem a séculos e impossibilitam qualquer passagem ou atalho", 11, 6, 20);
-    slow_mvwprintw(tela_capitulo4, "no meio do salão em meio a uma pilha de moedas repousa um dragão dormindo,", 12, 6, 20);
-    slow_mvwprintw(tela_capitulo4, "", 13, 6, 20);
+    slow_mvwprintw(tela_capitulo4, "A parede desse andar está danificada, e queimando com chamas incessantes", 11, 6, 20);
+    slow_mvwprintw(tela_capitulo4, "que parecem que não se extinguem a séculos e impossibilitam qualquer passagem ou atalho", 12, 6, 20);
+    slow_mvwprintw(tela_capitulo4, "no meio do salão em meio a uma pilha de moedas repousa um dragão dormindo,", 13, 6, 20);
+    slow_mvwprintw(tela_capitulo4, "", 14, 6, 20);
 
     napms(2500);
 
@@ -177,6 +178,7 @@ bool Capitulo4(Player *player)
     // Execução da luta
     EstadoRodada resultado_combate = iniciar_combate(player, iowa);
     player->medidor_lembranca[Iowa] += 1;
+    free_inimigo(iowa);
 
     // -------------------------- Pós-Combate
     werase(tela_capitulo4);

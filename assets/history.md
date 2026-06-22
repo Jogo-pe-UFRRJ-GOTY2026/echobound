@@ -47,7 +47,7 @@ Quando algo deixa de existir na memória de TODOS os seres vivos, seu eco cai no
     Porque esses bosses?
 https://ascii.co.uk/art/castle
 https://www.asciiart.eu/buildings-and-places
-http://xahlee.info/comp/unicode_drawing_shapes.html
+http://xahlee.info/comp /unicode_drawing_shapes.html
 
 
 

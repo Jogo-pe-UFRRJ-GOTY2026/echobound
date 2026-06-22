@@ -201,9 +201,11 @@ Player* menu_inicial()
                     return player;
             case CREDITOS:
                 char aviso_configuracoes[] = "《 Feito por: Pablo Torres, Gustavo Procopio e Pedro Lucas 》";
+                char creditos_extras[] = "《 Música feita por: Matheus de Melo, Laine Chinensy, Shadow of Io 》";
                 wattron(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
 
-                mvwprintw(menu_win, altura_tela - 10, (largura_tela - strlen(aviso_configuracoes)) / 2, "%s", aviso_configuracoes);
+                mvwprintw(menu_win, altura_tela - 12, largura_tela / 2 -10, "%s", aviso_configuracoes);
+                mvwprintw(menu_win, altura_tela - 10, largura_tela / 2 -10, "%s", creditos_extras);
 
                 wattroff(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
                 wrefresh(menu_win);

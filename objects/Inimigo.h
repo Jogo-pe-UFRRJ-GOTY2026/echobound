@@ -83,6 +83,6 @@ AtaqueInimigo criar_ataque(TipoAtaque tipo, int dano, const char *ataque_sprite,
 AtaqueInimigo criar_ataque_area(int dano, const char *ataque_sprite, int hitbox, int largura, int altura, int velocidade, int intervalo_frames_spawn);
 void inimigo_tomar_dano(Inimigo *inimigo, int dano);
 void inimigo_tomar_mercy(Inimigo *inimigo, int dano);
-//void limpar_inimigo(Inimigo *inimigo);
+void free_inimigo(Inimigo* enemy);
 
 #endif

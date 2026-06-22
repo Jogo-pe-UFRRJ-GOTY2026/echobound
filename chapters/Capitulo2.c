@@ -167,6 +167,7 @@ bool Capitulo2(Player* player)
     // Execução da luta
     EstadoRodada resultado_combate = iniciar_combate(player, aphanos);
     player->medidor_lembranca[Aphanos] += 1;
+    free_inimigo(aphanos);
 
     // -------------------------- Pós-Combate
     werase(tela_capitulo2);

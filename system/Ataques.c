@@ -190,7 +190,7 @@ void spawnar_ataque(AtaqueInimigo *atq, WINDOW *area_esquiva)
             {
                 atq->vel_horizontal = 1;
                 atq->vel_vertical = 0;
-                atq->x = 3;
+                atq->x = 2;
                 atq->y = rand() % (max_y - 2)+1;
                 break;
             }
