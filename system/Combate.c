@@ -148,7 +148,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
         napms(1200);
 
         werase(ui->area_dialogos);
-        box(ui->area_dialogos, 0, 0);
+        //box(ui->area_dialogos, 0, 0);
         wrefresh(ui->area_dialogos);
 
         renderizar_menu_combate(ui->area_menu, player, INVALIDA);
