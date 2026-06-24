@@ -1,0 +1,4 @@
+bool Epilogo(Player *player)
+{
+    
+}
