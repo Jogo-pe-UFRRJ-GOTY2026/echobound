@@ -11,7 +11,9 @@
 
 #include <signal.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include <sys/types.h>
+
 static pid_t music_pid = -1;
 
 #define ataques_na_tela 32
@@ -358,6 +360,9 @@ void tocar_musica(Lembrancas id)
     case Rei_Caido:
         file = "assets/music/fallen_king.wav";
         break;
+    default:
+        file = "assets/music/idle.wav";
+        break;
     }
 
     if (!file)
@@ -367,12 +372,18 @@ void tocar_musica(Lembrancas id)
 
     if (music_pid == 0)
     {
+        setpgid(0, 0); // cria um grupo de processos só pra essa "thread" de musica
         freopen("/dev/null", "w", stdout);
         freopen("/dev/null", "w", stderr);
         while (true)
         {
-            execlp("aplay", "aplay", "-q", file, NULL);
-            _exit(1); // só se der erro
+            pid_t tocando = fork();
+            if(tocando==0)
+            {
+                execlp("aplay", "aplay", "-q", file, NULL);
+                _exit(1); // só se der erro
+            }
+            waitpid(tocando, NULL, 0); // espera essa execução do aplay acabar pra tocar de novo
         }
     }
 }
@@ -381,7 +392,7 @@ void parar_musica()
 {
     if (music_pid > 0)
     {
-        kill(music_pid, SIGTERM);
+        kill(-music_pid, SIGTERM);
         music_pid = -1;
     }
 }

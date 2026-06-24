@@ -10,6 +10,7 @@ typedef enum opcao_selecionada
 {
     INICIAR_JOGO_NOVO,
     CONTINUAR_JOGO,
+    RANKING,
     CREDITOS,
     FECHAR_JOGO,
     TOTAL_OPCOES

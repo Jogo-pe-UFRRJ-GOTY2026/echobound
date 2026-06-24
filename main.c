@@ -8,6 +8,8 @@
 #include "chapters/CAPITULO.h"
 #include "system/Save.h"
 #include "utils/utils.h"
+#include "system/Combate.h"
+
 #include <time.h>
 #include <stdlib.h>
 
@@ -36,9 +38,10 @@ int main()
 
     iniciar_cores(); // Inicializa os pares de cores definidos na funcao
 
-
-
+    
+    tocar_musica(-1);
     player = menu_inicial();
+    parar_musica();
     if(player==NULL)
     {
         endwin();
@@ -85,9 +88,13 @@ int main()
         // o loop continua no mesmo capitulo
         if(player->NumeroAndar > andar_anterior && player->NumeroAndar != Epilogo) 
         {
+            flashbacks(player);
             gerar_loot(player);
             player->vida = vida_max_total(player);
+            
+            tocar_musica(-1);
             ponto_save(player);
+            parar_musica();
         }
 
     }
@@ -105,7 +112,7 @@ Player* menu_inicial()
 
     WINDOW *menu_win = newwin(altura_tela, largura_tela, 0, 0); // As duas ultimas coordenadas sao as de inicio, ou seja, o inicio da matriz[0][0]
     keypad(menu_win, TRUE);                                     // habilita as setinhas na tela do menu
-    char *opcoes[TOTAL_OPCOES] = {"Iniciar Novo Jogo", "Continuar Jogo Salvo", "Créditos", "Fechar Jogo"};
+    char *opcoes[TOTAL_OPCOES] = {"Iniciar Novo Jogo", "Continuar Jogo Salvo", "Abrir Ranking", "Créditos", "Fechar Jogo"};
 
     opcao_selecionada selecionada = INICIAR_JOGO_NOVO;
 
@@ -199,13 +206,19 @@ Player* menu_inicial()
                 }
                 else
                     return player;
+            case RANKING:
+                werase(menu_win);
+                wrefresh(menu_win);
+                visualizar_ranking(menu_win);
+
+                break;
             case CREDITOS:
                 char aviso_configuracoes[] = "《 Feito por: Pablo Torres, Gustavo Procopio e Pedro Lucas 》";
                 char creditos_extras[] = "《 Música feita por: Matheus de Melo, Laine Chinensy, Shadow of Io 》";
                 wattron(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
 
-                mvwprintw(menu_win, altura_tela - 12, largura_tela / 2 -10, "%s", aviso_configuracoes);
-                mvwprintw(menu_win, altura_tela - 10, largura_tela / 2 -10, "%s", creditos_extras);
+                mvwprintw(menu_win, altura_tela - 12, largura_tela / 2 -20, "%s", aviso_configuracoes);
+                mvwprintw(menu_win, altura_tela - 10, largura_tela / 2 -20, "%s", creditos_extras);
 
                 wattroff(menu_win, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
                 wrefresh(menu_win);

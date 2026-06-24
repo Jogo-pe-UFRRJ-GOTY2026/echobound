@@ -25,6 +25,7 @@ SRC = main.c 						\
 	  chapters/Capitulo1.c          \
 	  chapters/Capitulo2.c          \
 	  chapters/Capitulo3.c          \
+	  chapters/Flashbacks.c 		\
 	  chapters/Capitulo4.c          \
 	  chapters/Capitulo5.c          \
 	  
@@ -49,21 +50,24 @@ TEST_SRC = 	tests/tests_main.c		\
 #define o nome do executavel
 
 ifeq ($(OS),Windows_NT)	# WINDOWS
-    OUT = C:/temp/game.exe
-	TEST_OUT = /tmp/game_test.exe
+    OUT = C:\temp\game.exe
+	TEST_OUT = C:\temp\game_test.exe
 	DELETE = del
-	CLEAR = ;cls
+	CLEAR = ;cls 
+
 else 					# LINUX
     OUT = /tmp/game
 	TEST_OUT = /tmp/game_test
 	DELETE = rm -f
 	CLEAR = && clear
+		
+
 endif
 
 
 #junta tudo
 all:
-	$(CC) $(SRC) -o $(OUT) $(LIBS)
+	$(CC) $(SRC) -o $(OUT) $(LIBS) 
 
 run: all
 	$(OUT)

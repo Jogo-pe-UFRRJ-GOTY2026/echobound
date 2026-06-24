@@ -3,7 +3,6 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 #include "CAPITULO.h"
 #include "../objects/Player.h"
 #include "../objects/Inimigo.h"
@@ -170,8 +169,7 @@ Player *Prologo_pt1()
 
             apagar_janela(tela_encontro_vigia);
             player->NumeroAndar = 0;
-            bool salvou = salvar_jogo(player);
-            assert(salvou == true);
+            salvar_jogo(player);
 
             return player;
         }

@@ -231,7 +231,7 @@ bool Capitulo5(Player *player)
         slow_mvwprintw(tela_capitulo5, "Notas algo diferente em si após este embate?", 26, 6, 20);
 
         player->karma += 1;
-        player->NumeroAndar = Andar3;
+        player->NumeroAndar = Epilogo;
         player->vida = vida_max_total(player);
     }
     else
