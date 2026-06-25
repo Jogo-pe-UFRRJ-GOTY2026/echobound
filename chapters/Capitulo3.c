@@ -128,6 +128,7 @@ bool Capitulo3(Player *player)
 
         mvwprintw(tela_capitulo3, 28, 6, "[Cerberus]");
         slow_mvwprintw(tela_capitulo3, "sniff… sniff… Au… rrr… auuf… Cerberus reconhece seu cheiro. Ele rosna, mas há dúvida em seus movimentos.", 29, 6, 20);
+        tocar_sound_effect("assets/sound_effect/barking.wav");
 
         wrefresh(tela_capitulo3);
         napms(2500);
