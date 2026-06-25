@@ -27,7 +27,10 @@ cd Echobound
 make
 make run
 ```
-
+Ou, para rodar o executável existente
+```sh
+export LANG=C.UTF-8 ; export LC_ALL=C.UTF-8; ./Echobound
+```
 A biblioteca ncurses pode ser instalada em sistemas Linux com o comando `apt install -y libncurses-dev` 
 
 
