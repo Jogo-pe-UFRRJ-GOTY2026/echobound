@@ -27,7 +27,7 @@ void tratar_encerramento(int sig)
 
 int main()
 {
-    testando_ranking();
+    //testando_ranking();
 
     setlocale(LC_ALL, ""); // Permite printar caracteres unicode
     srand(time(NULL)); //randomiza a seed do jogo.

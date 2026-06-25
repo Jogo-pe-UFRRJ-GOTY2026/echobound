@@ -216,7 +216,7 @@ bool usar_consumivel(Player *player)
 
     player->vida += cura;
 
-    if (player->vida > player->vida_max)
+    if (player->vida > vida_max_total(player))
         player->vida = vida_max_total(player);
 
     player->consumiveis--;

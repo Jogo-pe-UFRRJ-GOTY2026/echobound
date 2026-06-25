@@ -31,7 +31,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "Mas, à medida que se aproximava da oficina que alugara antes de chegar à capital, a cidade mudava", y + 4, start_text, 20);
         slow_mvwprintw(tela_flashback, "de rosto. As fachadas bem cuidadas davam lugar a muros gastos, poças escuras, cheiros de umidade", y + 5, start_text, 20);
         slow_mvwprintw(tela_flashback, "e ferrugem. O barulho das lojas diminuía, e o som dos próprios passos se tornava mais nítido.", y + 6, start_text, 20);
-        slow_mvwprintw(tela_flashback, "Foi então que você os viu.", y + 11, 2, 20);
+        slow_mvwprintw(tela_flashback, "Foi então que você os viu.", y + 11, start_text, 20);
         napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -66,17 +66,17 @@ void flashbacks(Player *player)
 
         napms(1200);
 
-        slow_mvwprintw(tela_flashback, "Você trabalhava com precisão.Sabia equilibrar peso, resistência e corte.Sabia transformar ferro", y, start_text, 20);
-        slow_mvwprintw(tela_flashback, "bruto em algo digno de respeito.Espadas, adagas, lanças curtas, reforços de aço, encaixes de guarda,", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Você trabalhava com precisão. Sabia equilibrar peso, resistência e corte.Sabia transformar ferro", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "bruto em algo digno de respeito. Espadas, adagas, lanças curtas, reforços de aço, encaixes de guarda,", y + 1, start_text, 20);
         slow_mvwprintw(tela_flashback, "detalhes que outros ferreiros ignoravam e que para você faziam toda a diferença.", y + 2, start_text, 20);
         slow_mvwprintw(tela_flashback, "Logo, seus trabalhos começaram a circular entre patrulhas, mercenários, cavaleiros e até", y + 3, start_text, 20);
-        slow_mvwprintw(tela_flashback, "mensageiros da corte.E, no meio disso tudo, surgiram as primeiras amizades.", y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "mensageiros da corte. E, no meio disso tudo, surgiram as primeiras amizades.", y + 4, start_text, 20);
 
         napms(800);
 
-        slow_mvwprintw(tela_flashback, "Não eram amizades nobres.Eram vínculos de sobrevivência.Um aprendiz que dividia pão velho com", y + 5, start_text, 20);
-        slow_mvwprintw(tela_flashback, "você no fim do expediente.Uma mulher do bairro baixo que trazia informações e recebia proteção", y + 6, start_text, 20);
-        slow_mvwprintw(tela_flashback, "em troca.Um soldado cansado que preferia sua companhia à dos colegas de quartel.", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Não eram amizades nobres.Eram vínculos de sobrevivência. Um aprendiz que dividia pão velho com", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "você no fim do expediente. Uma mulher do bairro baixo que trazia informações e recebia proteção", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "em troca. Um soldado cansado que preferia sua companhia à dos colegas de quartel.", y + 7, start_text, 20);
         slow_mvwprintw(tela_flashback, "Gente simples, com sonhos pequenos demais para o palácio notar, mas grandes o suficiente para", y + 8, start_text, 20);
         slow_mvwprintw(tela_flashback, "manter um mundo em pé e mostrar que ", y + 9, start_text, 20);
 

@@ -145,7 +145,7 @@ bool Capitulo4(Player *player)
         criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, BAIXO_CIMA, 2, 25),
         criar_ataque(LINHA, 10, "🔥🔥🔥", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 40),
         criar_ataque(LASER, 12, "▽", 0, VERTICAL, NAO_IMPORTA, 70, 90),
-        criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 8, 150),
+        criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 10, 150),
         criar_ataque_area(8, "Λ", 1, 4, 4, 90, 35),
     };
 
