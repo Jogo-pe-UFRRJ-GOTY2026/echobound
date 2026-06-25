@@ -151,7 +151,7 @@ void ponto_save(Player *player)
                 respostas[0] = "Dentre os que não se esqueceram de tudo ainda, falam acerca do strogonoff do IM da UFRRJ.";
                 respostas[1] = "Ecos são memórias que ecoam por todo o Intervalo, fazendo com que você seja lembrado por um longo tempo por aqui, mas não 'Ad Eternum'.";
                 respostas[2] = "Porque está. Há olhos no Intervalo que permanecem abertos mesmo quando tudo ao redor adormece.";
-                respostas[3] = "Seu nome completo é Cruciator ad Eternum. Ele foi considerado o Funcionário do Século por Lucifer e \n recebeu como prêmio a oportunidade de se 'entreter' com o sofrimento das almas do Intervalo que chegam até ele — e não o contrário.";
+                respostas[3] = "Seu nome é Cruciator ad Eternum. Ele foi o Funcionário do Século por Lucifer e recebeu como prêmio a oportunidade de se 'entreter' com o sofrimento das almas do Intervalo.";
                 break;
 
             case Andar3: // depois do Aphanos

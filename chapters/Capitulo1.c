@@ -183,14 +183,14 @@ bool Capitulo1(Player* player)
     AtaqueInimigo ataques[] = {
         criar_ataque(BULLET, 5, "🝑", 1, HORIZONTAL, ESQUERDA_DIREITA, 4, 30),
         criar_ataque(LINHA, 6, "⬱>-------", 1, HORIZONTAL, DIREITA_ESQUERDA, 3, 35),
-        criar_ataque(PAREDE, 5, "Λ", 1, HORIZONTAL, CIMA_BAIXO, 12, 200), // o emoji de fogo quebra no linux
+        criar_ataque(PAREDE, 5, "Λ", 1, HORIZONTAL, CIMA_BAIXO, 10, 250), // o emoji de fogo quebra no linux
         criar_ataque_area(4, "◮", 1, 1, 1, 100, 45)};
 
     Sprite_size size;
     size.x = 19;
     size.y = 21;
 
-    Inimigo *cruciator = criar_inimigo(150, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
+    Inimigo *cruciator = criar_inimigo(100, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
 
 
     cruciator->dialogos_mercy[0] = "Misericórdia? HAHAHAHAHA! Muitas almas já imploraram por isso… de onde eu vim.";

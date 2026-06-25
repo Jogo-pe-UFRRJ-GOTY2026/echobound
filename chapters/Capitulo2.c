@@ -132,9 +132,9 @@ bool Capitulo2(Player* player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(BULLET, 6, "➵", 1, HORIZONTAL, ESQUERDA_DIREITA, 4, 40),
+        criar_ataque(BULLET, 6, "➵", 1, HORIZONTAL, ESQUERDA_DIREITA, 3, 30),
         criar_ataque(LINHA, 8, "<<--{", 1, HORIZONTAL, DIREITA_ESQUERDA, 3, 30),
-        criar_ataque(PAREDE, 5, ">", 1, VERTICAL, ESQUERDA_DIREITA, 10, 120),
+        criar_ataque(PAREDE, 5, ">", 1, VERTICAL, ESQUERDA_DIREITA, 9, 150),
         criar_ataque_area(6, "➴", 1, 1, 1, 80, 10),
         criar_ataque(BULLET, 5, "🍃", 1, VERTICAL, CIMA_BAIXO, 4, 35)};
 
@@ -142,7 +142,7 @@ bool Capitulo2(Player* player)
     size.x = 34; 
     size.y = 20;
 
-    Inimigo *aphanos = criar_inimigo(225, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 55, 23, Aphanos);
+    Inimigo *aphanos = criar_inimigo(150, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 55, 23, Aphanos);
 
     // Diálogos de Ataque recebido
     aphanos->dialogos_ataque[0] = "Finalmente um oponente digno… Nossa batalha será lendária!";

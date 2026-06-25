@@ -157,23 +157,23 @@ bool Capitulo5(Player *player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(LINHA, 10, "<:::::::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 35),
+        criar_ataque(LINHA, 10, "<:::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 35),
         criar_ataque(LINHA, 8, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
-        criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 2, 25),
-        criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 2, 25),
+        criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 5, 25),
+        criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 5, 25),
         criar_ataque(LASER, 13, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
         criar_ataque(LASER, 13, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
-        criar_ataque(PAREDE, 9, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 7, 130), // 🞪
+        criar_ataque(PAREDE, 9, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 14, 130), // 🞪
         criar_ataque_area(6, "𝄽", 1, 1, 1, 70, 20),
         criar_ataque_area(11, "𝄽", 1, 6, 6, 90, 90),
-        criar_ataque(PAREDE, 10, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 7, 130), // 🞪
+        criar_ataque(PAREDE, 10, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 8, 180), // 🞪
     };
 
     Sprite_size size;
     size.x = 42;
     size.y = 28;
 
-    Inimigo *fallen_king = criar_inimigo(550, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
+    Inimigo *fallen_king = criar_inimigo(400, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
 
     // Diálogos apos Ataque recebido
     fallen_king->dialogos_ataque[0] = "Ora… Vejo que chegar até aqui não foi resultado de sorte.";
@@ -233,9 +233,9 @@ bool Capitulo5(Player *player)
     {
         // Derrota do Player
         desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/fallen_king.txt", 1, 5);
-        mvwprintw(tela_capitulo5, 24, 6, "[Rei Caido]");
+        mvwprintw(tela_capitulo5, 35, 6, "[Rei Caido]");
 
-        slow_mvwprintw(tela_capitulo5, "Vejo que ainda falta força para tornar seus desejos em realidade… Estarei esperando sua próxima tentativa.", 25, 6, 20);
+        slow_mvwprintw(tela_capitulo5, "Vejo que ainda falta força para tornar seus desejos em realidade… Estarei esperando sua próxima tentativa.", 36, 6, 20);
         napms(1500);
         player->vida = vida_max_total(player);
         salvar_jogo(player);

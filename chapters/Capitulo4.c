@@ -153,7 +153,7 @@ bool Capitulo4(Player *player)
     size.x = 54;
     size.y = 17;
 
-    Inimigo *iowa = criar_inimigo(425, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
+    Inimigo *iowa = criar_inimigo(300, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
 
 
     // Diálogos de Ataque recebido

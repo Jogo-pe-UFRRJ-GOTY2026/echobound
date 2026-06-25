@@ -166,6 +166,9 @@ void mostrar_tela_morte(Player* player)
     wrefresh(tela_morte);
     napms(4000);
     apagar_janela(tela_morte);
+    tocar_musica(-1);
+    ponto_save(player);
+    parar_musica();
 }
 
 int calcular_largura_sprite(const char *caminho)

@@ -197,14 +197,14 @@ void Prologo_pt2(Player *player)
     // --- Combate ---
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 5, "█▙▔▔▔", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 30),
-        criar_ataque(BULLET, 2, "†", 1, VERTICAL, CIMA_BAIXO, 5, 35),
+        criar_ataque(BULLET, 2, "†", 1, VERTICAL, CIMA_BAIXO, 5, 45),
         criar_ataque(BULLET, 3, "✱", 1, HORIZONTAL, ESQUERDA_DIREITA, 5, 30)};
 
     Sprite_size size;
     size.x = 33;
     size.y = 20;
 
-    Inimigo *hollow_knight = criar_inimigo(100, "Cavaleiro Vazio",
+    Inimigo *hollow_knight = criar_inimigo(60, "Cavaleiro Vazio",
                                            "assets/sprites/bosses/hollow.txt", size, 40, 20, Cavaleiro_Vazio);
 
     hollow_knight->dialogos_mercy[0] = "Por que está hesitando?";
