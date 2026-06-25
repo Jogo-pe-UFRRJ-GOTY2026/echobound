@@ -28,7 +28,7 @@ bool Capitulo3(Player *player)
 
     mvwprintw(tela_capitulo3, 10,6,"[???]");
     slow_mvwprintw(tela_capitulo3, "aarff… aua…", 11, 6, 20);
-
+    tocar_sound_effect("assets/sound_effect/barking.wav");
     desenhar_sprite(tela_capitulo3, "assets/sprites/bosses/cerberus_with_bone.txt", 1, 5);
 
     slow_mvwprintw(tela_capitulo3, "No salão do terceiro andar, você se depara com um cão de três", 31, 6, 20);
