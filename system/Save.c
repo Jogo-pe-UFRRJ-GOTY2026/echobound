@@ -67,7 +67,7 @@ void ponto_save(Player *player)
     WINDOW *ponto_save_window = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
     keypad(ponto_save_window, TRUE);
     nodelay(ponto_save_window, TRUE);
-    bool descansando = false;
+    bool descansando = true;
     bool conversando = true;
 
     int tecla;

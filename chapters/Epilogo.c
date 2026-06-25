@@ -30,8 +30,7 @@ void Ver_Epilogo(Player *player)
     wrefresh(tela_epilogo);
     desenhar_sprite(tela_epilogo, "assets/sprites/bosses/fallen_king_defeated.txt", 1, max_x/2-20);
 
-    mvwprintw(tela_epilogo, 35, max_x / 2 - 20, "E quanto a agora? Qual decisão pretende tomar?");
-
+    mvwprintw(tela_epilogo, 32, max_x / 2 - 20, "E quanto a agora? Qual decisão pretende tomar?");
 
     int tecla;
     selecao atual=MATAR;
@@ -42,20 +41,20 @@ void Ver_Epilogo(Player *player)
 
         if(atual==MATAR)
             wattron(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
-        mvwprintw(tela_epilogo, 40, max_x / 2 - 23, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜"); 
-        mvwprintw(tela_epilogo, 41, max_x / 2 - 23, "▌   Eliminar   ▐"); 
-        mvwprintw(tela_epilogo, 42, max_x / 2 - 23, "▌    o rei     ▐"); 
-        mvwprintw(tela_epilogo, 43, max_x / 2 - 23, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
+        mvwprintw(tela_epilogo, 34, max_x / 2 - 23, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜"); 
+        mvwprintw(tela_epilogo, 35, max_x / 2 - 23, "▌   Eliminar   ▐"); 
+        mvwprintw(tela_epilogo, 36, max_x / 2 - 23, "▌    o rei     ▐"); 
+        mvwprintw(tela_epilogo, 37, max_x / 2 - 23, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
         if (atual == MATAR)
             wattroff(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
 
         if (atual == POUPAR)
             wattron(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
 
-        mvwprintw(tela_epilogo, 40, max_x / 2 + 13, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜");
-        mvwprintw(tela_epilogo, 41, max_x / 2 + 13, "▌    Prestar   ▐");
-        mvwprintw(tela_epilogo, 42, max_x / 2 + 13, "▌   clemência  ▐");
-        mvwprintw(tela_epilogo, 43, max_x / 2 + 13, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
+        mvwprintw(tela_epilogo, 34, max_x / 2 + 13, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜");
+        mvwprintw(tela_epilogo, 35, max_x / 2 + 13, "▌    Prestar   ▐");
+        mvwprintw(tela_epilogo, 36, max_x / 2 + 13, "▌   clemência  ▐");
+        mvwprintw(tela_epilogo, 37, max_x / 2 + 13, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
         if (atual == POUPAR)
             wattroff(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
         

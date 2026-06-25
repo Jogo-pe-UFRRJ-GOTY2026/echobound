@@ -158,7 +158,7 @@ bool Capitulo5(Player *player)
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 10, "<:::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 35),
-        criar_ataque(LINHA, 10, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
+        //criar_ataque(LINHA, 10, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 5, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 5, 25),
         criar_ataque(LASER, 15, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
@@ -210,7 +210,7 @@ bool Capitulo5(Player *player)
 
 
 
-        slow_mvwprintw(tela_capitulo5, "Você derruba a arma do rei caíde de suas mãos, e em um rápido golpe, o derruba de joelhos.", 34, 6, 100);
+        slow_mvwprintw(tela_capitulo5, "Você derruba a arma do rei caído de suas mãos, e em um rápido golpe, o derruba de joelhos.", 34, 6, 100);
 
         mvwprintw(tela_capitulo5, 35, 6, "[Rei Caido]");
 

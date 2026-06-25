@@ -141,8 +141,8 @@ bool Capitulo4(Player *player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, CIMA_BAIXO, 2, 25),
-        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, BAIXO_CIMA, 2, 25),
+        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, CIMA_BAIXO, 3, 25),
+        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, BAIXO_CIMA, 3, 25),
         criar_ataque(LINHA, 10, "🔥🔥🔥", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 40),
         criar_ataque(LASER, 12, "▽", 0, VERTICAL, NAO_IMPORTA, 70, 90),
         criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 10, 150),
