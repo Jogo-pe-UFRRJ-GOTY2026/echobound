@@ -42,7 +42,8 @@ bool Capitulo3(Player *player)
         const char *opcoes_dialogo[3] = {
             "1. Estender a mão",
             "2. Chamá-lo",
-            "3. Levantar sua arma"};
+            "3. Levantar sua arma"
+        };
 
         int ja_realizou_pergunta[3] = {0};
         int opcao = 0;
@@ -107,6 +108,8 @@ bool Capitulo3(Player *player)
                 else if (opcao == 2)
                 {
                     slow_mvwprintw(tela_capitulo3, "“GRRRR… AUUUF!” (Ele avança para cima de você)", 30, 6, 30);
+                    tocar_sound_effect("assets/sound_effect/Growling_Barking.wav");
+
                     napms(800);
                     break; // Sai do loop para iniciar a luta
                 }

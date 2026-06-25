@@ -164,7 +164,8 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
         slow_mvwprintw(ui->area_dialogos, inimigo->dialogos_mercy[rand() % 3], 1, 2, 40);
         napms(1000);
         wrefresh(ui->area_vida_boss);
-        mercy_inimigo(player, inimigo);
+        if(inimigo->id!=Rei_Caido)
+            mercy_inimigo(player, inimigo);
         werase(ui->area_dialogos);
         wrefresh(ui->area_dialogos);
 
@@ -387,7 +388,24 @@ void tocar_musica(Lembrancas id)
         }
     }
 }
+void tocar_sound_effect(const char* file)
+{
+    music_pid = fork();
 
+    if (music_pid == 0)
+    {
+        if (fork() == 0)
+        {
+        freopen("/dev/null", "w", stdout);
+        freopen("/dev/null", "w", stderr);
+
+        execlp("aplay", "aplay", "-q", file, NULL);
+        _exit(1); // só se der erro
+        }
+        _exit(0);
+    }
+    waitpid(music_pid, NULL, 0); // espera só o filho intermediário, que morre quase instantaneamente
+}
 void parar_musica()
 {
     if (music_pid > 0)

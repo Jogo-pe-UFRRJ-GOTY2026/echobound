@@ -9,7 +9,7 @@
 #include "system/Save.h"
 #include "utils/utils.h"
 #include "system/Combate.h"
-
+#include <signal.h>
 #include <time.h>
 #include <stdlib.h>
 
@@ -18,10 +18,20 @@
 // make clean: exclui o executavel e limpa o terminal
 Player *menu_inicial();
 
+void tratar_encerramento(int sig)
+{
+    parar_musica();
+    endwin(); // restaura o terminal pro estado normal (se estiver usando ncurses)
+    exit(0);
+}
+
 int main()
 {
     setlocale(LC_ALL, ""); // Permite printar caracteres unicode
     srand(time(NULL)); //randomiza a seed do jogo.
+
+    signal(SIGINT, tratar_encerramento);
+    signal(SIGTERM, tratar_encerramento);
 
     Player *player;
     int AndarSalvo;
@@ -98,7 +108,7 @@ int main()
         }
 
     }
-
+    Ver_Epilogo(player);
     endwin();
     return 0;
 }

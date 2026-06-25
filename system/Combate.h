@@ -41,7 +41,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
 EstadoRodada loop_esquiva(AtaqueInimigo ataque_atual, Player *player, CombateUI *ui, int tempo_rodada);
 void tocar_musica(Lembrancas id);
 void parar_musica();
-
+void tocar_sound_effect(const char *file);
 
 bool ataque_colidiu(Player *player, AtaqueInimigo *Ataque);
 void spawnar_ataque(AtaqueInimigo *Ataque, WINDOW *area_esquiva);

@@ -2,7 +2,7 @@
 #include "CAPITULO.h"
 #include "../objects/Player.h"
 #include "../utils/utils.h"
-
+#include "../system/Combate.h"
 
 void flashbacks(Player *player)
 {
@@ -136,7 +136,7 @@ void flashbacks(Player *player)
         wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
         slow_mvwprintw(tela_flashback, "", y + 12, start_text, 20);
         slow_mvwprintw(tela_flashback, player->nome, y + 12, start_text, 20);
-        slow_mvwprintw(tela_flashback, " sentiu uma oportunidade e se agarrou a ela...", y + 12, start_text + strlen(player->nome), 20);
+        slow_mvwprintw(tela_flashback, " sentiu uma oportunidade e se agarrou a ela…", y + 12, start_text + strlen(player->nome), 20);
         wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
         wrefresh(tela_flashback);
         napms(2000);
@@ -144,8 +144,10 @@ void flashbacks(Player *player)
         break;
 
     case Andar3:
+        tocar_sound_effect("assets/sound_effect/Blacksmithing.wav");
+
         slow_mvwprintw(tela_flashback, "O olhar sob a maça que Alphanos carregava o leva a recordar de seus momentos em sua", y, start_text, 20);
-        slow_mvwprintw(tela_flashback, "forja na oficina, o calor, a força de cada martelada, voltando à sua mente...", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "forja na oficina, o calor, a força de cada martelada, voltando à sua mente…", y + 1, start_text, 20);
         napms(800);
 
         werase(tela_flashback);
@@ -155,7 +157,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "Você estava forjando em sua oficina, espadas com o emblema do reino dispostas", y, start_text, 20);
         slow_mvwprintw(tela_flashback, "em fileiras sobre a bancada. O fogo da fornalha iluminava a parede com um", y + 1, start_text, 20);
         slow_mvwprintw(tela_flashback, "laranja tremulante. O som do metal ecoava seco, ritmado, quase como um coração", y + 2, start_text, 20);
-        slow_mvwprintw(tela_flashback, "mecânico. Cada peça recebe acabamento com atenção meticulosa, como se, ao", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "mecânico. Cada peça recebia acabamento com atenção meticulosa, como se, ao", y + 3, start_text, 20);
         slow_mvwprintw(tela_flashback, "produzir armas, você também estivesse moldando o futuro.", y + 4, start_text, 20);
 
         napms(800);
@@ -209,7 +211,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "preocupação de Atlas ser flagrado,", y + 9, start_text, 20);
         slow_mvwprintw(tela_flashback, player->nome, y + 9, start_text + 33, 20);
         slow_mvwprintw(tela_flashback, " olha pro lado para alertá-lo,", y + 9, start_text + 33 + strlen(player->nome), 20);
-        slow_mvwprintw(tela_flashback, "e... de repente, Atlas não está mais lá, ele desapareceu em um piscar de olhos.", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "e… de repente, Atlas não está mais lá, ele desapareceu em um piscar de olhos.", y + 10, start_text, 20);
 
         napms(800);
 
@@ -229,10 +231,10 @@ void flashbacks(Player *player)
 
         napms(800);
 
-        slow_mvwprintw(tela_flashback, "Mas... Como o rei sabia disso? Afinal, antes de aprender tudo sobre criação de", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Mas… Como o rei sabia disso? Afinal, antes de aprender tudo sobre criação de", y + 7, start_text, 20);
         slow_mvwprintw(tela_flashback, "armas com sua mãe nos momentos em que o pai estava trabalhando fora, só eles", y + 8, start_text, 20);
         slow_mvwprintw(tela_flashback, "alimentavam esse desejo de uma mudança positiva no mundo que levaria o nome", y + 9, start_text, 20);
-        slow_mvwprintw(tela_flashback, "deles para a eternidade...", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "deles para a eternidade…", y + 10, start_text, 20);
 
         napms(800);
 
@@ -268,11 +270,283 @@ void flashbacks(Player *player)
         break;
 
     case Andar4:
+
+        slow_mvwprintw(tela_flashback, "Os sons de latidos abafados do Cerberus retornam à sua memória até uma certa manhã", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "na qual você havia acordado aos sons de altos latidos e rugidos soando na rua.", y + 1, start_text, 20);
+        tocar_sound_effect("assets/sound_effect/barking.wav");
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Você havia passado a distribuir armas tanto para o reino quanto para a", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "revolução, e a diferença na qualidade entre elas era sutil demais para ser", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "acidental… e evidente demais para ser ignorada.", y + 2, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "As espadas destinadas aos soldados do rei eram confiáveis. Bem-forjadas,", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "firmes, consistentes. Armas feitas para manter uma estrutura funcionando,", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "sem excessos, sem luxo.", y + 7, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "Já as armas que chegavam às mãos dos insurgentes carregavam outra atenção.", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Mais leves, mais refinadas, mais responsivas. Não era apenas técnica — era", y + 11, start_text, 20);
+        slow_mvwprintw(tela_flashback, "intenção. Um tipo de cuidado que parecia responder diretamente às condições", y + 12, start_text, 20);
+        slow_mvwprintw(tela_flashback, "de quem lutava do outro lado.", y + 13, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Você não chamaria isso de escolha política. Chamava de equilíbrio.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Se o mundo já estava dividido, ao menos que cada lado recebesse aquilo que", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "realmente precisava para sobreviver.", y + 2, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "No meio disso, sua consciência se tornava cada vez mais dividida, mas ainda", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "funcional. Você se convencia de que não estava criando guerra — apenas", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "reagindo a ela.", y + 7, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Atlas reforçava essa visão.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Ele não falava como alguém que impunha ideias, mas como alguém que organizava", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "pensamentos que você já tinha.", y + 2, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "O reino estava doente.", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "A violência era estrutural.", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E uma mudança, para ser real, precisaria acontecer de forma inevitável.", y + 7, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "Ele falava do futuro como quem acredita que ele pode ser moldado, mesmo que", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "o presente ainda não esteja pronto para isso.", y + 11, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E, de certa forma, isso fazia sentido.", y + 12, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Havia fome do lado de fora. Havia medo. Havia silêncio demais onde deveria", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "haver vida.", y + 1, start_text, 20);
+
+        wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+        slow_mvwprintw(tela_flashback, "E você continuou.", y + 5, start_text, 20);
+        wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+
+        wrefresh(tela_flashback);
+        napms(2000);
+
         break;
 
     case Andar5:
-        break;
+        char indicador_fala[52];
+        snprintf(indicador_fala, 52, "[%s]", player->nome);
 
+        slow_mvwprintw(tela_flashback, "Conforme o som da vitória ecoava pelo Intervalo, algo começou a se desfazer", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "dentro da sua mente, não como lembrança contínua, mas como fragmentos fora", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "de ordem.", y + 2, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, indicador_fala, y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "-Espera… não!", y + 5, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Sua própria voz, distante, o puxão no braço.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "As algemas, o impacto no chão. E então a cela, manchada de sangue, com marcas de tentativas de fuga.", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Mas algo estava errado… A dor não era lembrança, era continuidade.", y + 2, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Sua respiração falhava em padrões irregulares, como se o corpo já estivesse", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "ferido antes mesmo de você lembrar.", y + 4, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "O Rei estava ali, de pé, calmo, te encarando você no lado de fora… Ele abre a porta e entra", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Eu sempre reconheci seu valor — ele disse. — Suas armas foram impecáveis.", y + 8, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Consistentes. Úteis.", y + 9, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Ele deu um passo à frente.", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— É por isso que sua decepção é tão… pessoal.", y + 11, start_text, 20);
+
+        napms(2000);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "O silêncio ficou mais pesado.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Você avançou.", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "As mãos fecharam no pescoço dele.", y + 2, start_text, 20);
+        slow_mvwprintw(tela_flashback, "O mundo perdeu o eixo e o ar começou a desaparecer.", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E só então a memória começou a “revelar” o restante.", y + 4, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "O Rei também estava ferido, com a postura levemente quebrada, respiração", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "curta e marcas de sujeira sob a roupa.", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E você também.", y + 8, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Sangue seco, dor espalhada, movimentos limitados. Nenhum dos dois estava", y + 9, start_text, 20);
+        slow_mvwprintw(tela_flashback, "se sobressaindo no embate. ", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "As mãos sobre o pescoço do rei, o chão da cela… O aperto aumentou.", y + 11, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "O Rei tentou falar, ainda sufocado:", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Seu pai também foi útil.", y + 1, start_text, 20);
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "— Até o momento em que deixou de ser.", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Um silêncio mais profundo.", y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Eu ainda lembro da expressão dele quando percebeu que não havia mais espaço para erro.", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Ele inclinou levemente a cabeça.", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Você herdou isso dele. A hesitação antes da quebra.", y + 8, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "A frase entrou como lâmina.", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Ele morreu acreditando que ainda havia escolha.", y + 11, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Agora o ar já não era só físico.", y + 12, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Era mental.", y + 13, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E então veio o golpe final:", y + 14, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— E você ainda me decepcionou mesmo depois disso.", y + 15, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Isso quebrou algo.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Mas não de forma explosiva.", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "De forma inevitável.", y + 2, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Antes que o desfecho acontecesse, uma presença entrou na cela.", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Atlas.", y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Sem pressa.", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Sem surpresa.", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Como alguém que já esperava exatamente aquele instante.", y + 7, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "Ele olhou a cena.", y + 9, start_text, 20);
+        slow_mvwprintw(tela_flashback, "O Rei sendo enforcado.", y + 10, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Você ferido.", y + 11, start_text, 20);
+        slow_mvwprintw(tela_flashback, "O espaço inteiro instável.", y + 12, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E disse, baixo:", y + 13, start_text, 20);
+
+        slow_mvwprintw(tela_flashback, "[Atlas]", y + 15, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Isso já saiu do controle.", y + 16, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Você tentou reagir.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Mas o corpo não obedecia como antes.", y + 1, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Atlas se aproximou.", y + 2, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E então o evento mudou de direção.", y + 3, start_text, 20);
+        slow_mvwprintw(tela_flashback, "O Rei caiu.", y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Não pela continuidade do seu gesto.", y + 5, start_text, 20);
+        wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+        slow_mvwprintw(tela_flashback, "Mas por uma intervenção final de Atlas.", y + 6, start_text, 20);
+        wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+
+        slow_mvwprintw(tela_flashback, "Silêncio.", y + 8, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Pesado.", y + 9, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Definitivo.", y + 10, start_text, 20);
+
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "Atlas ficou olhando por alguns segundos.", y + 12, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Sem emoção.", y + 13, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Só leitura.", y + 14, start_text, 20);
+
+        napms(800);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "[Atlas]", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "-Agora você entende o suficiente para ser útil… e não o bastante para ser perigoso sozinho.", y+1, start_text, 20);
+        napms(800);
+
+        slow_mvwprintw(tela_flashback, "Ele olhou para você.", y + 2, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Você vai ser acusado disso.", y + 4, start_text, 20);
+        napms(1200);
+
+        wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+        slow_mvwprintw(tela_flashback, "— Regicídio. Dentro da cela da masmorra. Com suas armas.", y + 5, start_text, 80);
+        wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+        napms(1500);
+
+        slow_mvwprintw(tela_flashback, "O ar ficou denso.", y + 6, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— E ninguém vai olhar duas vezes.", y + 7, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Ele se aproximou um pouco mais.", y + 8, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Porque você já perdeu credibilidade antes disso.", y + 9, start_text, 20);
+
+        napms(1200);
+
+        slow_mvwprintw(tela_flashback, "Silêncio.", y + 11, start_text, 20);
+        slow_mvwprintw(tela_flashback, "E então a última peça.", y + 12, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— Seu pai foi executado pelo Rei porque deixou de ser funcional ao sistema.", y + 13, start_text, 20);
+        napms(1500);
+        slow_mvwprintw(tela_flashback, "— E agora você vai carregar o mesmo rótulo dele.", y + 15, start_text, 20);
+
+        napms(1500);
+
+        werase(tela_flashback);
+        box(tela_flashback, 0, 0);
+        wrefresh(tela_flashback);
+
+        slow_mvwprintw(tela_flashback, "Ele virou levemente o rosto, como se já estivesse saindo da cena.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "— O mundo não vai lembrar de você como pessoa.", y + 1, start_text, 20);
+        napms(1500);
+
+        slow_mvwprintw(tela_flashback, "— Só como consequência.", y + 2, start_text, 20);
+        napms(1500);
+
+        slow_mvwprintw(tela_flashback, "— Vou me certificar que o mundo esqueça de você, eu vou ser um fundador de", y + 4, start_text, 20);
+        slow_mvwprintw(tela_flashback, "uma nova PE, que obedeça somente a mim, e se esqueça das repressões e dos", y + 5, start_text, 20);
+        slow_mvwprintw(tela_flashback, "revolucionários anteriores para um novo mundo que não saiba ir contra o sistema que eu vou governar.", y + 6, start_text, 20);
+
+        napms(2500);
+        werase(tela_flashback);
+        wrefresh(tela_flashback);
+
+        wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+        slow_mvwprintw(tela_flashback, "Após se lembrar desse momento, seu foco retorna às escadas à sua frente.", y, start_text, 20);
+        slow_mvwprintw(tela_flashback, "Ao quinto andar.", y + 1, start_text, 20);
+        wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
+
+        wrefresh(tela_flashback);
+        napms(2000);
+
+        break;
+        
     default:
         break;
     }

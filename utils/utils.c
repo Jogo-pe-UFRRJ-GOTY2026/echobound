@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "../objects/Player.h"
 #include "../objects/Inventario.h"
+#include "../system/Combate.h"
 #include <string.h>
 
 char* get_error_message(Exceptions ex)
@@ -103,6 +104,8 @@ void mostrar_tela_morte(Player* player)
 {
     WINDOW* tela_morte = newwin(getmaxy(stdscr), getmaxx(stdscr),0,0);
 
+    napms(800);
+    tocar_sound_effect("assets/sound_effect/death.wav");
     wattron(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE));
     mvwprintw(tela_morte, 16, 70, "██    ██  ██████  ██    ██     ██████  ██ ███████ ██████  ");
     mvwprintw(tela_morte, 17, 70, " ██  ██  ██    ██ ██    ██     ██   ██ ██ ██      ██   ██");
@@ -112,7 +115,7 @@ void mostrar_tela_morte(Player* player)
 
     wattroff(tela_morte, COLOR_PAIR(COR_TEXTO_MORTE));
     wrefresh(tela_morte);
-    napms(2000);
+    napms(6000);
 
     werase(tela_morte);
 
@@ -198,7 +201,6 @@ void apagar_janela(WINDOW* win)
 
 void gerar_loot(Player* player)
 {
-    fprintf(stderr, "entro ao menos\n");
     int arma_atual=0;
     int tecla;
     Arma arma1 = gerar_arma_aleatoria(player->NumeroAndar);
@@ -216,6 +218,10 @@ void gerar_loot(Player* player)
     WINDOW* tela_loot = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
     keypad(tela_loot, TRUE);
     wtimeout(tela_loot, 33);
+    box(tela_loot, 0, 0);
+    desenhar_sprite(tela_loot, "assets/sprites/loot/chest.txt", 5, 1);
+    napms(3000);
+    tocar_sound_effect("assets/sound_effect/get_item.wav");
 
     Arma armas[3] = {arma1, arma2, arma3};
     while(true)

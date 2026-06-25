@@ -34,6 +34,11 @@ bool Capitulo5(Player *player)
     mvwprintw(tela_capitulo5, 33, 6, "[%s]", player->nome);
     slow_mvwprintw(tela_capitulo5, "Ainda não sei… só continuei subindo. Eu subi até aqui porque achei que no topo haveria uma saída.", 34, 6, 20);
 
+    wattron(tela_capitulo5, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
+    slow_mvwprintw(tela_capitulo5, "A aparência dele, ainda que esquelética e antiga, desperta um breve sentimento de déjà vu sobre você", 35, 6, 20);
+    wattroff(tela_capitulo5, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
+    slow_mvwprintw(tela_capitulo5, "Você chacoalha a cabeça ignorando o sentimento, e se aproxima", 35, 6, 20);
+
     napms(2000);
 
     // -------------------------- Diálogo Condicional
@@ -89,6 +94,8 @@ bool Capitulo5(Player *player)
 
                 mvwprintw(tela_capitulo5, 29, 6, "[Rei Caido]");
                 slow_mvwprintw(tela_capitulo5, "Percebo que está eufórico para continuar, responderei a tua espada com a minha", 30, 6, 20);
+                slow_mvwprintw(tela_capitulo5, "…retomaremos o que foi iniciado uma vez antes, certo ", 31, 6, 20);
+                slow_mvwprintw(tela_capitulo5, player->nome, 31, 53, 20);
                 napms(800);
                 break;
             }
@@ -151,12 +158,12 @@ bool Capitulo5(Player *player)
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 8, "<::::::::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 25),
-        // criar_ataque(LINHA, 8, "()=={::::::::::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
+        criar_ataque(LINHA, 8, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 2, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 2, 25),
         criar_ataque(LASER, 12, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
         criar_ataque(LASER, 12, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
-        // criar_ataque(PAREDE, 8, "🦴", 1, HORIZONTAL, BAIXO_CIMA, 7, 110), // 🞪
+        criar_ataque(PAREDE, 8, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 7, 110), // 🞪
         criar_ataque_area(5, "𝄽", 1, 0, 0, 80, 5),
         criar_ataque_area(7, "𝄽", 1, 6, 6, 90, 90),
         criar_ataque(PAREDE, 8, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 7, 110), // 🞪
@@ -172,13 +179,13 @@ bool Capitulo5(Player *player)
     fallen_king->dialogos_ataque[0] = "Ora… Vejo que chegar até aqui não foi resultado de sorte.";
     fallen_king->dialogos_ataque[1] = "Continue. Quero ver até onde sua convicção o levará.";
     fallen_king->dialogos_ataque[2] = "Sabe, as vezes estender a mão é mais dificil que levantar a espada.";
-    fallen_king->dialogos_ataque[3] = "Curioso… Antes eu exigia lealdade. Agora respeito determinação.";
+    fallen_king->dialogos_ataque[3] = "Curioso… Antes eu exigia a lealdade. Agora respeito tal tipo determinação.";
     fallen_king->dialogos_ataque[4] = "Sua determinação transparece pelos seus golpes, prossiga";
 
     // Diálogos apos player oferecer Mercy (Piedade)
-    fallen_king->dialogos_mercy[0] = "Poucos teriam me oferecido clemência quando eu não oferecia nenhuma.";
-    fallen_king->dialogos_mercy[1] = "Talvez você já tenha aprendido uma lição que me custou uma vida inteira.";
-    fallen_king->dialogos_mercy[2] = "Ainda assim, palavras possuem valor apenas quando sustentadas por ações.";
+    fallen_king->dialogos_mercy[0] = "Poucos teriam me oferecido clemência quando eu não oferecia nenhuma, mas eu ainda tenho desejo de levar este embate até o final.";
+    fallen_king->dialogos_mercy[1] = "Talvez você já tenha aprendido uma lição que me custou uma vida inteira… Mas ainda assim, você chegou até o topo, levante sua arma!.";
+    fallen_king->dialogos_mercy[2] = "Ainda assim, palavras possuem valor apenas quando sustentadas por ações, continue.";
 
     fallen_king->numero_ataques = len(ataques);
     for (int i = 0; i < fallen_king->numero_ataques; i++)
@@ -197,40 +204,28 @@ bool Capitulo5(Player *player)
     box(tela_capitulo5, 0, 0);
     wrefresh(tela_capitulo5);
 
-    if (resultado_combate == VITORIA && fallen_king->vida <= 0)
+    if (resultado_combate == VITORIA)
     {
-        // Roteiro: Derrotado por Ataque
-        // desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
-        mvwprintw(tela_capitulo5, 24, 6, "[Rei Caido]");
+        desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/fallen_king_defeated.txt", 1, 5);
 
-        slow_mvwprintw(tela_capitulo5, "Parabenizo-o", 25, 6, 75);
+
+
+        slow_mvwprintw(tela_capitulo5, "derruba a arma do rei caíde de suas mãos, e em um rápido golpe, o derruba de joelhos.", 34, 6, 100);
+
+        mvwprintw(tela_capitulo5, 35, 6, "[Rei Caido]");
+
+        
+        slow_mvwprintw(tela_capitulo5, "(Ofegante)", 36, 6, 75);
         napms(1500);
-        werase(tela_capitulo5);
-        wrefresh(tela_capitulo5);
-        slow_mvwprintw(tela_capitulo5, player->nome, 25, 6, 75);
-
-        werase(tela_capitulo5);
-        wrefresh(tela_capitulo5);
-        slow_mvwprintw(tela_capitulo5, "por sua…", 25, 6, 75);
-        werase(tela_capitulo5);
-        wrefresh(tela_capitulo5);
-        slow_mvwprintw(tela_capitulo5, "determinação", 25, 6, 75);
-
+        slow_mvwprintw(tela_capitulo5, "Vejo que…", 37, 6, 75);
+        napms(1500);
+        slow_mvwprintw(tela_capitulo5, "chegamos ao fim…", 38, 6, 75);
         napms(1500);
 
-        player->NumeroAndar = Epilogo;
-        player->vida = vida_max_total(player);
-    }
-    else if (resultado_combate == VITORIA && fallen_king->vida >= 0)
-    {
-        // Roteiro: Derrotado por Mercy
-        desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/dragon_defeated.txt", 1, 5);
-        mvwprintw(tela_capitulo5, 24, 6, "[Rei Caido]");
+        slow_mvwprintw(tela_capitulo5, player->nome, 39, 6, 75);
 
-        slow_mvwprintw(tela_capitulo5, "Vejo que seu coração é movido por algo além de pura ambição como o meu era, carregando bondade que não tive em vida", 25, 6, 20);
-        slow_mvwprintw(tela_capitulo5, "Notas algo diferente em si após este embate?", 26, 6, 20);
+        napms(1500);
 
-        player->karma += 1;
         player->NumeroAndar = Epilogo;
         player->vida = vida_max_total(player);
     }
