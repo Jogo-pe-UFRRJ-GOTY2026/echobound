@@ -25,10 +25,11 @@ SRC = main.c 						\
 	  chapters/Capitulo1.c          \
 	  chapters/Capitulo2.c          \
 	  chapters/Capitulo3.c          \
-	  chapters/Flashbacks.c 		\
 	  chapters/Capitulo4.c          \
 	  chapters/Capitulo5.c          \
-	  
+	  chapters/Flashbacks.c 		\
+	  chapters/Epilogo.c 	     	\
+
 
 
 TEST_SRC = 	tests/tests_main.c		\

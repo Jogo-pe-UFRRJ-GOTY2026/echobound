@@ -1,13 +1,10 @@
-#include <stdbool.h>
 #include <ncurses.h>
-#include <stdio.h>
 #include <string.h>
 #include "CAPITULO.h"
 #include "../objects/Player.h"
-#include "../objects/Inimigo.h"
-#include "../objects/Inventario.h"
 #include "../utils/utils.h"
 #include "../system/Save.h"
+#include "../system/Combate.h"
 
 typedef enum selecao{
     MATAR,
