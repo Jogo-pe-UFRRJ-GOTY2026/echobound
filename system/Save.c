@@ -284,6 +284,27 @@ void ponto_save(Player *player)
     }
 }
 
+void testando_ranking()
+{
+    FILE *arq = fopen("saves/ranking.bin", "rb");
+    if(arq != NULL)
+    {
+        arq = fopen("saves/ranking.bin", "wb");
+        EntradaRanking rank_gen[6] =
+        {
+            {"Fernanda", 2, PACIFISTA},
+            {"Marcel", 0, NEUTRO},
+            {"Posner", 10, GENOCIDA},
+            {"Ligia", 4, PACIFISTA},
+            {"Ronaldo", 5, NEUTRO},
+            {"Vania", 9, GENOCIDA}
+        };
+
+        fwrite(rank_gen, sizeof(EntradaRanking), 6, arq);
+        fclose(arq);
+    }
+}
+
 void adicionar_ao_ranking(Player *pl)
 {
     FILE *fp = fopen("saves/ranking.bin", "ab");
@@ -357,21 +378,25 @@ void visualizar_ranking(WINDOW *tela_ranking)
         char *final_text = finais[entradas[j].final];
         snprintf(n_mortes, 4, "%d", entradas[j].num_mortes);
 
-        int x_nome = 45 + (91 - (int)strlen(entradas[j].pl_nome)) / 2;
-        int x_mortes = 98 + (49 - (int)strlen(n_mortes)) / 2;
-        int x_final = 119 + (56 - (int)strlen(final_text)) / 2;
+        int x_nome = 45 + (91 - (int)strlen(entradas[j].pl_nome)) / 2 - 20;
+        int x_mortes = 98 + (49 - (int)strlen(n_mortes)) / 2 - 16;
+        int x_final = 119 + (56 - (int)strlen(final_text)) / 2 - 17;
 
         mvwprintw(tela_ranking, y, 44, "▌");
 
         mvwprintw(tela_ranking, y, x_nome, "%s", entradas[j].pl_nome);
+        mvwprintw(tela_ranking, y, 97, "┃", entradas[j].pl_nome);
+
         mvwprintw(tela_ranking, y, x_mortes, "%s", n_mortes);
+        mvwprintw(tela_ranking, y, 117, "┃", entradas[j].pl_nome);
+
         mvwprintw(tela_ranking, y, x_final, "%s", finais[entradas[j].final]);
 
-        mvwprintw(tela_ranking, y, 145, "▐");
+        mvwprintw(tela_ranking, y, 146, "▐");
 
         mvwprintw(tela_ranking, y + 1, 44, "▌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▐");
 
-        y += 1;
+        y += 2;
 
         napms(500);
         wrefresh(tela_ranking);

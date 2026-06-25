@@ -17,5 +17,6 @@ bool salvar_jogo(Player* player);
 void ponto_save(Player *player);
 void adicionar_ao_ranking(Player *pl);
 void visualizar_ranking(WINDOW* win);
+void testando_ranking();
 
 #endif
