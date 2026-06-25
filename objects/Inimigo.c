@@ -93,9 +93,9 @@ void renderizar_nome_estilizado(WINDOW *area_nome_boss, const char *nome)
 
     if (equals("Rei Caido", nome))
     {
-        mvwprintw(area_nome_boss, 0, meio, "█████▄  ▄▄▄▄▄ ▄▄   ▄█████  ▄▄▄  ▄▄ ▄▄▄▄   ▄▄▄ ", nome);
-        mvwprintw(area_nome_boss, 1, meio, "██▄▄██▄ ██▄▄  ██   ██     ██▀██ ██ ██▀██ ██▀██", nome);
-        mvwprintw(area_nome_boss, 2, meio, "██   ██ ██▄▄▄ ██   ▀█████ ██▀██ ██ ████▀ ▀███▀", nome);
+        mvwprintw(area_nome_boss, 0, meio, "█████▄  ▄▄▄▄▄ ▄▄   ▄█████  ▄▄▄  ▄▄ ▄▄▄▄   ▄▄▄ ");
+        mvwprintw(area_nome_boss, 1, meio, "██▄▄██▄ ██▄▄  ██   ██     ██▀██ ██ ██▀██ ██▀██");
+        mvwprintw(area_nome_boss, 2, meio, "██   ██ ██▄▄▄ ██   ▀█████ ██▀██ ██ ████▀ ▀███▀");
     }
     if (equals("Cavaleiro Vazio", nome))
     {

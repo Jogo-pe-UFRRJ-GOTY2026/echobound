@@ -135,17 +135,17 @@ bool Capitulo3(Player *player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, CIMA_BAIXO, 2, 25),
-        criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 8, 110),
-        criar_ataque_area(5, "⮟", 1, 0, 0, 80, 15),
-        criar_ataque_area(7, "⮟", 1, 4, 4, 90, 60),
+        criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, CIMA_BAIXO, 3, 30),
+        criar_ataque(PAREDE, 7, "†", 1, HORIZONTAL, BAIXO_CIMA, 8, 120),
+        criar_ataque_area(6, "⮟", 1, 1, 1, 80, 20),
+        criar_ataque_area(9, "⮟", 1, 4, 4, 100, 75),
     };
 
     Sprite_size size;
     size.x = 26;
     size.y = 12;
 
-    Inimigo *cerberus = criar_inimigo(200, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 23, Cerberus);
+    Inimigo *cerberus = criar_inimigo(325, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 23, Cerberus);
 
     // Diálogos de Ataque recebido
     cerberus->dialogos_ataque[0] = "GRAAAAUF!";

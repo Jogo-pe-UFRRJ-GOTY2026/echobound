@@ -143,17 +143,17 @@ bool Capitulo4(Player *player)
     AtaqueInimigo ataques[] = {
         criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, CIMA_BAIXO, 2, 25),
         criar_ataque(BULLET, 8, "🔥", 1, VERTICAL, BAIXO_CIMA, 2, 25),
-        criar_ataque(LINHA, 13, "🔥🔥🔥", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
-        criar_ataque(LASER, 12, "▽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
-        criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 8, 110),
-        criar_ataque_area(7, "Λ", 1, 4, 4, 90, 30),
+        criar_ataque(LINHA, 10, "🔥🔥🔥", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 40),
+        criar_ataque(LASER, 12, "▽", 0, VERTICAL, NAO_IMPORTA, 70, 90),
+        criar_ataque(PAREDE, 8, "†", 1, HORIZONTAL, BAIXO_CIMA, 8, 150),
+        criar_ataque_area(8, "Λ", 1, 4, 4, 90, 35),
     };
 
     Sprite_size size;
     size.x = 54;
     size.y = 17;
 
-    Inimigo *iowa = criar_inimigo(305, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
+    Inimigo *iowa = criar_inimigo(425, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
 
 
     // Diálogos de Ataque recebido

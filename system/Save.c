@@ -8,6 +8,7 @@
 #include "../utils/utils.h"
 #include "../chapters/CAPITULO.h"
 #include "./Save.h"
+
 #define NUM_OF_ELEMENTS 1
 Player *carregar_salvamento()
 {
@@ -306,6 +307,9 @@ void adicionar_ao_ranking(Player *pl)
     entry.num_mortes -= 6; // como medidor aumenta a cada luta com o boss, como pra salvar, voce vai ter passado, tem que reduzir em 6 (as que tu nao morreu)
 
     fwrite(&entry, sizeof(EntradaRanking), 1, fp);
+
+
+    
     fclose(fp);
 }
 
@@ -330,34 +334,55 @@ void visualizar_ranking(WINDOW *tela_ranking)
     mvwprintw(tela_ranking, y + 1, 44, "▌                        Nome                        ┃       Mortes       ┃      Final Realizado      ▐");
     mvwprintw(tela_ranking, y + 2, 44, "▌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▐");
     y+=3;
+    
+    int i=0;
+    EntradaRanking* entradas = malloc(sizeof(EntradaRanking) * (i + 1));
+    if(entradas==NULL) return;
+
     if (fp != NULL)
     {
-        while(fread(&entry, sizeof(EntradaRanking),1, fp)==1)
+        while (fread(&entry, sizeof(EntradaRanking), 1, fp) == 1)
         {
-            char n_mortes[4];
-            char *final_text = finais[entry.final];
-            snprintf(n_mortes, 4, "%d", entry.num_mortes);
-
-            int x_nome = 45 + (91 - (int)strlen(entry.pl_nome)) / 2;
-            int x_mortes = 98 + (49 - (int)strlen(n_mortes)) / 2;
-            int x_final = 119 + (56 - (int)strlen(final_text)) / 2;
-
-            mvwprintw(tela_ranking, y, 44, "▌");
-
-            mvwprintw(tela_ranking, y, x_nome, "%s", entry.pl_nome);
-            mvwprintw(tela_ranking, y, x_mortes, "%s", n_mortes);
-            mvwprintw(tela_ranking, y, x_final, "%s", finais[entry.final]);
-
-            mvwprintw(tela_ranking, y, 145, "▐");
-
-            mvwprintw(tela_ranking, y + 1, 44, "▌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▐");
-
-            y += 1;
-
-            napms(500);
-            wrefresh(tela_ranking);
+            entradas[i]=entry;
+            i+=1;
+            entradas=realloc(entradas, sizeof(EntradaRanking)*(i+1));
         }
+        fclose(fp);
     }
+    selection_sort(entradas, i);
+
+    for(int j=0;j<i;j++)
+    {
+        char n_mortes[4];
+        char *final_text = finais[entradas[j].final];
+        snprintf(n_mortes, 4, "%d", entradas[j].num_mortes);
+
+        int x_nome = 45 + (91 - (int)strlen(entradas[j].pl_nome)) / 2;
+        int x_mortes = 98 + (49 - (int)strlen(n_mortes)) / 2;
+        int x_final = 119 + (56 - (int)strlen(final_text)) / 2;
+
+        mvwprintw(tela_ranking, y, 44, "▌");
+
+        mvwprintw(tela_ranking, y, x_nome, "%s", entradas[j].pl_nome);
+        mvwprintw(tela_ranking, y, x_mortes, "%s", n_mortes);
+        mvwprintw(tela_ranking, y, x_final, "%s", finais[entradas[j].final]);
+
+        mvwprintw(tela_ranking, y, 145, "▐");
+
+        mvwprintw(tela_ranking, y + 1, 44, "▌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━▐");
+
+        y += 1;
+
+        napms(500);
+        wrefresh(tela_ranking);
+    }
+    
+
+
+
+
+
+
     mvwprintw(tela_ranking, y, 44, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
     wrefresh(tela_ranking);
     napms(500);
@@ -377,7 +402,6 @@ void visualizar_ranking(WINDOW *tela_ranking)
             break;
         }
     }
-    if (fp != NULL)
-        fclose(fp);
+
     return;
 }

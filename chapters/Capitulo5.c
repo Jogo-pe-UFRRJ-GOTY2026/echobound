@@ -157,23 +157,23 @@ bool Capitulo5(Player *player)
 
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
-        criar_ataque(LINHA, 8, "<::::::::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 25),
-        criar_ataque(LINHA, 8, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 25),
+        criar_ataque(LINHA, 10, "<:::::::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 35),
+        criar_ataque(LINHA, 8, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 2, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 2, 25),
-        criar_ataque(LASER, 12, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
-        criar_ataque(LASER, 12, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
-        criar_ataque(PAREDE, 8, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 7, 110), // 🞪
-        criar_ataque_area(5, "𝄽", 1, 0, 0, 80, 5),
-        criar_ataque_area(7, "𝄽", 1, 6, 6, 90, 90),
-        criar_ataque(PAREDE, 8, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 7, 110), // 🞪
+        criar_ataque(LASER, 13, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
+        criar_ataque(LASER, 13, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
+        criar_ataque(PAREDE, 9, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 7, 130), // 🞪
+        criar_ataque_area(6, "𝄽", 1, 1, 1, 70, 20),
+        criar_ataque_area(11, "𝄽", 1, 6, 6, 90, 90),
+        criar_ataque(PAREDE, 10, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 7, 130), // 🞪
     };
 
     Sprite_size size;
     size.x = 42;
     size.y = 28;
 
-    Inimigo *fallen_king = criar_inimigo(375, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
+    Inimigo *fallen_king = criar_inimigo(550, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
 
     // Diálogos apos Ataque recebido
     fallen_king->dialogos_ataque[0] = "Ora… Vejo que chegar até aqui não foi resultado de sorte.";
@@ -210,7 +210,7 @@ bool Capitulo5(Player *player)
 
 
 
-        slow_mvwprintw(tela_capitulo5, "derruba a arma do rei caíde de suas mãos, e em um rápido golpe, o derruba de joelhos.", 34, 6, 100);
+        slow_mvwprintw(tela_capitulo5, "Você derruba a arma do rei caíde de suas mãos, e em um rápido golpe, o derruba de joelhos.", 34, 6, 100);
 
         mvwprintw(tela_capitulo5, 35, 6, "[Rei Caido]");
 

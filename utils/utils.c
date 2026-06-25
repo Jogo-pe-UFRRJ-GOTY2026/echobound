@@ -7,6 +7,7 @@
 #include "../objects/Player.h"
 #include "../objects/Inventario.h"
 #include "../system/Combate.h"
+#include "../system/Save.h"
 #include <string.h>
 
 char* get_error_message(Exceptions ex)
@@ -32,7 +33,7 @@ int gerar_rolagem_dano()
 int gerar_rolagem_mercy()
 {
     //return 100;
-    return (rand()%15 + 1);
+    return (rand()%20 + 10); //10 a 20
 }
 int escolher_ataque()
 {
@@ -266,4 +267,24 @@ void gerar_loot(Player* player)
         else if(tecla=='3')arma_atual=2;
     }
     apagar_janela(tela_loot);
+}
+void swap(EntradaRanking *a, EntradaRanking *b)
+{
+    EntradaRanking temp = *a;
+    *a = *b;
+    *b=temp;
+}
+
+void selection_sort(EntradaRanking entries[], int len)
+{
+  for(int i=0;i<len;i++)
+  {
+    int min_idx=i;
+    for(int j=i+1;j<len;j++)
+    {
+        if(entries[j].num_mortes<entries[min_idx].num_mortes)
+            min_idx=j;
+    }
+    swap(&entries[i],&entries[min_idx]);
+  }  
 }

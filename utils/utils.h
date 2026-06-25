@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../objects/Player.h"
-
+#include "../system/Save.h"
 typedef enum opcao_selecionada
 {
     INICIAR_JOGO_NOVO,
@@ -53,6 +53,7 @@ void mostrar_tela_morte(Player* player);
 int calcular_largura_sprite(const char *caminho);
 void iniciar_cores();
 void gerar_loot(Player* player);
+void selection_sort(EntradaRanking entries[], int len);
 
 #define len(arr) (sizeof(arr)/sizeof(arr[0]))
 

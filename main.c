@@ -33,7 +33,6 @@ int main()
     signal(SIGINT, tratar_encerramento);
     signal(SIGTERM, tratar_encerramento);
 
-    Player *player;
     int AndarSalvo;
 
     initscr();
@@ -48,67 +47,70 @@ int main()
 
     iniciar_cores(); // Inicializa os pares de cores definidos na funcao
 
-    
-    tocar_musica(-1);
-    player = menu_inicial();
-    parar_musica();
-    if(player==NULL)
-    {
-        endwin();
-        perror("Jogo encerrado");
-        return 1;
-    }
 
-    while(player->NumeroAndar!=Epilogo)
+    while(true)
     {
-        Andar andar_anterior = player->NumeroAndar;
-
-        switch(player->NumeroAndar)
+        Player *player;
+        tocar_musica(-1);
+        player = menu_inicial();
+        parar_musica();
+        if(player==NULL)
         {
-            
-            case Andar0:
-                Prologo_pt2(player);
-                break;
+            break;
+        }
 
-            case Andar1:
-                Capitulo1(player);
-                break;
+        while(player->NumeroAndar!=Epilogo)
+        {
+            Andar andar_anterior = player->NumeroAndar;
 
-            case Andar2:
-                Capitulo2(player);
-                break;
-
-            case Andar3:
-                Capitulo3(player);
-                break;
-
-            case Andar4:
-                Capitulo4(player);
-                break;
-
-            case Andar5:
-                Capitulo5(player);
-                break;
+            switch(player->NumeroAndar)
+            {
                 
-            default:
-                break;
-        }
-        // se ele avançou de andar, ele desce e vai pro ponto de save descansar
-        // se não avançou, o capitulo faz save automatico e mostra a tela de morte
-        // o loop continua no mesmo capitulo
-        if(player->NumeroAndar > andar_anterior && player->NumeroAndar != Epilogo) 
-        {
-            flashbacks(player);
-            gerar_loot(player);
-            player->vida = vida_max_total(player);
-            
-            tocar_musica(-1);
-            ponto_save(player);
-            parar_musica();
-        }
+                case Andar0:
+                    Prologo_pt2(player);
+                    break;
 
+                case Andar1:
+                    Capitulo1(player);
+                    break;
+
+                case Andar2:
+                    Capitulo2(player);
+                    break;
+
+                case Andar3:
+                    Capitulo3(player);
+                    break;
+
+                case Andar4:
+                    Capitulo4(player);
+                    break;
+
+                case Andar5:
+                    Capitulo5(player);
+                    break;
+                    
+                default:
+                    break;
+            }
+            // se ele avançou de andar, ele desce e vai pro ponto de save descansar
+            // se não avançou, o capitulo faz save automatico e mostra a tela de morte
+            // o loop continua no mesmo capitulo
+            if(player->NumeroAndar > andar_anterior && player->NumeroAndar != Epilogo) 
+            {
+                flashbacks(player);
+                gerar_loot(player);
+                player->vida = vida_max_total(player);
+                
+                tocar_musica(-1);
+                ponto_save(player);
+                parar_musica();
+            }
+
+        }
+        Ver_Epilogo(player);
+        free(player);
     }
-    Ver_Epilogo(player);
     endwin();
     return 0;
 }

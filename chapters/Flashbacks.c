@@ -6,8 +6,8 @@
 
 void flashbacks(Player *player)
 {
-    WINDOW *tela_flashback = newwin(0, 0, getmaxy(stdscr), getmaxx(stdscr));
-    int start_text = getmaxx(tela_flashback) / 3 + 10;
+    WINDOW *tela_flashback = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
+    int start_text = getmaxx(tela_flashback) / 3 - 20;
     box(tela_flashback, 0, 0);
     int y = 5;
 
