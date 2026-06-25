@@ -136,7 +136,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
 
         if (usar_consumivel(player))
         {
-            int cura = (int)(vida_max_total(player) * 0.4f);
+            int cura = (int)vida_max_total(player) * 0.4f;
 
             mvwprintw(ui->area_dialogos, 1, 2, "Você usou um Estus Flask e recuperou %d de vida!", cura);
         }
@@ -293,7 +293,7 @@ void renderizar_menu_combate(WINDOW *area_menu, Inimigo* inimigo, Player *player
 
     desenhar_botao(area_menu, " 1.ATACAR", 3, 0, opcao_hovered == ATACAR);
     desenhar_botao(area_menu, " 2.CURAR", 3, 24, opcao_hovered == CURAR);
-    if (inimigo->id == Rei_Caido)
+    if (inimigo!=NULL && inimigo->id == Rei_Caido)
     {
         desenhar_botao(area_menu, " 3.MERCY", 6, 0, false);
     }

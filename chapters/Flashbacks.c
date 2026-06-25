@@ -32,7 +32,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "de rosto. As fachadas bem cuidadas davam lugar a muros gastos, poças escuras, cheiros de umidade", y + 5, start_text, 20);
         slow_mvwprintw(tela_flashback, "e ferrugem. O barulho das lojas diminuía, e o som dos próprios passos se tornava mais nítido.", y + 6, start_text, 20);
         slow_mvwprintw(tela_flashback, "Foi então que você os viu.", y + 11, 2, 20);
-        napms(1200);
+        napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
         wrefresh(tela_flashback);
@@ -59,7 +59,7 @@ void flashbacks(Player *player)
         wattron(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
         slow_mvwprintw(tela_flashback, "Foi assim que sua oficina começou a chamar atenção.", y + 15, start_text, 20);
         wattroff(tela_flashback, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
-        napms(1200);
+        napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
         wrefresh(tela_flashback);
@@ -95,7 +95,7 @@ void flashbacks(Player *player)
     case Andar2:
         slow_mvwprintw(tela_flashback, "Conforme você coloca seus pés sobre as escadas, mais uma vez ecos do seu passado", y, start_text, 20);
         slow_mvwprintw(tela_flashback, "percorrem por sua mente.", y + 1, start_text, 20);
-        napms(1200);
+        napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
         wrefresh(tela_flashback);
@@ -103,7 +103,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "Um cavaleiro chegou até sua estadia, imponente, blindado, com a postura de quem já entrava", y, start_text, 20);
         slow_mvwprintw(tela_flashback, "esperando obediência. Não veio sozinho. Trouxe consigo a autoridade de um nome,", y + 1, start_text, 20);
         slow_mvwprintw(tela_flashback, "o peso de uma insígnia e a promessa de uma oportunidade \"irrecusável\".", y + 2, start_text, 20);
-        napms(1200);
+        napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
         wrefresh(tela_flashback);
@@ -120,7 +120,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "você entendeu que o palácio só se interessava por você enquanto sua habilidade servisse", y + 9, start_text, 20);
         slow_mvwprintw(tela_flashback, "para fortalecer os mesmos muros que esmagavam o povo. O convite era uma coleira dourada.", y + 10, start_text, 20);
         slow_mvwprintw(tela_flashback, "Uma promoção para alguém que jamais seria tratado como igual.", y + 11, start_text, 20);
-        napms(1200);
+        napms(2500);
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
         wrefresh(tela_flashback);
@@ -148,7 +148,7 @@ void flashbacks(Player *player)
 
         slow_mvwprintw(tela_flashback, "O olhar sob a maça que Alphanos carregava o leva a recordar de seus momentos em sua", y, start_text, 20);
         slow_mvwprintw(tela_flashback, "forja na oficina, o calor, a força de cada martelada, voltando à sua mente…", y + 1, start_text, 20);
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -168,7 +168,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "manchadas de sangue nas mãos dos guardas, guardas que utilizavam as suas armas", y + 8, start_text, 20);
         slow_mvwprintw(tela_flashback, "contra o próprio povo que defendia, em nome da \"paz\".", y + 9, start_text, 20);
 
-        napms(800);
+        napms(2500);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -191,7 +191,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "por ousar erguer a cabeça. Falou do rei como um cadáver sentado, sustentado por", y + 10, start_text, 20);
         slow_mvwprintw(tela_flashback, "mentira, violência e medo.", y + 11, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -213,7 +213,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, " olha pro lado para alertá-lo,", y + 9, start_text + 33 + strlen(player->nome), 20);
         slow_mvwprintw(tela_flashback, "e… de repente, Atlas não está mais lá, ele desapareceu em um piscar de olhos.", y + 10, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -236,7 +236,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "alimentavam esse desejo de uma mudança positiva no mundo que levaria o nome", y + 9, start_text, 20);
         slow_mvwprintw(tela_flashback, "deles para a eternidade…", y + 10, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -297,7 +297,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "intenção. Um tipo de cuidado que parecia responder diretamente às condições", y + 12, start_text, 20);
         slow_mvwprintw(tela_flashback, "de quem lutava do outro lado.", y + 13, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -313,7 +313,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "funcional. Você se convencia de que não estava criando guerra — apenas", y + 6, start_text, 20);
         slow_mvwprintw(tela_flashback, "reagindo a ela.", y + 7, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -335,7 +335,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "o presente ainda não esteja pronto para isso.", y + 11, start_text, 20);
         slow_mvwprintw(tela_flashback, "E, de certa forma, isso fazia sentido.", y + 12, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -423,7 +423,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "Ele inclinou levemente a cabeça.", y + 7, start_text, 20);
         slow_mvwprintw(tela_flashback, "— Você herdou isso dele. A hesitação antes da quebra.", y + 8, start_text, 20);
 
-        napms(800);
+        napms(1200);
 
         slow_mvwprintw(tela_flashback, "A frase entrou como lâmina.", y + 10, start_text, 20);
         slow_mvwprintw(tela_flashback, "— Ele morreu acreditando que ainda havia escolha.", y + 11, start_text, 20);
@@ -432,7 +432,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "E então veio o golpe final:", y + 14, start_text, 20);
         slow_mvwprintw(tela_flashback, "— E você ainda me decepcionou mesmo depois disso.", y + 15, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);
@@ -447,7 +447,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "Sem surpresa.", y + 6, start_text, 20);
         slow_mvwprintw(tela_flashback, "Como alguém que já esperava exatamente aquele instante.", y + 7, start_text, 20);
 
-        napms(800);
+        napms(1200);
 
         slow_mvwprintw(tela_flashback, "Ele olhou a cena.", y + 9, start_text, 20);
         slow_mvwprintw(tela_flashback, "O Rei sendo enforcado.", y + 10, start_text, 20);
@@ -458,7 +458,7 @@ void flashbacks(Player *player)
         slow_mvwprintw(tela_flashback, "[Atlas]", y + 15, start_text, 20);
         slow_mvwprintw(tela_flashback, "— Isso já saiu do controle.", y + 16, start_text, 20);
 
-        napms(800);
+        napms(2000);
 
         werase(tela_flashback);
         box(tela_flashback, 0, 0);

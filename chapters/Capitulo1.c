@@ -168,6 +168,7 @@ bool Capitulo1(Player* player)
         mvwprintw(tela_capitulo1, 28, 6, "[Cruciator]");
 
         slow_mvwprintw(tela_capitulo1, "Vou acabar com isso rápido desta vez.", 29, 6, 20);
+        player->consumiveis = player->NumeroAndar;
 
         napms(2000);
     }
@@ -190,7 +191,7 @@ bool Capitulo1(Player* player)
     size.x = 19;
     size.y = 21;
 
-    Inimigo *cruciator = criar_inimigo(100, "Cruciator","assets/sprites/bosses/demon.txt", size, 35, 23, Cruciator);
+    Inimigo *cruciator = criar_inimigo(120, "Cruciator","assets/sprites/bosses/demon.txt", size, 25, 21, Cruciator);
 
 
     cruciator->dialogos_mercy[0] = "Misericórdia? HAHAHAHAHA! Muitas almas já imploraram por isso… de onde eu vim.";

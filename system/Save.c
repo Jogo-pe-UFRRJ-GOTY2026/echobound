@@ -67,7 +67,9 @@ void ponto_save(Player *player)
     WINDOW *ponto_save_window = newwin(getmaxy(stdscr), getmaxx(stdscr), 0, 0);
     keypad(ponto_save_window, TRUE);
     nodelay(ponto_save_window, TRUE);
-    bool descansando = true;
+    bool descansando = false;
+    bool conversando = true;
+
     int tecla;
 
     while (descansando)
@@ -208,8 +210,11 @@ void ponto_save(Player *player)
                 respostas[5] = "Então finalmente verá a verdade sem desejar tê-la encontrado.";
 
                 break;
+                
+                default:
+                    conversando=false;
+                    break;
             }
-            bool conversando = true;
             int ja_realizou_pergunta[8] = {0};
 
             while (conversando)

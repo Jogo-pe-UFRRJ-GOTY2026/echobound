@@ -142,7 +142,7 @@ bool Capitulo2(Player* player)
     size.x = 34; 
     size.y = 20;
 
-    Inimigo *aphanos = criar_inimigo(150, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 55, 23, Aphanos);
+    Inimigo *aphanos = criar_inimigo(160, "Aphanos", "assets/sprites/bosses/centaur.txt", size, 45, 23, Aphanos);
 
     // Diálogos de Ataque recebido
     aphanos->dialogos_ataque[0] = "Finalmente um oponente digno… Nossa batalha será lendária!";
@@ -220,6 +220,8 @@ bool Capitulo2(Player* player)
         napms(1500);
 
         player->vida = vida_max_total(player);
+        player->consumiveis = player->NumeroAndar;
+        
         salvar_jogo(player);
         mostrar_tela_morte(player);
     }

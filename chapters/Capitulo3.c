@@ -146,7 +146,7 @@ bool Capitulo3(Player *player)
     size.x = 26;
     size.y = 12;
 
-    Inimigo *cerberus = criar_inimigo(250, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 23, Cerberus);
+    Inimigo *cerberus = criar_inimigo(235, "Cerberus", "assets/sprites/bosses/cerberus.txt", size, 35, 25, Cerberus);
 
     // Diálogos de Ataque recebido
     cerberus->dialogos_ataque[0] = "GRAAAAUF!";
@@ -219,6 +219,7 @@ bool Capitulo3(Player *player)
         slow_mvwprintw(tela_capitulo3, "whine…", 25, 6, 20);
 
         player->vida = vida_max_total(player);
+        player->consumiveis = player->NumeroAndar;
         salvar_jogo(player);
         mostrar_tela_morte(player);
     }

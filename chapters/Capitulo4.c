@@ -153,7 +153,7 @@ bool Capitulo4(Player *player)
     size.x = 54;
     size.y = 17;
 
-    Inimigo *iowa = criar_inimigo(300, "Iowa", "assets/sprites/bosses/dragon.txt", size, 35, 23, Iowa);
+    Inimigo *iowa = criar_inimigo(325, "Iowa", "assets/sprites/bosses/dragon.txt", size, 25, 27, Iowa);
 
 
     // Diálogos de Ataque recebido
@@ -228,6 +228,7 @@ bool Capitulo4(Player *player)
         slow_mvwprintw(tela_capitulo4, "Se seu espírito deseja completar a Torre, então se prepare, e tente novamente! Você só passará quando merecer.", 25, 6, 20);
         napms(2000);
         player->vida = vida_max_total(player);
+        player->consumiveis = player->NumeroAndar;
         salvar_jogo(player);
         mostrar_tela_morte(player);
     }

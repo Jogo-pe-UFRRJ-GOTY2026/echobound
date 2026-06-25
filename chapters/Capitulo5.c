@@ -35,9 +35,9 @@ bool Capitulo5(Player *player)
     slow_mvwprintw(tela_capitulo5, "Ainda não sei… só continuei subindo. Eu subi até aqui porque achei que no topo haveria uma saída.", 34, 6, 20);
 
     wattron(tela_capitulo5, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
-    slow_mvwprintw(tela_capitulo5, "A aparência dele, ainda que esquelética e antiga, desperta um breve sentimento de déjà vu sobre você", 35, 6, 20);
+    slow_mvwprintw(tela_capitulo5, "A aparência dele, ainda que esquelética e antiga, desperta um breve sentimento de déjà vu sobre você", 36, 6, 20);
     wattroff(tela_capitulo5, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
-    slow_mvwprintw(tela_capitulo5, "Você chacoalha a cabeça ignorando o sentimento, e se aproxima", 35, 6, 20);
+    slow_mvwprintw(tela_capitulo5, "Você chacoalha a cabeça ignorando o sentimento, e se aproxima", 37, 6, 20);
 
     napms(2000);
 
@@ -148,8 +148,8 @@ bool Capitulo5(Player *player)
         box(tela_capitulo5, 0, 0);
         desenhar_sprite(tela_capitulo5, "assets/sprites/bosses/fallen_king.txt", 1, 5);
 
-        mvwprintw(tela_capitulo5, 28, 6, "[Fallen King]");
-        slow_mvwprintw(tela_capitulo5, "Vejo que retornaste… Pronto para uma revanche?", 29, 6, 20);
+        mvwprintw(tela_capitulo5, 30, 6, "[Fallen King]");
+        slow_mvwprintw(tela_capitulo5, "Vejo que retornaste… Pronto para uma revanche?", 31, 6, 20);
 
         wrefresh(tela_capitulo5);
         napms(2500);
@@ -158,22 +158,22 @@ bool Capitulo5(Player *player)
     // -------------------------- Configuração do Combate
     AtaqueInimigo ataques[] = {
         criar_ataque(LINHA, 10, "<:::::::}==()", 1, HORIZONTAL, DIREITA_ESQUERDA, 2, 35),
-        criar_ataque(LINHA, 8, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
+        criar_ataque(LINHA, 10, ")={:::::>", 1, HORIZONTAL, ESQUERDA_DIREITA, 2, 45),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, CIMA_BAIXO, 5, 25),
         criar_ataque(BULLET, 8, "🗲", 1, VERTICAL, BAIXO_CIMA, 5, 25),
-        criar_ataque(LASER, 13, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
-        criar_ataque(LASER, 13, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
+        criar_ataque(LASER, 15, "𝄽", 0, VERTICAL, NAO_IMPORTA, 80, 60),
+        criar_ataque(LASER, 15, "𝄽", 0, HORIZONTAL, NAO_IMPORTA, 80, 60),
         criar_ataque(PAREDE, 9, "⧷", 1, HORIZONTAL, BAIXO_CIMA, 14, 130), // 🞪
-        criar_ataque_area(6, "𝄽", 1, 1, 1, 70, 20),
-        criar_ataque_area(11, "𝄽", 1, 6, 6, 90, 90),
-        criar_ataque(PAREDE, 10, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 8, 180), // 🞪
+        criar_ataque_area(8, "𝄽", 1, 1, 1, 70, 20),
+        criar_ataque_area(12, "𝄽", 1, 6, 6, 90, 90),
+        criar_ataque(PAREDE, 15, "🦴", 1, VERTICAL, DIREITA_ESQUERDA, 8, 150), // 🞪
     };
 
     Sprite_size size;
     size.x = 42;
     size.y = 28;
 
-    Inimigo *fallen_king = criar_inimigo(400, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 38, Rei_Caido);
+    Inimigo *fallen_king = criar_inimigo(400, "Rei Caido", "assets/sprites/bosses/fallen_king.txt", size, 65, 30, Rei_Caido);
 
     // Diálogos apos Ataque recebido
     fallen_king->dialogos_ataque[0] = "Ora… Vejo que chegar até aqui não foi resultado de sorte.";
@@ -197,7 +197,7 @@ bool Capitulo5(Player *player)
     // Execução da luta
     EstadoRodada resultado_combate = iniciar_combate(player, fallen_king);
     player->medidor_lembranca[Rei_Caido] += 1;
-    free_inimigo(fallen_king);
+    free(fallen_king);
 
     // -------------------------- Pós-Combate
     werase(tela_capitulo5);
@@ -238,6 +238,7 @@ bool Capitulo5(Player *player)
         slow_mvwprintw(tela_capitulo5, "Vejo que ainda falta força para tornar seus desejos em realidade… Estarei esperando sua próxima tentativa.", 36, 6, 20);
         napms(1500);
         player->vida = vida_max_total(player);
+        player->consumiveis=player->NumeroAndar;
         salvar_jogo(player);
         mostrar_tela_morte(player);
     }

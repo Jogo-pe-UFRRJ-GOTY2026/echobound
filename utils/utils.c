@@ -33,7 +33,7 @@ int gerar_rolagem_dano()
 int gerar_rolagem_mercy()
 {
     //return 100;
-    return (rand()%20 + 10); //10 a 20
+    return (rand()%5 + 10);
 }
 int escolher_ataque()
 {

@@ -42,10 +42,10 @@ void Ver_Epilogo(Player *player)
 
         if(atual==MATAR)
             wattron(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
-        mvwprintw(tela_epilogo, 40, max_x / 2 - 20, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜"); 
-        mvwprintw(tela_epilogo, 41, max_x / 2 - 20, "▌   Eliminar   ▐"); 
-        mvwprintw(tela_epilogo, 42, max_x / 2 - 20, "▌    o rei     ▐"); 
-        mvwprintw(tela_epilogo, 43, max_x / 2 - 20, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
+        mvwprintw(tela_epilogo, 40, max_x / 2 - 23, "▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜"); 
+        mvwprintw(tela_epilogo, 41, max_x / 2 - 23, "▌   Eliminar   ▐"); 
+        mvwprintw(tela_epilogo, 42, max_x / 2 - 23, "▌    o rei     ▐"); 
+        mvwprintw(tela_epilogo, 43, max_x / 2 - 23, "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
         if (atual == MATAR)
             wattroff(tela_epilogo, A_BOLD | COLOR_PAIR(COR_OPCAO_SELECIONADA));
 
@@ -105,7 +105,7 @@ void Ver_Epilogo(Player *player)
     wrefresh(tela_epilogo);
 
     int y=5;
-    int mid = max_x / 2 - 20;
+    int mid = max_x / 2 - 40;
 
     char indicador_nome[50];
     char fala_rei[100];
@@ -146,32 +146,32 @@ void Ver_Epilogo(Player *player)
 
             slow_mvwprintw(tela_epilogo, "[Rei Caído]", y + 26, mid, 40);
             slow_mvwprintw(tela_epilogo, fala_rei, y + 27, mid, 40);
+            werase(tela_epilogo);
+            napms(2500);
 
-            napms(1200);
+            slow_mvwprintw(tela_epilogo, "[Vigia]", y, mid, 40);
+            slow_mvwprintw(tela_epilogo, fala_vigia, y + 1, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Recebi a informação da derrota do Rei Caído,", y + 2, mid, 40);
+            slow_mvwprintw(tela_epilogo, "derrotado por você.", y + 3, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Por que você não voltou para a vida", y + 4, mid, 40);
+            slow_mvwprintw(tela_epilogo, "que tanto queria recuperar?", y + 5, mid, 40);
 
-            slow_mvwprintw(tela_epilogo, "[Vigia]", y + 29, mid, 40);
-            slow_mvwprintw(tela_epilogo, fala_vigia, y + 30, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Recebi a informação da derrota do Rei Caído,", y + 31, mid, 40);
-            slow_mvwprintw(tela_epilogo, "derrotado por você.", y + 32, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Por que você não voltou para a vida", y + 33, mid, 40);
-            slow_mvwprintw(tela_epilogo, "que tanto queria recuperar?", y + 34, mid, 40);
+            slow_mvwprintw(tela_epilogo, indicador_nome, y + 7, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Acho que talvez algumas coisas sejam melhores", y + 8, mid, 40);
+            slow_mvwprintw(tela_epilogo, "do jeito que estão.", y + 9, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Depois de tanto tempo aqui,", y + 10, mid, 40);
+            slow_mvwprintw(tela_epilogo, "talvez não seja necessário voltar.", y + 11, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Talvez eu possa ajudar outras almas por aqui...", y + 12, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Assim como você me ajudou.", y + 13, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Posso guiar os viajantes que desejam subir a Torre,", y + 14, mid, 40);
+            slow_mvwprintw(tela_epilogo, "assim como você?", y + 15, mid, 40);
 
-            slow_mvwprintw(tela_epilogo, indicador_nome, y + 36, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Acho que talvez algumas coisas sejam melhores", y + 37, mid, 40);
-            slow_mvwprintw(tela_epilogo, "do jeito que estão.", y + 38, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Depois de tanto tempo aqui,", y + 39, mid, 40);
-            slow_mvwprintw(tela_epilogo, "talvez não seja necessário voltar.", y + 40, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Talvez eu possa ajudar outras almas por aqui...", y + 41, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Assim como você me ajudou.", y + 42, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Posso guiar os viajantes que desejam subir a Torre,", y + 43, mid, 40);
-            slow_mvwprintw(tela_epilogo, "assim como você?", y + 44, mid, 40);
-
-            slow_mvwprintw(tela_epilogo, "[Vigia]", y + 46, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Claro, por que não poderia?", y + 47, mid, 40);
-            slow_mvwprintw(tela_epilogo, "É mais divertido e interessante do que ficar", y + 48, mid, 40);
-            slow_mvwprintw(tela_epilogo, "perambulando por aí,", y + 49, mid, 40);
-            slow_mvwprintw(tela_epilogo, "e no fim você acaba trazendo conforto e companhia", y + 50, mid, 40);
-            slow_mvwprintw(tela_epilogo, "para mais almas do que imagina.", y + 51, mid, 40);
+            slow_mvwprintw(tela_epilogo, "[Vigia]", y + 17, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Claro, por que não poderia?", y + 18, mid, 40);
+            slow_mvwprintw(tela_epilogo, "É mais divertido e interessante do que ficar", y + 19, mid, 40);
+            slow_mvwprintw(tela_epilogo, "perambulando por aí,", y + 20, mid, 40);
+            slow_mvwprintw(tela_epilogo, "e no fim você acaba trazendo conforto e companhia", y + 21, mid, 40);
+            slow_mvwprintw(tela_epilogo, "para mais almas do que imagina.", y + 22, mid, 40);
 
             napms(1200);
 
@@ -240,41 +240,42 @@ void Ver_Epilogo(Player *player)
             slow_mvwprintw(tela_epilogo, "até que restam apenas sensações impossíveis de explicar.", y + 26, mid, 40);
 
             slow_mvwprintw(tela_epilogo, "Então, tudo desaparece.", y + 28, mid, 40);
+            werase(tela_epilogo);
+            wrefresh(tela_epilogo);
+            napms(2000);
 
-            napms(1200);
+            slow_mvwprintw(tela_epilogo, "Você desperta exatamente onde sua história havia terminado.", y, mid, 40);
 
-            slow_mvwprintw(tela_epilogo, "Você desperta exatamente onde sua história havia terminado.", y + 30, mid, 40);
-
-            slow_mvwprintw(tela_epilogo, "O mundo continua seguindo seu curso, indiferente à sua ausência.", y + 32, mid, 40);
-            slow_mvwprintw(tela_epilogo, "As lembranças da Torre são vagas, incompletas e fragmentadas.", y + 33, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Você sabe que esteve em algum lugar.", y + 34, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Sabe que lutou por algo, mas não consegue recordar os detalhes.", y + 35, mid, 40);
+            slow_mvwprintw(tela_epilogo, "O mundo continua seguindo seu curso, indiferente à sua ausência.", y + 2, mid, 40);
+            slow_mvwprintw(tela_epilogo, "As lembranças da Torre são vagas, incompletas e fragmentadas.", y + 3, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Você sabe que esteve em algum lugar.", y + 4, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Sabe que lutou por algo, mas não consegue recordar os detalhes.", y + 5, mid, 40);
 
             napms(1200);
 
             wattron(tela_epilogo, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
-            slow_mvwprintw(tela_epilogo, "Ainda assim, existe uma certeza que nenhuma falha", y + 37, mid, 40);
-            slow_mvwprintw(tela_epilogo, "em sua memória conseguiu apagar.", y + 38, mid, 40);
-            slow_mvwprintw(tela_epilogo, "A Província Emerita precisa mudar.", y + 39, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Ainda assim, existe uma certeza que nenhuma falha", y + 7, mid, 40);
+            slow_mvwprintw(tela_epilogo, "em sua memória conseguiu apagar.", y + 8, mid, 40);
+            slow_mvwprintw(tela_epilogo, "A Província Emerita precisa mudar.", y + 9, mid, 40);
             wattroff(tela_epilogo, A_BOLD | COLOR_PAIR(COR_DESTAQUE));
 
             napms(1200);
 
-            slow_mvwprintw(tela_epilogo, "Movido por essa convicção inexplicável,", y + 41, mid, 40);
-            slow_mvwprintw(tela_epilogo, "você une forças com aqueles que também desejam um futuro diferente.", y + 42, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Ideias antes esquecidas voltam a circular entre a população.", y + 43, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Pela primeira vez em muitos anos,", y + 44, mid, 40);
-            slow_mvwprintw(tela_epilogo, "o povo volta a acreditar que pode desafiar aqueles que o governam.", y + 45, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Movido por essa convicção inexplicável,", y + 10, mid, 40);
+            slow_mvwprintw(tela_epilogo, "você une forças com aqueles que também desejam um futuro diferente.", y + 11, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Ideias antes esquecidas voltam a circular entre a população.", y + 12, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Pela primeira vez em muitos anos,", y + 13, mid, 40);
+            slow_mvwprintw(tela_epilogo, "o povo volta a acreditar que pode desafiar aqueles que o governam.", y + 14, mid, 40);
 
-            slow_mvwprintw(tela_epilogo, "A palavra \"revolução\" retorna aos sussurros das ruas.", y + 47, mid, 40);
+            slow_mvwprintw(tela_epilogo, "A palavra \"revolução\" retorna aos sussurros das ruas.", y + 15, mid, 40);
 
             napms(1200);
 
             wattron(tela_epilogo, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
-            slow_mvwprintw(tela_epilogo, "Você não se lembra de como aprendeu essa lição.", y + 49, mid, 40);
-            slow_mvwprintw(tela_epilogo, "Mas uma parte de você ainda permanece no topo da Torre,", y + 50, mid, 40);
-            slow_mvwprintw(tela_epilogo, "ecoando através do Intervalo,", y + 51, mid, 40);
-            slow_mvwprintw(tela_epilogo, "garantindo que jamais a esqueça por completo.", y + 52, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Você não se lembra de como aprendeu essa lição.", y + 16, mid, 40);
+            slow_mvwprintw(tela_epilogo, "Mas uma parte de você ainda permanece no topo da Torre,", y + 17, mid, 40);
+            slow_mvwprintw(tela_epilogo, "ecoando através do Intervalo,", y + 18, mid, 40);
+            slow_mvwprintw(tela_epilogo, "garantindo que jamais a esqueça por completo.", y + 19, mid, 40);
             wattroff(tela_epilogo, A_BOLD | COLOR_PAIR(COR_TEXTO_MORTE));
             
             napms(1500);
@@ -353,7 +354,7 @@ void Ver_Epilogo(Player *player)
             wrefresh(tela_epilogo);
             napms(1700);
 
-            mvwprintw(tela_epilogo, y+1,   mid, "██████ ▄▄ ▄▄  ▄▄  ▄▄▄  ▄▄       ▄████  ▄▄▄▄▄ ▄▄  ▄▄  ▄▄▄   ▄▄▄▄ ▄▄ ▄▄▄▄   ▄▄▄");
+            mvwprintw(tela_epilogo, y+1, mid, "██████ ▄▄ ▄▄  ▄▄  ▄▄▄  ▄▄       ▄████  ▄▄▄▄▄ ▄▄  ▄▄  ▄▄▄   ▄▄▄▄ ▄▄ ▄▄▄▄   ▄▄▄");
             mvwprintw(tela_epilogo, y+2, mid, "██▄▄   ██ ███▄██ ██▀██ ██      ██  ▄▄▄ ██▄▄  ███▄██ ██▀██ ██▀▀▀ ██ ██▀██ ██▀██");
             mvwprintw(tela_epilogo, y+3, mid, "██     ██ ██ ▀██ ██▀██ ██▄▄▄    ▀███▀  ██▄▄▄ ██ ▀██ ▀███▀ ▀████ ██ ████▀ ██▀██");
 
