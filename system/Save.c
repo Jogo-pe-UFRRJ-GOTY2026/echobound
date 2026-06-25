@@ -8,6 +8,7 @@
 #include "../utils/utils.h"
 #include "../chapters/CAPITULO.h"
 #include "./Save.h"
+#include "./Combate.h"
 
 #define NUM_OF_ELEMENTS 1
 Player *carregar_salvamento()
@@ -103,8 +104,11 @@ void ponto_save(Player *player)
             wrefresh(ponto_save_window);
             napms(1500);
             apagar_janela(ponto_save_window);
+            parar_musica();
+
             endwin();
             free(player);
+
             exit(EXIT_SUCCESS);
 
             // Fala com vigia
@@ -286,10 +290,9 @@ void ponto_save(Player *player)
 
 void testando_ranking()
 {
-    FILE *arq = fopen("saves/ranking.bin", "rb");
+    FILE *arq = fopen("saves/ranking.bin", "wb");
     if(arq != NULL)
     {
-        arq = fopen("saves/ranking.bin", "wb");
         EntradaRanking rank_gen[6] =
         {
             {"Fernanda", 2, PACIFISTA},
