@@ -85,7 +85,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
 
     OpcoesMenuCombate opcao_atual = ATACAR;
     int tecla;
-    renderizar_menu_combate(ui->area_menu, player, opcao_atual);
+    renderizar_menu_combate(ui->area_menu, inimigo, player, opcao_atual);
 
     while (tecla = wgetch(ui->area_menu))
     {
@@ -110,7 +110,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
         default:
             break;
         }
-        renderizar_menu_combate(ui->area_menu, player, opcao_atual);
+        renderizar_menu_combate(ui->area_menu, inimigo, player, opcao_atual);
     }
     OpcoesMenuCombate opcao_escolhida = opcao_atual;
     switch (opcao_escolhida)
@@ -153,7 +153,7 @@ EstadoRodada rodada(AtaqueInimigo ataque, Player *player, Inimigo *inimigo, Comb
         //box(ui->area_dialogos, 0, 0);
         wrefresh(ui->area_dialogos);
 
-        renderizar_menu_combate(ui->area_menu, player, INVALIDA);
+        renderizar_menu_combate(ui->area_menu, inimigo, player, INVALIDA);
 
         break;
     }
@@ -273,7 +273,7 @@ void desenhar_botao(WINDOW *area_menu, const char *texto, int y, int x, bool sel
     wattroff(area_menu, COLOR_PAIR(COR_OPCAO_SELECIONADA) | A_BOLD);
 }
 
-void renderizar_menu_combate(WINDOW *area_menu, Player *player, OpcoesMenuCombate opcao_hovered)
+void renderizar_menu_combate(WINDOW *area_menu, Inimigo* inimigo, Player *player, OpcoesMenuCombate opcao_hovered)
 {
     werase(area_menu);
 
@@ -293,7 +293,14 @@ void renderizar_menu_combate(WINDOW *area_menu, Player *player, OpcoesMenuCombat
 
     desenhar_botao(area_menu, " 1.ATACAR", 3, 0, opcao_hovered == ATACAR);
     desenhar_botao(area_menu, " 2.CURAR", 3, 24, opcao_hovered == CURAR);
-    desenhar_botao(area_menu, " 3.MERCY", 6, 0, opcao_hovered == MERCY);
+    if (inimigo->id == Rei_Caido)
+    {
+        desenhar_botao(area_menu, " 3.MERCY", 6, 0, false);
+    }
+    else
+        desenhar_botao(area_menu, " 3.MERCY", 6, 0, opcao_hovered == MERCY);
+
+
     desenhar_botao(area_menu, " 4.DESISTIR", 6, 24, opcao_hovered == DESISTIR);
     wrefresh(area_menu);
 }
@@ -303,7 +310,7 @@ void renderizar_combate_ui(CombateUI *ui, Player *player, Inimigo *inimigo)
     box(ui->area_boss, 0, 0);
     box(ui->area_esquiva, 0, 0);
     desenhar_jogador(ui->area_esquiva, player);
-    renderizar_menu_combate(ui->area_menu, player, INVALIDA);
+    renderizar_menu_combate(ui->area_menu, inimigo, player, INVALIDA);
     renderizar_vida_boss(ui->area_vida_boss, inimigo);
 
     wrefresh(ui->area_vida_boss);
@@ -359,7 +366,7 @@ void tocar_musica(Lembrancas id)
         file = "assets/music/iowa.wav";
         break;
     case Rei_Caido:
-        file = "assets/music/fallen_king.wav";
+        file = "assets/music/fallen.wav";
         break;
     default:
         file = "assets/music/idle.wav";

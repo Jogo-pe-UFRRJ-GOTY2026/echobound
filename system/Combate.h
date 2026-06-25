@@ -48,7 +48,7 @@ void spawnar_ataque(AtaqueInimigo *Ataque, WINDOW *area_esquiva);
 void atualizar_ataque(WINDOW *area_esquiva, AtaqueInimigo *atq);
 
 
-void renderizar_menu_combate(WINDOW *area_menu, Player *player, OpcoesMenuCombate opcao_hovered);
+void renderizar_menu_combate(WINDOW *area_menu,Inimigo *inimigo, Player *player, OpcoesMenuCombate opcao_hovered);
 void renderizar_combate_ui(CombateUI *ui, Player *player, Inimigo* inimigo);
 void renderizar_vida_boss(WINDOW *area_vida_boss, Inimigo *inimigo);
 void desenhar_ataque(WINDOW *area_esquiva, AtaqueInimigo *atq);

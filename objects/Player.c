@@ -212,7 +212,7 @@ bool usar_consumivel(Player *player)
     if (player->consumiveis <= 0)
         return false;
 
-    int cura = vida_max_total(player) * 0.4f;
+    int cura = vida_max_total(player) * 0.4f + player->NumeroAndar*5;
 
     player->vida += cura;
 
