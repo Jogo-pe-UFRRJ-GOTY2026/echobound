@@ -45,9 +45,9 @@ bool Capitulo5(Player *player)
     if (player->medidor_lembranca[Rei_Caido] < 1)
     {
         const char *opcoes_dialogo[4] = {
-            "Se eu chegar ao topo… eu realmente consigo sair daqui?",
-            "Já estamos bem alto… Este é o último andar?",
-            "E você? O que faz aqui sozinho?",
+            "Você matou meu pai? POR QUE?",
+            "Valeu a pena tudo que você fez enquanto governava a Província Emerita?",
+            "O que o Atlas realmente queria?",
             "O que acontece se lutarmos? Se eu também passar por você? A torre responderá de alguma forma?"};
 
         int ja_realizou_pergunta[4] = {0};
@@ -112,22 +112,22 @@ bool Capitulo5(Player *player)
 
                 if (opcao == 0)
                 {
-                    slow_mvwprintw(tela_capitulo5, "Talvez. Muitos subiram acreditando nisso… poucos chegaram até aqui.", 30, 6, 20);
-                    slow_mvwprintw(tela_capitulo5, "E mesmo entre os que alcançam o topo, nem todos encontram aquilo que vieram buscar", 31, 6, 20);
-                    slow_mvwprintw(tela_capitulo5, "Às vezes a saída existe… mas não da forma que imaginamos.", 32, 6, 20);
+                    slow_mvwprintw(tela_capitulo5, "Matei, sem piedade.", 30, 6, 20);
+                    slow_mvwprintw(tela_capitulo5, "Eu não precisava de uma justificativa, apenas quis fazê-lo.", 31, 6, 20);
+                    slow_mvwprintw(tela_capitulo5, "Me desculpe…", 32, 6, 20);
                 }
                 else if (opcao == 1)
                 {
-                    slow_mvwprintw(tela_capitulo5, "Sim… este é o topo. Acima daqui, não há mais degraus… apenas a decisão que te trouxe até aqui.", 30, 6, 30);
-                    slow_mvwprintw(tela_capitulo5, "Muitos acreditam que alcançar o último andar significa encontrar respostas.", 31, 6, 30);
-                    slow_mvwprintw(tela_capitulo5, "Mas, às vezes… significa apenas perceber qual pergunta realmente carregavam consigo.", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Eu passei a vida inteira acreditando que valia,", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "o tempo no Intervalo já me faz pensar o contrário…", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Hoje em dia me arrependo do que fiz.", 32, 6, 30);
                 }
                 else if (opcao == 2)
                 {
-                    slow_mvwprintw(tela_capitulo5, "Eu? Observo. Recordo… ou pelo menos tento.", 30, 6, 30);
-                    slow_mvwprintw(tela_capitulo5, "Houve um tempo em que eu tinha um reino, um nome que ecoava por muitos salões… mas o tempo e minhas ações passadas levaram quase tudo.", 31, 6, 30);
-                    slow_mvwprintw(tela_capitulo5, "Restou apenas este lugar… e a vista. Então permaneço aqui.", 32, 6, 30);
-                    slow_mvwprintw(tela_capitulo5, "Assistindo o Intervalo seguir em frente… mesmo quando eu já não pude.", 33, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Ha, essa é simples…", 30, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Poder, um mundo sem oposição…", 31, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Ele se baseou em mim e 'jogou sujo' ", 32, 6, 30);
+                    slow_mvwprintw(tela_capitulo5, "Tal como o antigo eu faria…", 33, 6, 30);
                 }
                 else if (opcao == 3)
                 {
